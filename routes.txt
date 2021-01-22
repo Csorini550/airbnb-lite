@@ -1,0 +1,46 @@
+Homepage
+    navbar1
+    navbar on scroll
+        location - BONUS explore nearby
+        dates -dropdown calender
+        guests -dropdown adults, children, infants
+    nearby
+        open a new window -populate with 5mile radius places
+    section popular - most visited (views) / highest rated (stars)
+    section live anywhere - homes, cabins, apartments, unique stays
+    online experiences - link to youtube videos, price, sumary
+    host - experience, home - form
+      Form 1
+        address 
+        entire place | private room | shared room
+        amount of guests it can hold
+        picture
+
+    inspiration - short list of popular destinations 
+        new page with a few spots available in that area
+    about - github linkiden resume 
+
+    User
+        messages
+        notifications
+        trips
+        saved
+        paying (bonus)
+
+    Fidning a spot 
+        type | price | more filters
+
+        list all the spots in the location with the filters in mind
+            description (small)
+            rating
+            price / night
+
+                When you click on a spot
+                    all the pictures
+                    side form - check in checkout
+                        guests
+                        total charges
+                    description
+                    amenties (bonus)
+                    reviews
+                    map
