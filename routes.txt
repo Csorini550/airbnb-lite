@@ -7,12 +7,12 @@ Homepage
     nearby
         open a new window -populate with 5mile radius places
     section popular - most visited (views) / highest rated (stars)
-    section live anywhere - homes, cabins, apartments, unique stays
+    section live anywhere - bar, restuarant, special-venue 
     online experiences - link to youtube videos, price, sumary
     host - experience, home - form
       Form 1
         address 
-        entire place | private room | shared room
+        entire place | private room | type of venue
         amount of guests it can hold
         picture
 
