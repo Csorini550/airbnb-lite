@@ -8,11 +8,18 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    first_name = db.Column(db.String(255), nullable=False)
+    last_name = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.Integer)
     description = db.Column(db.Text)
     profile_image = db.Column(db.String)
     business_owner = db.Column(db.Boolean)
+
+    reservations = db.relationship("Reservation", back_populates="user")
+    # venue = db.relationship("Venue", back_populates="user")
+    favorites = db.relationship("Favorite", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
 
     @property
     def password(self):
@@ -28,8 +35,9 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             "id": self.id,
-            "username": self.username,
             "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
             "phone_number": self.phone_number,
             "description": self.description,
             "profile_image": self.profile_image,
@@ -59,7 +67,13 @@ class Venue(db.Model):
     name = db.Column(db.String, nullable=False)
     twentyone_plus = db.Column(db.Boolean, nullable=False)
     kid_friendly = db.Column(db.Boolean, nullable=False)
-    links = db.Column(db.String, nullable=False)
+    links = db.Column(db.String)
+
+    # user = db.relationship("User", back_populates="venue")
+    reservation = db.relationship("Review", back_populates="venue")
+    media = db.relationship("Media", back_populates="venue")
+    favorite = db.relationship("Favorite", back_populates="venue")
+    review = db.relationship("Review", back_populates="venue")
 
 
 class Reservation(db.Model):
@@ -74,6 +88,10 @@ class Reservation(db.Model):
     total = db.Column(db.Float, nullable=False)
     guest_count = db.Column(db.Integer)
 
+    review = db.relationship("Review", back_populates="reservation")
+    user = db.relationship("User", back_populates="reservations")
+    # venue = db.relationship("Venue", back_populates="reservation")
+
 
 class Favorite(db.Model):
     __tablename__ = 'favorites'
@@ -82,15 +100,24 @@ class Favorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     venue_id = db.Column(db.Integer, db.ForeignKey("venues.id"))
 
+    user = db.relationship("User", back_populates="favorites")
+    venue = db.relationship("Venue", back_populates="favorite")
+
 
 class Review(db.Model):
     __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     reservation_id = db.Column(db.Integer, db.ForeignKey("reservations.id"))
     venue_id = db.Column(db.Integer, db.ForeignKey("venues.id"))
     rating = db.Column(db.Float)
     comment = db.Column(db.Text)
+
+    media = db.relationship("Media", back_populates="review")
+    user = db.relationship("User", back_populates="reviews")
+    reservation = db.relationship("Reservation", back_populates="review")
+    venue = db.relationship("Venue", back_populates="review")
 
 
 class Media(db.Model):
@@ -100,3 +127,6 @@ class Media(db.Model):
     venue_id = db.Column(db.Integer, db.ForeignKey("venues.id"))
     url = db.Column(db.String)
     review_id = db.Column(db.Integer, db.ForeignKey("reviews.id"))
+
+    review = db.relationship("Review", back_populates="media")
+    venue = db.relationship("Venue", back_populates="media")
