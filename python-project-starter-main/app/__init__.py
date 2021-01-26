@@ -8,11 +8,8 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-<<<<<<< HEAD
 from .api.review_routes import review_routes
-=======
 from .api.reservation_routes import reservation_routes
->>>>>>> main
 
 from .seeds import seed_commands
 
