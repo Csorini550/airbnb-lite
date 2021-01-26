@@ -13,7 +13,7 @@ def all_reviews(id):
 # CREATE A NEW REVIEW - WILL NEED TO CHANGE DEPENDING ON FRONTEND
 @review_routes.route('/<int:id>', methods=['POST'])
 @login_required
-def new_review(id)
+def new_review(id):
     form = NewReviewForm() #not sure if class will be called this
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

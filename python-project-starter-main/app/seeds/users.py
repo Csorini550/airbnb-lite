@@ -52,6 +52,9 @@ def seed_users():
         name="The Best Bar",
         twentyone_plus=True,
         kid_friendly=False,
+        street_address = "1212",
+        state = "Illinois",
+        city = "Chicago"
     )
 
     venue2 = Venue(
@@ -75,6 +78,9 @@ def seed_users():
         name="Cuisine",
         twentyone_plus=False,
         kid_friendly=True,
+        street_address = "1212",
+        state = "Idaho",
+        city = "Boise"
     )
 
     review1 = Review(
