@@ -5,22 +5,29 @@ from app.models import Reservation
 reservation_routes = Blueprint('reservations', __name__)
 
 
-@reservation_routes.route('/')
+# @reservation_routes.route('/')
+# # @login_required
+# def reservations():
+#     reservations = Reservation.query.all()
+#     return {
+#         reservation.id: reservation.to_dict() for reservation in reservations
+#     }
+
+# All reservation for specific venue
+@reservation_routes.route('/venues/<int:id>')
 # @login_required
-def reservations():
-    reservations = Reservation.query.all()
+def venueReservation(id):
+    reservations = Reservation.query.filter_by(venue_id=id)
     return {
         reservation.id: reservation.to_dict() for reservation in reservations
     }
-    # return {
-    #     reservation.id: {
-    #         "guest count": reservation.guest_count
-    #     } for reservation in reservations
-    # }
 
 
-@reservation_routes.route('/<int:id>')
+# All reservation for specific venue
+@reservation_routes.route('/users/<int:id>')
 # @login_required
-def reservation(id):
-    reservation = Reservation.query.get(id)
-    return reservation.to_dict()
+def userReservation(id):
+    reservations = Reservation.query.filter_by(user_id=id)
+    return {
+        reservation.id: reservation.to_dict() for reservation in reservations
+    }

@@ -12,8 +12,9 @@ def seed_users():
         last_name="owner",
         profile_image="This is where an image would be",
         description="A wonderful fake human",
+        phone_number = 12223334444,
         business_owner=False,
-        hashed_password='password')
+        password='password')
 
     demo_owner = User(
         email='demo_owner@aa.io',
@@ -22,7 +23,8 @@ def seed_users():
         profile_image="This is where an image would be",
         description="A wonderful fake human",
         business_owner=True,
-        hashed_password='password')
+        phone_number = 12223334444,
+        password='password')
 
     favorite1 = Favorite(
         user_id=1,
@@ -96,6 +98,7 @@ def seed_users():
     media1 = Media(
         venue_id=1,
         url="https://www.google.com/maps/uv?pb=!1s0x880e2dda3a40679b%3A0x2a21e8ab03f44bc4!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNHDId-xsumYAAlBed9Q606BlUyv1dVEMrFSr4x%3Dw478-h320-k-no!5sroots%20south%20loop%20-%20Google%20Search!15sCgIgAQ&imagekey=!1e10!2sAF1QipNHDId-xsumYAAlBed9Q606BlUyv1dVEMrFSr4x&hl=en&sa=X&ved=2ahUKEwiS9rvUi7juAhWLKs0KHWF5BtgQoiowCnoECBUQAw",
+        review_id = 1,
     )
 
     db.session.add(review1)
@@ -116,5 +119,5 @@ def seed_users():
 
 
 def undo_users():
-    db.session.execute('TRUNCATE users;')
+    db.session.execute('TRUNCATE users restart identity cascade;')
     db.session.commit()

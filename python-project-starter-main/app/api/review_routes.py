@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
+from app.forms import NewReviewForm
 from app.models import Review
+from app.models import db
 
 review_routes = Blueprint('reviews', __name__)
 
@@ -15,9 +17,9 @@ def all_reviews(id):
 # CREATE A NEW REVIEW - WILL NEED TO CHANGE DEPENDING ON FRONTEND
 
 
-@review_routes.route('/<int:id>', methods=['POST'])
-@login_required
-def new_review(id):
+@review_routes.route('/', methods=['POST'])
+# @login_required
+def new_review():
     form = NewReviewForm()  # not sure if class will be called this
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -30,4 +32,10 @@ def new_review(id):
         )
         db.session.add(newReview)
         db.session.commit()
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+<< << << < HEAD
+== == == =
+return newReview.to_dict()
+>>>>>> > main
+return {'errors': validation_errors_to_error_messages(form.errors)}
