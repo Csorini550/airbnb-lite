@@ -30,3 +30,14 @@ def new_review():
         db.session.commit()
         return newReview.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+# DELETE A REVIEW -- NOT SURE WHAT TO RETURN, WILL PROBABLY NEED TO CHANGE
+@review_routes.route('/delete/<int:id>')
+def delete_review(id):
+    reviewToDelete = Review.query.get(id)
+    if reviewToDelete:
+        db.session.delete(reviewToDelete)
+        db.session.commit()
+        return '<h1>Deleted</>'
+    return '<h1>No matching review</h1>'
