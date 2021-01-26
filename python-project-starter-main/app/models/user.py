@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.String)
     description = db.Column(db.Text)
     profile_image = db.Column(db.String)
     business_owner = db.Column(db.Boolean)
@@ -130,6 +130,16 @@ class Review(db.Model):
     user = db.relationship("User", back_populates="reviews")
     reservation = db.relationship("Reservation", back_populates="review")
     venue = db.relationship("Venue", back_populates="review")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "reservation_id": self.reservation_id,
+            "venue_id": self.venue_id,
+            "rating": self.rating,
+            "comment": self.comment,
+        }
 
 
 class Media(db.Model):
