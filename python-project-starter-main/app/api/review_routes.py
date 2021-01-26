@@ -4,11 +4,10 @@ from app.models import Review
 
 review_routes = Blueprint('reviews', __name__)
 
-
-@review_routes.route('/')
-# @login_required
-def all_reviews():
-    reviews = Review.query.all()
+# GET ALL REVIEWS
+@review_routes.route('/<int:id>')
+def all_reviews(id):
+    reviews = Review.query.filter_by(venue_id = id)
     return {review.id: review.to_dict() for review in reviews}
 
 
