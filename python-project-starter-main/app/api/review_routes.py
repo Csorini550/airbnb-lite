@@ -5,24 +5,28 @@ from app.models import Review
 review_routes = Blueprint('reviews', __name__)
 
 # GET ALL REVIEWS FOR A SPECIFIC VENUE
+
+
 @review_routes.route('/<int:id>')
 def all_reviews(id):
-    reviews = Review.query.filter_by(venue_id = id)
+    reviews = Review.query.filter_by(venue_id=id)
     return {review.id: review.to_dict() for review in reviews}
 
 # CREATE A NEW REVIEW - WILL NEED TO CHANGE DEPENDING ON FRONTEND
+
+
 @review_routes.route('/<int:id>', methods=['POST'])
 @login_required
-def new_review(id)
-    form = NewReviewForm() #not sure if class will be called this
+def new_review(id):
+    form = NewReviewForm()  # not sure if class will be called this
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         newReview = Review(
             user_id=form.data['user_id'],
-            reservation_id= form.data['reservation_id'],
-            venue_id= form.data['venue_id'],
-            rating= form.data['rating'],
-            comment= form.data['comment'],
+            reservation_id=form.data['reservation_id'],
+            venue_id=form.data['venue_id'],
+            rating=form.data['rating'],
+            comment=form.data['comment'],
         )
         db.session.add(newReview)
         db.session.commit()
