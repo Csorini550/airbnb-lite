@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.String)
     description = db.Column(db.Text)
     profile_image = db.Column(db.String)
     business_owner = db.Column(db.Boolean)

@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('first_name', sa.String(length=255), nullable=False),
     sa.Column('last_name', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('phone_number', sa.Integer(), nullable=True),
+    sa.Column('phone_number', sa.String(), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('profile_image', sa.String(), nullable=True),
     sa.Column('business_owner', sa.Boolean(), nullable=True),
