@@ -119,6 +119,16 @@ class Review(db.Model):
     reservation = db.relationship("Reservation", back_populates="review")
     venue = db.relationship("Venue", back_populates="review")
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "reservation_id": self.reservation_id,
+            "venue_id": self.venue_id,
+            "rating": self.rating,
+            "comment": self.comment,
+        }
+
 
 class Media(db.Model):
     __tablename__ = "media"
