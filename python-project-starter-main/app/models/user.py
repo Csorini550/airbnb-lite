@@ -92,6 +92,18 @@ class Reservation(db.Model):
     user = db.relationship("User", back_populates="reservations")
     # venue = db.relationship("Venue", back_populates="reservation")
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "venue_id": self.venue_id,
+            "start_date": self.start_date,
+            "end_date": self.end_date,
+            "price": self.price,
+            "total": self.total,
+            "guest_count": self.guest_count,
+        }
+
 
 class Favorite(db.Model):
     __tablename__ = 'favorites'

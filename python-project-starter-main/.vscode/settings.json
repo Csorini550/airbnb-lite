@@ -1,5 +1,17 @@
 {
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
-    "python.linting.pycodestyleEnabled": true
+    "python.linting.pycodestyleEnabled": true,
+    "cSpell.ignoreWords": [
+        "iotsc",
+        "jsonify",
+        "keycap",
+        "keycaps",
+        "nish",
+        "polya",
+        "pytest",
+        "vids",
+        "walkthrough",
+        "wireframes"
+    ]
 }
