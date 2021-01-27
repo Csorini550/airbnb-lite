@@ -3,8 +3,9 @@ import './NavBar.css'
 
 const SearchBar = () => {
 
-  const [location, setLocation] = useState('')
-  const [date, setDate] = useState('')
+  const [location, setLocation] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
 
   const handleSubmit = () => {
 

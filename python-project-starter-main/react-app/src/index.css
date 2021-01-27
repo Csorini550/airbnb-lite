@@ -2,3 +2,8 @@
 * {
   box-sizing: border-box;
 }
+
+
+#results {
+  padding: 75px;
+}

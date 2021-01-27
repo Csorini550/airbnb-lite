@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
+
 const SearchResults = () => {
 
   const [venues, setVenues] = useState([])
@@ -9,26 +10,23 @@ const SearchResults = () => {
     const venueSearch = async () => {
       const res = await fetch("/api/venues");
       const data = await res.json();
-      console.log(data)
-      console.log(data[venues])
-      console.log("I HIT THIS")
-      setVenues(data);
+      setVenues(data.venues);
     };
     venueSearch();
   }, []);
 
   return (
-    <div>
-      {venues[0]}
-      {/* {venues.map(venue => {
+    <div id="results">
+      {console.log(venues)}
+      {venues.map(venue => {
         return (
           <div key={venue.id}>
-            <h1>{venue.name}</h1>
+            <h1>{venue}</h1>
 
 
           </div>
         );
-      })} */}
+      })}
     </div>
   )
 }
