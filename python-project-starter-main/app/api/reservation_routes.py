@@ -45,13 +45,13 @@ def delete_reservation(reservationId):
 
 
 
-# CREATE A NEW RESERVATION - WILL NEED TO CHANGE DEPENDING ON FRONTEND -- NEED TO WORK ON START_DATE/END_DATE
+# CREATE A NEW RESERVATION - WILL NEED TO CHANGE DEPENDING ON FRONTEND -- DATE NEEDS TO BE IN Y-M-D H:MIN:SEC FORMAT
 @reservation_routes.route('/', methods=['POST'])
 # @login_required
 def new_reservation():
     form = NewReservationForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit():
+if form.validate_on_submit():
     newReservation = Reservation(
         user_id=form.data['user_id'],
         venue_id=form.data['venue_id'],
@@ -61,7 +61,7 @@ def new_reservation():
         total=form.data['total'],
         guest_count=form.data['guest_count'],
     )
-    # db.session.add(newReservation)
-    # db.session.commit()
+    db.session.add(newReservation)
+    db.session.commit()
     return newReservation.to_dict()
     # return {'errors': validation_errors_to_error_messages(form.errors)}
