@@ -4,12 +4,13 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import CreateVenue from "./components/CreateVenue";
 // import AddReview from "./components/AddReview";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import HomePage from "./components/HomePage"
 import { authenticate } from "./services/auth";
+import SearchResults from "./components/SearchResults";
 import VenueReview from "./components/VenueReview";
 
 function App() {
@@ -52,11 +53,17 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <HomePage />
         </ProtectedRoute>
+        <ProtectedRoute path="/results" exact={true} authenticated={authenticated}>
+          <SearchResults />
+        </ProtectedRoute>
+        {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
+          <AddReview />
+        </ProtectedRoute> */}
         <ProtectedRoute path="/reviews/:venueId" exact={true} authenticated={authenticated}>
           <VenueReview />
         </ProtectedRoute>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 
