@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
+import CreateVenue from "./components/CreateVenue";
 // import AddReview from "./components/AddReview";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -49,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/create-venue" exact={true} authenticated={authenticated}>
+          <CreateVenue />
         </ProtectedRoute>
         {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
           <AddReview />
