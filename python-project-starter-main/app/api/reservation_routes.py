@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Reservation, db
+from app.forms import NewReservationForm
 
 reservation_routes = Blueprint('reservations', __name__)
 
@@ -16,7 +17,7 @@ reservation_routes = Blueprint('reservations', __name__)
 # All reservation for specific venue - No login required
 @reservation_routes.route('/venues/<int:venueId>')
 def venueReservation(venueId):
-    reservations = Reservation.query.filter_by(venue_id=venueId)
+    reservations = Reservation.query.filter_by(venue_id=venueId).all()
     return {
         reservation.id: reservation.to_dict() for reservation in reservations
     }
@@ -26,7 +27,7 @@ def venueReservation(venueId):
 @reservation_routes.route('/users/<int:userId>')
 # @login_required
 def userReservation(userId):
-    reservations = Reservation.query.filter_by(user_id=userId)
+    reservations = Reservation.query.filter_by(user_id=userId).all()
     return {
         reservation.id: reservation.to_dict() for reservation in reservations
     }
@@ -42,3 +43,25 @@ def delete_reservation(reservationId):
         return '<h1>Deleted</h1>'
     return '<h1>No matching reservation</h1>'
 
+
+
+# CREATE A NEW RESERVATION - WILL NEED TO CHANGE DEPENDING ON FRONTEND -- NEED TO WORK ON START_DATE/END_DATE
+@reservation_routes.route('/', methods=['POST'])
+# @login_required
+def new_reservation():
+    form = NewReservationForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    newReservation = Reservation(
+        user_id=form.data['user_id'],
+        venue_id=form.data['venue_id'],
+        start_date=form.data['start_date'],
+        end_date=form.data['end_date'],
+        price=form.data['price'],
+        total=form.data['total'],
+        guest_count=form.data['guest_count'],
+    )
+    # db.session.add(newReservation)
+    # db.session.commit()
+    return newReservation.to_dict()
+    # return {'errors': validation_errors_to_error_messages(form.errors)}

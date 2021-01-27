@@ -9,7 +9,7 @@ review_routes = Blueprint('reviews', __name__)
 # GET ALL REVIEWS FOR A SPECIFIC VENUE -- DOES NOT NEED TO BE LOGGED IN
 @review_routes.route('/<int:venueId>')
 def all_reviews_for_venue(venueId):
-    reviews = Review.query.filter_by(venue_id=venueId)
+    reviews = Review.query.filter_by(venue_id=venueId).all()
     return {review.id: review.to_dict() for review in reviews}
 
 # CREATE A NEW REVIEW - WILL NEED TO CHANGE DEPENDING ON FRONTEND
@@ -48,5 +48,5 @@ def delete_review(reviewId):
 @review_routes.route('/user/<int:userId>')
 # @login_required
 def all_reviews_for_user(userId):
-    reviews = Review.query.filter_by(user_id=userId)
+    reviews = Review.query.filter_by(user_id=userId).all()
     return {review.id: review.to_dict() for review in reviews}
