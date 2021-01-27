@@ -13,6 +13,8 @@ def all_reviews_for_venue(venueId):
     return {review.id: review.to_dict() for review in reviews}
 
 # CREATE A NEW REVIEW - WILL NEED TO CHANGE DEPENDING ON FRONTEND
+
+
 @review_routes.route('/', methods=['POST'])
 # @login_required
 def new_review():
@@ -28,7 +30,9 @@ def new_review():
         )
         db.session.add(newReview)
         db.session.commit()
+
         return newReview.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
