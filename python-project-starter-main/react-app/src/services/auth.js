@@ -1,5 +1,6 @@
-export const authenticate = async() => {
-  const response = await fetch('/api/auth/',{
+export const authenticate = async () => {
+  console.log("WE HERE??????auth")
+  const response = await fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -8,6 +9,7 @@ export const authenticate = async() => {
 }
 
 export const login = async (email, password) => {
+  console.log("WE HERE??????")
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
