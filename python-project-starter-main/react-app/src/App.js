@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 // import AddReview from "./components/AddReview";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import HomePage from "./components/HomePage"
 import { authenticate } from "./services/auth";
-
+import SearchResults from "./components/SearchResults";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +49,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/results" exact={true} authenticated={authenticated}>
+          <SearchResults />
         </ProtectedRoute>
         {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
           <AddReview />

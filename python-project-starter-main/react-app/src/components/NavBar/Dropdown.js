@@ -7,18 +7,21 @@ const Dropdown = ({ setAuthenticated }) => {
 
   return (
     <>
-      <div>
-        <NavLink className="navtext profile-links" to="/login" exact={true} activeClassName="active">
-          Login
+      <div className="profile-menu">
+
+        <div>
+          <NavLink className="navtext profile-links" to="/login" exact={true} activeClassName="active">
+            Login
           </NavLink>
-      </div>
-      <div>
-        <NavLink className="navtext profile-links" to="/sign-up" exact={true} activeClassName="active">
-          Sign Up
+        </div>
+        <div>
+          <NavLink className="navtext profile-links" to="/sign-up" exact={true} activeClassName="active">
+            Sign Up
           </NavLink>
-      </div>
-      <div>
-        <LogoutButton setAuthenticated={setAuthenticated} />
+        </div>
+        <div>
+          <LogoutButton setAuthenticated={setAuthenticated} />
+        </div>
       </div>
     </>
 

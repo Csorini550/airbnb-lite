@@ -33,9 +33,6 @@ def new_review():
         db.session.add(newReview)
         db.session.commit()
 
+        return newReview.to_dict()
 
-<< << << < HEAD
-== == == =
-return newReview.to_dict()
->>>>>> > main
-return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}
