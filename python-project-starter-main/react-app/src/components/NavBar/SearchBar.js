@@ -6,8 +6,11 @@ const SearchBar = () => {
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [guestCount, setGuestCount] = useState('')
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(location, date, time)
 
   }
 
@@ -17,22 +20,38 @@ const SearchBar = () => {
         <div id="search-rows">
           <div className="search">
             <div>Location</div>
-            <input type="text"></input>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            ></input>
           </div>
           <div className="search">
             <div>Date</div>
-            <input type="date"></input>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            ></input>
           </div>
           <div className="search">
             <div>Time</div>
-            <input type="time"></input>
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            ></input>
           </div>
           <div className="search">
             <div>Guests</div>
-            <input type="number"></input>
+            <input
+              type="number"
+              value={guestCount}
+              onChange={(e) => setGuestCount(e.target.value)}
+            ></input>
           </div>
           <div className="search">
-            {/* <input> */}
+            {/* <input type='submit'> */}
 
             <div id="red-circle">
               <div id="search-icon">
