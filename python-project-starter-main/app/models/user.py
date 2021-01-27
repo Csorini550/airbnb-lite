@@ -78,6 +78,34 @@ class Venue(db.Model):
     favorite = db.relationship("Favorite", back_populates="venue")
     review = db.relationship("Review", back_populates="venue")
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "type": self.type,
+            "room_type": self.room_type,
+            "total_occupancy": self.total_occupancy,
+            "summary": self.summary,
+            "has_bar": self.has_bar,
+            "has_kitchen": self.has_kitchen,
+            "has_rooftop": self.has_rooftop,
+            "has_heated_outdoor_seating": self.has_heated_outdoor_seating,
+            "has_liquor": self.has_liquor,
+            "price": self.price,
+            "owner_id": self.owner_id,
+            "created_at": self.created_at,
+            "update_at": self.update_at,
+            "has_beer": self.has_beer,
+            "has_byob": self.has_byob,
+            "has_outdoor_seating": self.has_outdoor_seating,
+            "name": self.name,
+            "twentyone_plus": self.twentyone_plus,
+            "kid_friendly": self.kid_friendly,
+            "links": self.links,
+            "street_address": self.street_address,
+            "city": self.city,
+            "state": self.state,      
+        }
+
 
 class Reservation(db.Model):
     __tablename__ = 'reservations'
