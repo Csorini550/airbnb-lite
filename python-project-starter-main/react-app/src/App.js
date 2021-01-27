@@ -10,6 +10,8 @@ import User from "./components/User";
 import HomePage from "./components/HomePage"
 import { authenticate } from "./services/auth";
 import SearchResults from "./components/SearchResults";
+import VenueReview from "./components/VenueReview";
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -56,8 +58,11 @@ function App() {
         {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
           <AddReview />
         </ProtectedRoute> */}
+        <ProtectedRoute path="/reviews/:venueId" exact={true} authenticated={authenticated}>
+          <VenueReview />
+        </ProtectedRoute>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 
