@@ -12,9 +12,21 @@ results_routes = Blueprint('results', __name__)
 
 # TODO: other filters:
 #
-
+# GETS ALL VENUES
 @results_routes.route('/')
 def venue_results():
     venues = Venue.query.all()
-    print(venues)
-    return {"venues": [venue.name for venue in venues]}
+    return {"venues": venue.to_dict() for venue in venues}
+
+# FIND VENUE BY CITY OR STATE
+@results_routes.route('/<searchTerm>')
+def venues_by_city_or_state(searchTerm):
+    venues_city = Venue.query.filter_by(city=searchTerm).all()
+    venues_state = Venue.query.filter_by(state=searchTerm).all()
+    if venues_city:
+        return {"venues": venue.to_dict() for venue in venues_city}
+    elif venues_state:
+        return {"venues": venue.to_dict() for venue in venues_state}
+
+
+
