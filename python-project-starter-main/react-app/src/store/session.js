@@ -1,9 +1,10 @@
 import { fetch } from './csrf.js';
+// import { login, signup, logout } from "../services/auth.js"
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
-const setUser = (user) => ({
+export const setUser = (user) => ({
     type: SET_USER,
     payload: user
 });
@@ -12,12 +13,13 @@ const removeUser = () => ({
     type: REMOVE_USER
 });
 
-export const login = ({ credential, password }) => async (dispatch) => {
-    const res = await fetch('/api/login', {
+export const login = async (email, password) => {
+    const res = await fetch('/api/auth/login', {
         method: 'POST',
-        body: JSON.stringify({ credential, password })
+        body: JSON.stringify({ email, password })
     });
-    dispatch(setUser(res.data.user));
+    console.log(res.data.user, "USER RES DATA")
+    // dispatch(setUser(res.data.user));
     return res;
 };
 
@@ -28,15 +30,18 @@ export const login = ({ credential, password }) => async (dispatch) => {
 // };
 
 export const signup = (user) => async (dispatch) => {
-    const { username, email, password, firstName, lastName } = user;
-    const response = await fetch('/api/signup', {
+    const { email, password, first_name, last_name, phone_number, description, profile_image, buisness_owner } = user;
+    const response = await fetch('/api/auth/signup', {
         method: 'POST',
         body: JSON.stringify({
-            username,
             email,
             password,
-            firstName,
-            lastName
+            first_name,
+            last_name,
+            phone_number,
+            description,
+            profile_image,
+            buisness_owner
         })
     });
 
@@ -45,7 +50,7 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-    const response = await fetch('/api/logout', {
+    const response = await fetch('/api/auth/logout', {
         method: 'DELETE'
     });
     dispatch(removeUser());
