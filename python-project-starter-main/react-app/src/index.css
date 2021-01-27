@@ -1,1 +1,30 @@
 /* TODO Add site wide styles */
+* {
+  box-sizing: border-box;
+}
+
+
+#results {
+  padding: 75px;
+}
+
+.filter {
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid black;
+  outline: none;
+  border-color: #B0B0B0;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+#login {
+  padding: 250px;
+}
