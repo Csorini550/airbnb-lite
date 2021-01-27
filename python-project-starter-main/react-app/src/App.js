@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import HomePage from "./components/HomePage"
 import { authenticate } from "./services/auth";
+import VenueReview from "./components/VenueReview";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -50,9 +51,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <HomePage />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
-          <AddReview />
-        </ProtectedRoute> */}
+        <ProtectedRoute path="/reviews/:venueId" exact={true} authenticated={authenticated}>
+          <VenueReview />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
