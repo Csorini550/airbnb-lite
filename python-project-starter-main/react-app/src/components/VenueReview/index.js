@@ -6,9 +6,6 @@ import { getVenueReviews } from "../../store/VenueReviews"
 
 const VenueReview = () => {
     let { venueId } = useParams();
-    const [email, setEmail] = useState("");
-    const [rating, setRating] = useState("");
-    const [comment, setComment] = useState("");
     const dispatch = useDispatch();
 
     const loggedInUser = useSelector(state => {
@@ -21,7 +18,7 @@ const VenueReview = () => {
     useEffect(() => {
         console.log("I'm inside use")
         dispatch(getVenueReviews(venueId))
-    })
+    }, [])
     return (
         <>
             <h1>Look at all these reviews</h1>
