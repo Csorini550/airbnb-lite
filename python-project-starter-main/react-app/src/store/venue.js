@@ -9,14 +9,14 @@ const createVenueAction = (venue) => ({
     payload: venue
 })
 
-const getVenueAction = (venue) => ({
+const getVenueAction = (body) => ({
     type: GET_VENUE,
-    payload: venue
+    payload: body
 })
 
 export const createVenue = (body) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/venues`, {
+        const res = await fetch(`/api/venues/#####`, {
             method: 'POST',
             body: JSON.stringify(
                 body
@@ -28,9 +28,10 @@ export const createVenue = (body) => {
 
 export const getVenue = (venueId) => {
     return async (dispatch) => {
-        const res = await fetch(`api/venues/${venueId}`);
-        dispatch(getVenueAction(res.data));
-        return res.data
+        const res = await fetch(`/api/venues/${venueId}`);
+        const data = res.data
+        dispatch(getVenueAction(data));
+        return data
     };
 }
 
@@ -41,10 +42,10 @@ function reducer(state = initialState, action) {
             return { ...action.payload }
         case GET_VENUE:
             const newObject = {};
-            action.payload.forEach(function (venue) {
+            Object.values(action.payload).forEach(function (venue) {
                 newObject[venue.id] = venue;
             })
-            return newObject;
+            return { ...newObject };
         default:
             return state;
     };
