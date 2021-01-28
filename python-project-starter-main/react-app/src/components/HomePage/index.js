@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from "react";
 import {pictureSearch} from '../../store/search'
 import cooking from "./cooking.jpg"
-import chicago from "./chi.jpg"
+import chicago from "./pizza.jpg"
 import drink from "./drink-making.jpg"
 import plating from "./plating.jpg"
 import sportsBar from "./bar.jpg"

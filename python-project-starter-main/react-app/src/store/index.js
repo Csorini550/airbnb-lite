@@ -3,13 +3,13 @@ import session from './session'
 import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
 import search from './search'
-import pictureSearch from './search'
+import venue from './venue'
 
 const rootReducer = combineReducers({
     session,
     VenueReviews,
     search,
-    pictureSearch
+    venue,
 });
 
 let enhancer;

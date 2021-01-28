@@ -15,7 +15,6 @@ export const getVenueReviews = (venueId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/reviews/${venueId}`);
         // const data = await res.json()
-        console.log(res.data, "data")
         dispatch(createReviewAction(res.data));
         return res.data;
     }
