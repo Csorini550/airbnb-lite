@@ -51,7 +51,7 @@ def delete_reservation(reservationId):
 def new_reservation():
     form = NewReservationForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
-if form.validate_on_submit():
+# if form.validate_on_submit():
     newReservation = Reservation(
         user_id=form.data['user_id'],
         venue_id=form.data['venue_id'],

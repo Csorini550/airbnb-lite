@@ -52,9 +52,9 @@ def seed_users():
         name="The Best Bar",
         twentyone_plus=True,
         kid_friendly=False,
-        street_address = "1212",
-        state = "Illinois",
-        city = "Chicago"
+        street_address="1212",
+        state="Illinois",
+        city="Chicago"
     )
 
     venue2 = Venue(
