@@ -16,7 +16,6 @@ const VenueReview = () => {
     });
 
     useEffect(() => {
-        console.log("I'm inside use")
         dispatch(getVenueReviews(venueId))
     }, [])
     return (
