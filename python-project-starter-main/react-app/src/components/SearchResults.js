@@ -6,7 +6,6 @@ const SearchResults = () => {
   const venues = useSelector(state => {
     return Object.values(state.search)
     });
-  console.log(venues.length, 'helpppp')
   // useEffect(() => {
   //   const venueSearch = async () => {
   //     const res = await fetch("/api/venues");

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Venue
 from app.models import db
+from app.forms import NewVenueForm
 
 
 venue_routes = Blueprint('venues', __name__)
@@ -31,7 +32,7 @@ def new_venue():
     form = NewVenueForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
     # if form.validate_on_submit():
-    newReview = Review(
+    newVenue = Venue(
         type=form.data['type'],
         room_type=form.data['room_type'],
         total_occupancy=form.data['total_occupancy'],
@@ -56,9 +57,9 @@ def new_venue():
         city=form.data['city'],
         state=form.data['state'],
     )
-    # db.session.add(newReview)
-    # db.session.commit()
+    db.session.add(newVenue)
+    db.session.commit()
 
-    return newReview.to_dict()
+    return newVenue.to_dict()
 
     # return {'errors': validation_errors_to_error_messages(form.errors)}
