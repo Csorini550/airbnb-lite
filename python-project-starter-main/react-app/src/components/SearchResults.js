@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 
-
-const SearchResults = ({res}) => {
-  console.log(res)
-  const [venues, setVenues] = useState([res])
-
+const SearchResults = () => {
+  const venues = useSelector(state => {
+    return Object.values(state.search)
+    });
+  console.log(venues.length, 'helpppp')
   // useEffect(() => {
   //   const venueSearch = async () => {
   //     const res = await fetch("/api/venues");
@@ -14,7 +15,11 @@ const SearchResults = ({res}) => {
   //   };
   //   venueSearch();
   // }, []);
-
+  // if (venues.length ===0){
+  //   return (
+  //     <h3>No products match the search</h3>
+  //   )
+  // }
   return (
     <>
       <h2 id="results">Event spaces near you</h2>

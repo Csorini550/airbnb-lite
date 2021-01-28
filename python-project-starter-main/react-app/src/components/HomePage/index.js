@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from "react";
+import {pictureSearch} from '../../store/search'
 import cooking from "./cooking.jpg"
 import chicago from "./chi.jpg"
 import drink from "./drink-making.jpg"
@@ -71,14 +72,14 @@ let states = [
     "West Virginia",
     "Wyoming"]
 
-
+// USED ONE WORD FOR TYPE IN ORDER TO SEARCH DATABASE IN BACKEND. DATABASE ROOM_TYPE MUST MATCH
 let venueTypes = [
-    { text: "Tiki Bar", img: tikiBar, },
-    { text: "Sports Bar", img: sportsBar },
-    { text: "Restaurant", img: restaurant },
-    { text: "Kid Friendly", img: kidFriendly, },
-    { text: "Venue with a view", img: rooftopBar },
-    { text: "Heated Outdoor Seating", img: heatedSeating }
+    { text: "Tiki Bar", img: tikiBar, type: 'Tiki'},
+    { text: "Sports Bar", img: sportsBar, type:'Sports' },
+    { text: "Restaurant", img: restaurant, type:'Restaurant'},
+    { text: "Kid Friendly", img: kidFriendly, type: 'KidFriendly' },
+    { text: "Venue with a view", img: rooftopBar, type: 'View' },
+    { text: "Heated Outdoor Seating", img: heatedSeating, type: 'HeatedOutdoorSeating' }
 ]
 
 let onlineExperiences = [
@@ -101,15 +102,23 @@ const Home = () => {
         return state.session.user;
     })
 
+    const dispatch = useDispatch();
+
+    const searchPicture = (venueType) => {
+        let searchTerm = venueType.type
+        return dispatch(pictureSearch(searchTerm))
+    }
     return (
         <>
             <div>Welcome to....</div>
             <div className="div venueTypes">
                 <h3>Types of venues</h3>
                 {venueTypes.map((venueType) => {
+
+                    
                     return (
                         <div className="img">
-                            <Link className="venueType link">
+                            <Link onClick={() =>searchPicture(venueType)} to='/results' className="venueType link">
                                 <h4>{venueType.text}</h4>
                                 <img className="online-image" src={venueType.img} />
                             </Link>

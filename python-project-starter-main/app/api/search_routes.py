@@ -23,10 +23,15 @@ def venue_results():
 def venues_by_city_or_state(searchTerm):
     venues_city = Venue.query.filter_by(city=searchTerm).all()
     venues_state = Venue.query.filter_by(state=searchTerm).all()
+    venues_type = Venue.query.filter(Venue.room_type.ilike(f'{searchTerm}%')).all()
     if venues_city:
-        return {"venues": venue.to_dict() for venue in venues_city}
+        return {venue.id: venue.to_dict() for venue in venues_city}
     elif venues_state:
-        return {"venues": venue.to_dict() for venue in venues_state}
+        return {venue.id: venue.to_dict() for venue in venues_state}
+    elif venues_type:
+        return {venue.id: venue.to_dict() for venue in venues_type}
+    else:
+        return '<h1>None</>'
 
 
 
@@ -44,5 +49,5 @@ def search_query():
         return {"venues": venue.to_dict() for venue in venues_city}
     elif venues_state:
         return {"venues": venue.to_dict() for venue in venues_state}
-    return '<h1>hi</h1>'
+    return '<h1>None</h1>'
 

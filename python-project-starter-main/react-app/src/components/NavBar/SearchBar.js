@@ -1,32 +1,46 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {useHistory, Redirect} from 'react-router-dom';
+import {search} from '../../store/search';
 import './NavBar.css'
 
 const SearchBar = () => {
   let history = useHistory();
+  const dispatch = useDispatch();
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [guestCount, setGuestCount] = useState('')
+  const [guestCount, setGuestCount] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let res = await fetch('/api/results/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        location: location,
-        date: date,
-        time: time,
-        guest_count: guestCount
-      })
-    });
-    let data = await res.json()
-    // // console.log(data, 'resultssssss')
-    // history.push('/results', {params})
-    console.log(location, date, time)
+    // let res = await fetch('/api/results/', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     location: location,
+    //     date: date,
+    //     time: time,
+    //     guest_count: guestCount
+    //   })
+    // });
+    // let data = await res.json()
+    // // // console.log(data, 'resultssssss')
+    // // history.push('/results', {params})
+    // console.log(location, date, time)
 
-  }
+
+
+  //   if (searchTerm) {
+  //   return dispatch(search({searchTerm}), setSearchTerm(''), history.push('/results') )
+  // }
+    if(location){
+      return dispatch(search({location, date, time, guestCount}), history.push('/results'))
+    }
+
+
+}
 
   return (
     <div id="search-container">
