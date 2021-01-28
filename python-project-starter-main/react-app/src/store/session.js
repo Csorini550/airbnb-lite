@@ -18,7 +18,7 @@ export const login = async (email, password) => {
         method: 'POST',
         body: JSON.stringify({ email, password })
     });
-    console.log(res.data.user, "USER RES DATA")
+    console.log(res.data, "USER RES DATA")
     // dispatch(setUser(res.data.user));
     return res;
 };
@@ -30,7 +30,7 @@ export const login = async (email, password) => {
 // };
 
 export const signup = (user) => async (dispatch) => {
-    const { email, password, first_name, last_name, phone_number, description, profile_image, buisness_owner } = user;
+    const { email, password, first_name, last_name, phone_number, description, profile_image, business_owner } = user;
     const response = await fetch('/api/auth/signup', {
         method: 'POST',
         body: JSON.stringify({
@@ -41,7 +41,7 @@ export const signup = (user) => async (dispatch) => {
             phone_number,
             description,
             profile_image,
-            buisness_owner
+            business_owner
         })
     });
 

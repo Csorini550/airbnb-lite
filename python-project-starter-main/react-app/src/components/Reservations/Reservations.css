@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pics {
+  background-color: burlywood;
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+.info-form {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info {
+  background-color: cornflowerblue;
+  width: 50%;
+  height: 400px;
+}
+
+.rating-form {
+  background-color: white;
+  width: 27%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 100px;
+  padding: 20px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+
+.reserve-form {
+  background-color:lawngreen;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+    background-color: forestgreen;
+    display: flex;
+    flex-direction: column;
+}
+
+#reserve-btn {
+    display: flex;
+    justify-content: center;
+  margin: 0 10px;
+  padding: 13px 28px;
+  background-color: rgba(255, 58, 128, 0);
+  border: 1px solid rgba(255, 58, 128, 1);
+  color: rgba(255, 58, 128, 1);
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+#availability {
+    border: none;
+    background-color: hotpink;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar {
+  background-color: deeppink;
+  width: 100%;
+  height: 300px;
+}
+
+.reviews {
+  background-color: hotpink;
+  width: 100%;
+  height: 300px;
+}
