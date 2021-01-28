@@ -2,11 +2,13 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import { getVenueReviews } from "../../store/VenueReviews"
-
+import ReactStars from "react-rating-stars-component"
 
 const VenueReview = () => {
     let { venueId } = useParams();
     const dispatch = useDispatch();
+
+
 
     const loggedInUser = useSelector(state => {
         return state.session.user;
@@ -27,7 +29,15 @@ const VenueReview = () => {
                     if (review.comment !== null) {
                         return (
                             <div>
-                                <h3>{review.rating}</h3>
+                                <ReactStars
+                                    count={5}
+                                    value={review.rating}
+                                    color="#ffd700"
+                                    isHalf={true}
+                                    emptyIcon={<i className="far fa-star"></i>}
+                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                    fullIcon={<i className="fa fa-star"></i>}
+                                />
                                 <h3>{review.comment}</h3>
                             </div>
                         )
