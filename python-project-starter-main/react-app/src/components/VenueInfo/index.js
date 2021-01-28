@@ -7,7 +7,7 @@ import * as AiIcons from "react-icons/ai"
 import * as MdIcons from "react-icons/md"
 import * as GdIcons from "react-icons/gr"
 import * as GiIcons from 'react-icons/gi'
-import "./ForTestOnly.css"
+
 
 
 const VenueInfo = () => {
@@ -111,13 +111,20 @@ const VenueInfo = () => {
 
                 <div>
                     {!venue && <h4>Loading...</h4>}
-                    <h2>{venue[venueId].type} | {venue[venueId].room_type} {kidOrTwenty()}</h2>
-                    <span>
-                        <h4>Max Ocupancy {venue[venueId].total_occupancy}</h4>
-                    </span>
+                    <h2>{venue[venueId].name} | {venue[venueId].type} | {venue[venueId].room_type} {kidOrTwenty()}</h2>
+                    <a href="{venue[venueId].link}" alt="Link is down" >
+                        {venue[venueId].link}
+                    </a>
+                    <div>
+                        <h3>Location {venue[venueId].street_address}, {venue[venueId].state}, {venue[venueId].city}</h3>
+                        <h4>Max Ocupancy {venue[venueId].total_occupancy} </h4>
+                    </div>
                     <ul>
                         {mapFunc()}
                     </ul>
+                    <div>
+                        {venue[venueId].summary}
+                    </div>
                 </div>
             </div>
 
