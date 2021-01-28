@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 
 
-const SearchResults = () => {
+const SearchResults = ({res}) => {
+  console.log(res)
+  const [venues, setVenues] = useState([res])
 
-  const [venues, setVenues] = useState([])
-
-  useEffect(() => {
-    const venueSearch = async () => {
-      const res = await fetch("/api/venues");
-      const data = await res.json();
-      setVenues(data.venues);
-    };
-    venueSearch();
-  }, []);
+  // useEffect(() => {
+  //   const venueSearch = async () => {
+  //     const res = await fetch("/api/venues");
+  //     const data = await res.json();
+  //     setVenues(Object.values(data));
+  //   };
+  //   venueSearch();
+  // }, []);
 
   return (
     <>
@@ -34,11 +34,11 @@ const SearchResults = () => {
 
       </div>
       <div>
-        {console.log(venues)}
+        {console.log(venues, 'thisss')}
         {venues.map(venue => {
           return (
             <div key={venue.id}>
-              <h1>{venue}</h1>
+              <h1>{venue.name}</h1>
 
 
             </div>

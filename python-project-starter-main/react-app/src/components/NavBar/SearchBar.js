@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom';
 import './NavBar.css'
 
 const SearchBar = () => {
-
+  let history = useHistory();
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guestCount, setGuestCount] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    fetch('/api/venues', {
+    let res = await fetch('/api/results/', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         location: location,
         date: date,
         time: time,
         guest_count: guestCount
       })
-    })
+    });
+    let data = await res.json()
+    // // console.log(data, 'resultssssss')
+    // history.push('/results', {params})
     console.log(location, date, time)
 
   }

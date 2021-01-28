@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.models import Venue
 
 
@@ -29,4 +29,20 @@ def venues_by_city_or_state(searchTerm):
         return {"venues": venue.to_dict() for venue in venues_state}
 
 
+
+@results_routes.route('/', methods=['POST'])
+def search_query():
+    data = request.get_json()
+    location = data['location']
+    date = data['date']
+    time = data['time']
+    guest_count = data['guest_count']
+
+    venues_city = Venue.query.filter_by(city=location).all()
+    venues_state = Venue.query.filter_by(state=location).all()
+    if venues_city:
+        return {"venues": venue.to_dict() for venue in venues_city}
+    elif venues_state:
+        return {"venues": venue.to_dict() for venue in venues_state}
+    return '<h1>hi</h1>'
 

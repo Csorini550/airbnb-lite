@@ -10,7 +10,7 @@ venue_routes = Blueprint('venues', __name__)
 @venue_routes.route('/')
 def all_venues():
     venues = Venue.query.all()
-    return {"venues": venue.to_dict() for venue in venues}
+    return {venue.id : venue.to_dict() for venue in venues}
 
 
 # GET ONE VENUE BY ID
@@ -19,6 +19,6 @@ def venue(venueId):
     venue = Venue.query.get(venueId)
     if venue:
         return {
-            "venue": venue.to_dict()
+            venue.id: venue.to_dict()
         }
     return '<h1>Could not find venue</h1>'
