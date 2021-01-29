@@ -7,6 +7,9 @@ const SearchResults = () => {
   const venues = useSelector(state => {
     return Object.values(state.search)
   });
+
+  const state = useSelector(state => state)
+  console.log(venues)
   // useEffect(() => {
   //   const venueSearch = async () => {
   //     const res = await fetch("/api/venues");
