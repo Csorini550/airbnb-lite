@@ -5,8 +5,56 @@
 }
 
 .container {
-    background-color: hotpink;
     position: absolute;
     top: 80px;
     width: 100%;
+    padding: 30px;
+}
+
+form.create-venue {
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+label.create-venue input,
+form.create-venue select {
+    width: 300px;
+    height: 30px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+}
+
+form.create-venue select {
+    padding: 5px;
+}
+
+.address {
+    width: 300px;
+    height: 30px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+}
+
+#city {
+    margin-bottom: 25px;
+}
+
+.radio-buttons {
+    margin: 15px 0;
+}
+
+.radio-buttons input {
+    margin: 5px 0px 5px 0px;
+}
+
+.subheading {
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
 }

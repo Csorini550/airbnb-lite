@@ -15,14 +15,14 @@ const CreateVenue = () => {
         const [ street_address, setStreet_Address ] = useState("");
         const [ state, setState ] = useState("");
         const [ city, setCity ] = useState("");
-        const [ has_bar, setHas_Bar ] = useState(false);
-        const [ has_liquor, setHas_Liquor ] = useState(false);
-        const [ has_beer, setHas_Beer ] = useState(false);
-        const [ has_byob, setHas_Byob ] = useState(false);
-        const [ has_kitchen, setHas_Kitchen ] = useState(false);
-        const [ has_outdoor_seating, setHas_Outdoor_Seating ] = useState(false);
-        const [ has_heated_outdoor_seating, setHas_Heated_Outdoor_Seating ] = useState(false);
-        const [ has_rooftop, setHas_Rooftop ] = useState(false);
+        const [ has_bar, setHas_Bar ] = useState("No");
+        const [ has_liquor, setHas_Liquor ] = useState("No");
+        const [ has_beer, setHas_Beer ] = useState("No");
+        const [ has_byob, setHas_Byob ] = useState("No");
+        const [ has_kitchen, setHas_Kitchen ] = useState("No");
+        const [ has_outdoor_seating, setHas_Outdoor_Seating ] = useState("No");
+        const [ has_heated_outdoor_seating, setHas_Heated_Outdoor_Seating ] = useState("No");
+        const [ has_rooftop, setHas_Rooftop ] = useState("No");
 
         const dispatch = useDispatch();
 
@@ -52,7 +52,7 @@ const CreateVenue = () => {
             <div className="create-venue">
                 <h3 className="create-venue">Create an Experience</h3>
             </div>
-            <form>
+            <form className="create-venue">
                 <label className="create-venue">
                     Owner Name
                     <input
@@ -100,7 +100,7 @@ const CreateVenue = () => {
                         <option value="kid-friendly">Kid Friendly</option>
                         <option value="venue-with-view">Venue With a View</option>
                         <option value="heated-outdoor-seating">Heated Outdoor Seating</option>
-                        <option value="other">Other...</option>
+                        <option value="other">Other</option>
                     </select>
                 </label>
                 <label className="create-venue">
@@ -138,113 +138,194 @@ const CreateVenue = () => {
                         placeholder="What makes this Experience unique?"
                     />
                 </label>
-                <div className="experience-address">
-                    <h3 className="experience-address">Experience Address</h3>
+                <div className="subheading">
+                    <h3 className="address-subheading">Address</h3>
                 </div>
-                <label className="create-venue">
+                <div className="experience-address">
                     <input
                         type="text"
-                        className="street-address"
+                        className="address"
                         value={street_address}
                         onChange={(e) => setStreet_Address(e.target.value)}
                         required
                         placeholder="Street"
                     />
-                </label>
-                <label className="create-venue">
+                </div>
+                <div className="experience-address">
                     <input
                         type="text"
-                        className="state"
+                        className="address"
                         value={state}
                         onChange={(e) => setState(e.target.value)}
                         required
                         placeholder="State"
                     />
-                </label>
-                <label className="create-venue">
+                </div>
+                <div className="experience-address">
                     <input
                         type="text"
-                        className="city"
+                        className="address"
+                        id="city"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                         required
                         placeholder="City"
                     />
-                </label>
+                </div>
+                <div className="subheading">
+                    <h3 className="experience-amenities">Amenities</h3>
+                </div>
                 <div className="radio-buttons">
                     <p>Is there a bar?</p>
-                    <input
-                        type="radio"
-                        name="bar"
-                        value="Yes"
-                        onChange={(e) => setHas_Bar(e.target.value)}
-                    /> Yes
-                    <input
-                        type="radio"
-                        name="bar"
-                        value="No"
-                        onChange={(e) => setHas_Bar(e.target.value)}
-                    /> No
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="bar"
+                            value="Yes"
+                            onChange={(e) => setHas_Bar(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="bar"
+                            value="No"
+                            onChange={(e) => setHas_Bar(e.target.value)}
+                        /> No
+                    </div>
                 </div>
                 <div className="radio-buttons">
                     <p>Is liquor provided?</p>
-                    <input
-                        type="radio"
-                        name="liquor"
-                        value="Yes"
-                        onChange={(e) => setHas_Liquor(e.target.value)}
-                    /> Yes
-                    <input
-                        type="radio"
-                        name="bar"
-                        value="No"
-                        onChange={(e) => setHas_Liquor(e.target.value)}
-                    /> No
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="liquor"
+                            value="Yes"
+                            onChange={(e) => setHas_Liquor(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="liquor"
+                            value="No"
+                            onChange={(e) => setHas_Liquor(e.target.value)}
+                        /> No
+                    </div>
                 </div>
                 <div className="radio-buttons">
                     <p>Is beer provided?</p>
-                    <input
-                        type="radio"
-                        name="beer"
-                        value="Yes"
-                        onChange={(e) => setHas_Beer(e.target.value)}
-                    /> Yes
-                    <input
-                        type="radio"
-                        name="bar"
-                        value="No"
-                        onChange={(e) => setHas_Beer(e.target.value)}
-                    /> No
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="beer"
+                            value="Yes"
+                            onChange={(e) => setHas_Beer(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="beer"
+                            value="No"
+                            onChange={(e) => setHas_Beer(e.target.value)}
+                        /> No
+                    </div>
                 </div>
                 <div className="radio-buttons">
                     <p>Can guests bring their own alcohol?</p>
-                    <input
-                        type="radio"
-                        name="byob"
-                        value="Yes"
-                        onChange={(e) => setHas_Byob(e.target.value)}
-                    /> Yes
-                    <input
-                        type="radio"
-                        name="bar"
-                        value="No"
-                        onChange={(e) => setHas_Byob(e.target.value)}
-                    /> No
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="byob"
+                            value="Yes"
+                            onChange={(e) => setHas_Byob(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="byob"
+                            value="No"
+                            onChange={(e) => setHas_Byob(e.target.value)}
+                        /> No
+                    </div>
                 </div>
                 <div className="radio-buttons">
                     <p>Is there a kitchen?</p>
-                    <input
-                        type="radio"
-                        name="kitchen"
-                        value="Yes"
-                        onChange={(e) => setHas_Kitchen(e.target.value)}
-                    /> Yes
-                    <input
-                        type="radio"
-                        name="bar"
-                        value="No"
-                        onChange={(e) => setHas_Kitchen(e.target.value)}
-                    /> No
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="kitchen"
+                            value="Yes"
+                            onChange={(e) => setHas_Kitchen(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="kitchen"
+                            value="No"
+                            onChange={(e) => setHas_Kitchen(e.target.value)}
+                        /> No
+                    </div>
+                </div>
+                <div className="radio-buttons">
+                    <p>Is there outdoor seating?</p>
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="outdoor-seating"
+                            value="Yes"
+                            onChange={(e) => setHas_Outdoor_Seating(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="outdoor-seating"
+                            value="No"
+                            onChange={(e) => setHas_Outdoor_Seating(e.target.value)}
+                        /> No
+                    </div>
+                </div>
+                <div className="radio-buttons">
+                    <p>If there is outdoor seating, is it heated?</p>
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="heated-outdoor-seating"
+                            value="Yes"
+                            onChange={(e) => setHas_Heated_Outdoor_Seating(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="heated-outdoor-seating"
+                            value="No"
+                            onChange={(e) => setHas_Heated_Outdoor_Seating(e.target.value)}
+                        /> No
+                    </div>
+                </div>
+                <div className="radio-buttons">
+                    <p>Is there a rooftop area?</p>
+                    <div className="radio-yes">
+                        <input
+                            type="radio"
+                            name="rooftop"
+                            value="Yes"
+                            onChange={(e) => setHas_Rooftop(e.target.value)}
+                        /> Yes
+                    </div>
+                    <div className="radio-no">
+                        <input
+                            type="radio"
+                            name="rooftop"
+                            value="No"
+                            onChange={(e) => setHas_Rooftop(e.target.value)}
+                        /> No
+                    </div>
                 </div>
             </form>
         </div>
