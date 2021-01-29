@@ -6,6 +6,7 @@ import { createReservation } from "../../store/reservation";
 import "./Reservations.css";
 import VenueReviews from "../../components/VenueReview";
 import VenueInfo from "../../components/VenueInfo";
+import Map from "../../components/Map";
 
 const Reservations = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -45,74 +46,76 @@ const Reservations = () => {
     <>
       <div className="container">
         <div className="pics">
+
           <h1> PICTURES WILL GO HERE</h1>
         </div>
         <div className="info-form">
-            <div className="info">
-                <VenueInfo />
-            </div>
-            <div className="rating-form">
-                {avgRating(reviews)}
-                <div className="reserve-form">
-                    <form>
-                        <label>
-                        Price
+          <div className="info">
+            <VenueInfo />
+          </div>
+          <div className="rating-form">
+            {avgRating(reviews)}
+            <div className="reserve-form">
+              <form>
+                <label>
+                  Price
                         <input
-                            type="integer"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            className="input"
-                            required
-                        />
-                        </label>
-                        <div>
-                            <label>
-                            Check in Date
+                    type="integer"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    className="input"
+                    required
+                  />
+                </label>
+                <div>
+                  <label>
+                    Check in Date
                             <input
-                                type="date"
-                                value={startDate}
-                                onChange={(e) => setStartDate(e.target.value)}
-                                className="input"
-                                required
-                            />
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                            Check out Date
-                            <input
-                                type="date"
-                                value={endDate}
-                                onChange={(e) => setEndDate(e.target.value)}
-                                className="input"
-                                required
-                            />
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                            Total Price
-                            <input
-                                type="text"
-                                value={totalPrice}
-                                onChange={(e) => setTotalPrice(e.target.value)}
-                                className="input"
-                                required
-                            />
-                            </label>
-                        </div>
-                        <div id="reserve-btn">
-                            <button id="availability">Check Availability</button>
-                        </div>
-                    </form>
+                      type="date"
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                      className="input"
+                      required
+                    />
+                  </label>
                 </div>
+                <div>
+                  <label>
+                    Check out Date
+                            <input
+                      type="date"
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                      className="input"
+                      required
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    Total Price
+                            <input
+                      type="text"
+                      value={totalPrice}
+                      onChange={(e) => setTotalPrice(e.target.value)}
+                      className="input"
+                      required
+                    />
+                  </label>
+                </div>
+                <div id="reserve-btn">
+                  <button id="availability">Check Availability</button>
+                </div>
+              </form>
             </div>
-        </div>
-        <div className="calendar">
-          <h1> CALendar!!!!!</h1>
+          </div>
         </div>
         <div className="reviews">
           <VenueReviews />
+        </div>
+        <div className="calendar">
+          <h1> CALendar!!!!!</h1>
+          <Map />
         </div>
       </div>
     </>
