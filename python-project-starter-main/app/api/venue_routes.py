@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Venue
+from app.models import Venue, Media
 from app.models import db
 from app.forms import NewVenueForm
 
@@ -25,6 +25,18 @@ def venue(venueId):
             venue.id: venue.to_dict()
         }
     return '<h1>Could not find venue</h1>'
+
+
+@venue_routes.route('/media', methods=["POST"])
+def media():
+    data = request.get_json()
+    new_media = Media(
+        venue_id=data['venue_id'],
+        url=data['url'],
+        review_id=data['review_id'],
+    )
+
+    return new_media.to_dict()
 
 
 @venue_routes.route('/', methods=['POST'])
