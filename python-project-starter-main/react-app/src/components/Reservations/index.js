@@ -39,7 +39,7 @@ const Reservations = () => {
   };
 
   useEffect(() => {
-    dispatch(getVenueReviews(2)); //venueId
+    dispatch(getVenueReviews(venueId)); //venueId
   }, []);
 
 
