@@ -3,6 +3,7 @@ const initialState = {}
 
 const CREATE_VENUE = 'venue/createVenue'
 const GET_VENUE = 'venu/getVenue'
+// conSt GET_ALL_VNUES = 'venu'
 
 const createVenueAction = (venue) => ({
     type: CREATE_VENUE,
