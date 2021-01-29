@@ -39,8 +39,28 @@ const Reservations = () => {
   };
 
   useEffect(() => {
-    dispatch(getVenueReviews(venueId));
+    dispatch(getVenueReviews(venueId)); //venueId
   }, []);
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let res = await fetch('/api/reservations/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: 1, //loggedInUser.id,
+        venue_id: 2, //venueId,
+        start_date: startDate,
+        end_date: endDate,
+        price: price,
+        total: totalPrice,
+        guest_count: 2 //guestCount
+      })
+    });
+    let data = await res.json()
+}
 
   return (
     <>
@@ -50,15 +70,15 @@ const Reservations = () => {
           <h1> PICTURES WILL GO HERE</h1>
         </div>
         <div className="info-form">
-          <div className="info">
-            <VenueInfo />
-          </div>
-          <div className="rating-form">
-            {avgRating(reviews)}
-            <div className="reserve-form">
-              <form>
-                <label>
-                  Price
+            <div className="info">
+                <VenueInfo />
+            </div>
+            <div className="rating-form">
+                {avgRating(reviews)}
+                <div className="reserve-form">
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                        Price
                         <input
                     type="integer"
                     value={price}
