@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Map from './Map';
 
 
 const SearchResults = () => {
   const venues = useSelector(state => {
     return Object.values(state.search)
-    });
+  });
   // useEffect(() => {
   //   const venueSearch = async () => {
   //     const res = await fetch("/api/venues");
@@ -34,6 +35,7 @@ const SearchResults = () => {
           );
         })}
       </div>
+      <Map />
     </>
   )
 }
