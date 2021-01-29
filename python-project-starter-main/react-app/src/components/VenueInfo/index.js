@@ -117,7 +117,7 @@ const VenueInfo = () => {
                     </a>
                     <div>
                         <h3>Location {venue[venueId].street_address}, {venue[venueId].state}, {venue[venueId].city}</h3>
-                        <h4>Max Ocupancy {venue[venueId].total_occupancy} </h4>
+                        <h4>Max Occupancy {venue[venueId].total_occupancy} </h4>
                     </div>
                     <ul>
                         {mapFunc()}

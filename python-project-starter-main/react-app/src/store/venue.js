@@ -32,7 +32,7 @@ export const getVenue = (venueId) => {
         const res = await fetch(`/api/venues/${venueId}`);
         const data = res.data
         dispatch(getVenueAction(data));
-        return data
+        return data;
     };
 }
 

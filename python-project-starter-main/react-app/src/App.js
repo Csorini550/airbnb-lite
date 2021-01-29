@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
+import CreateVenue from "./components/CreateVenue";
+import Reservations from "./components/Reservations";
 // import AddReview from "./components/AddReview";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -56,11 +58,20 @@ function App() {
         <ProtectedRoute path="/results" exact={true} authenticated={authenticated}>
           <SearchResults />
         </ProtectedRoute>
+        <ProtectedRoute path="/create-venue" exact={true} authenticated={authenticated}>
+          <CreateVenue />
+        </ProtectedRoute>
         {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
           <AddReview />
         </ProtectedRoute> */}
         <ProtectedRoute path="/reviews/:venueId" exact={true} authenticated={authenticated}>
           <VenueReview />
+        </ProtectedRoute>
+        <ProtectedRoute path="/reservations" exact={true} authenticated={authenticated}>
+          <Reservations />
+        </ProtectedRoute>
+        <ProtectedRoute path="/reservations/:venueId" exact={true} authenticated={authenticated}>
+          <Reservations />
         </ProtectedRoute>
         <ProtectedRoute path="/venues/:venueId" exact={true} authenticated={authenticated}>
           <VenueInfo />
