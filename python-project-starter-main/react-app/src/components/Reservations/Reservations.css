@@ -56,7 +56,6 @@
 }
 
 form label {
-    background-color: forestgreen;
     display: flex;
     flex-direction: column;
 }
