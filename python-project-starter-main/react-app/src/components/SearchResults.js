@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {noSearch} from '../store/search';
+import Map from './Map';
 
 
 const SearchResults = () => {
@@ -19,20 +20,21 @@ const SearchResults = () => {
   }  
   
   return (
-  <>
-    <h2 id="results">Event spaces near you</h2>
-    <div>
-      {venues.map(venue => {
-        return (
-          <>
+    <>
+      <h2 id="results">Event spaces near you</h2>
+      <div>
+        {console.log(venues, 'thisss')}
+        {venues.map(venue => {
+          return (
             <Link to={`/reservations/${venue.id}`} key={venue.id}>
               <h1>{venue.name}</h1>
             </Link>
-          </>
-        );
-      })}
-    </div>
-  </>
-)}
+          );
+        })}
+      </div>
+      <Map />
+    </>
+  )
+}
 
 export default SearchResults;
