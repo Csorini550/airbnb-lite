@@ -3,56 +3,92 @@ import { useSelector, useDispatch } from 'react-redux';
 import './CreateVenue.css';
 
 const CreateVenue = () => {
-        const [ owner_id, setOwner_Id ] = useState(""); // Pull from state?
-        const [ name, setName ] = useState("");
-        const [ price, setPrice ] = useState("");
-        const [ type, setType ] = useState("Venue"); // Dropdown
-        const [ room_type, setRoom_Type ] = useState("Restaurant"); // Dropdown
-        const [ total_occupancy, setTotal_Occupancy ] = useState("");
-        const [ twentyone_plus, setTwentyone_Plus ] = useState("All ages welcome");
-        const [ kid_friendly, setKid_Friendly ] = useState("No special amenities");
-        const [ summary, setSummary ] = useState("");
-        const [ street_address, setStreet_Address ] = useState("");
-        const [ state, setState ] = useState("");
-        const [ city, setCity ] = useState("");
-        const [ has_bar, setHas_Bar ] = useState("No");
-        const [ has_liquor, setHas_Liquor ] = useState("No");
-        const [ has_beer, setHas_Beer ] = useState("No");
-        const [ has_byob, setHas_Byob ] = useState("No");
-        const [ has_kitchen, setHas_Kitchen ] = useState("No");
-        const [ has_outdoor_seating, setHas_Outdoor_Seating ] = useState("No");
-        const [ has_heated_outdoor_seating, setHas_Heated_Outdoor_Seating ] = useState("No");
-        const [ has_rooftop, setHas_Rooftop ] = useState("No");
+    const [owner_id, setOwner_Id] = useState(""); // Pull from state?
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState("");
+    const [type, setType] = useState("Venue"); // Dropdown
+    const [room_type, setRoom_Type] = useState("Restaurant"); // Dropdown
+    const [total_occupancy, setTotal_Occupancy] = useState("");
+    const [twentyone_plus, setTwentyone_Plus] = useState("All ages welcome");
+    const [kid_friendly, setKid_Friendly] = useState("No special amenities");
+    const [summary, setSummary] = useState("");
+    const [street_address, setStreet_Address] = useState("");
+    const [state, setState] = useState("");
+    const [city, setCity] = useState("");
+    const [has_bar, setHas_Bar] = useState("No");
+    const [has_liquor, setHas_Liquor] = useState("No");
+    const [has_beer, setHas_Beer] = useState("No");
+    const [has_byob, setHas_Byob] = useState("No");
+    const [has_kitchen, setHas_Kitchen] = useState("No");
+    const [has_outdoor_seating, setHas_Outdoor_Seating] = useState("No");
+    const [has_heated_outdoor_seating, setHas_Heated_Outdoor_Seating] = useState("No");
+    const [has_rooftop, setHas_Rooftop] = useState("No");
 
-        const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-        const loggedInUser = useSelector((state) => {
-            return state.session.user;
-        });
+    const loggedInUser = useSelector((state) => {
+        return state.session.user;
+    });
 
-        // Change state for type and room_type
-        const handleVenueTypeChange = (e) => {
-            setType(e.target.value);
-        }
+    // Change state for type and room_type
+    const handleVenueTypeChange = (e) => {
+        setType(e.target.value);
+    }
 
-        const handleRoomTypeChange = (e) => {
-            setRoom_Type(e.target.value);
-        }
+    const handleRoomTypeChange = (e) => {
+        setRoom_Type(e.target.value);
+    }
 
-        const handleAgeChange = (e) => {
-            setTwentyone_Plus(e.target.value);
-        }
+    const handleAgeChange = (e) => {
+        setTwentyone_Plus(e.target.value);
+    }
 
-        const handleKidChange = (e) => {
-            setKid_Friendly(e.target.value);
-        }
+    const handleKidChange = (e) => {
+        setKid_Friendly(e.target.value);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const res = await fetch('/api/venues/', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                owner_id: 1,
+                name,
+                price,
+                type,
+                room_type,
+                total_occupancy,
+                twentyone_plus,
+                kid_friendly,
+                summary,
+                street_address,
+                city,
+                state,
+                has_bar,
+                has_kitchen,
+                has_rooftop,
+                has_heated_outdoor_seating,
+                has_liquor,
+                has_beer,
+                has_byob,
+                has_outdoor_seating,
+                // created_at: '2020-01-20',
+                // update_at: '2020-01-20'
+
+            })
+        })
+
+        return res.json()
+
+    }
 
     return (
         <div className="container">
             <div className="create-venue">
                 <h3 className="create-venue">Create an Experience</h3>
             </div>
-            <form className="create-venue">
+            <form className="create-venue" onSubmit={handleSubmit}>
                 <label className="create-venue">
                     Owner Name
                     <input
@@ -133,7 +169,7 @@ const CreateVenue = () => {
                         type="text"
                         className="summary"
                         value={summary}
-                        onChange={(e) => setTotal_Occupancy(e.target.value)}
+                        onChange={(e) => setSummary(e.target.value)}
                         required
                         placeholder="What makes this Experience unique?"
                     />
@@ -327,6 +363,7 @@ const CreateVenue = () => {
                         /> No
                     </div>
                 </div>
+                <input type="submit" value="submit" />
             </form>
         </div>
     );
