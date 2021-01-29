@@ -4,10 +4,13 @@ import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
 import createReservation from './reservation'
 
+import venue from './venue'
+
 const rootReducer = combineReducers({
     session,
     VenueReviews,
-    createReservation,
+
+    venue,
 });
 
 let enhancer;

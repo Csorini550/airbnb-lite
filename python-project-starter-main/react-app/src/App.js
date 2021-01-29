@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage"
 import { authenticate } from "./services/auth";
 import SearchResults from "./components/SearchResults";
 import VenueReview from "./components/VenueReview";
+import VenueInfo from "./components/VenueInfo";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -71,6 +72,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/reservations/:venueId" exact={true} authenticated={authenticated}>
           <Reservations />
+        </ProtectedRoute>
+        <ProtectedRoute path="/venues/:venueId" exact={true} authenticated={authenticated}>
+          <VenueInfo />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter >

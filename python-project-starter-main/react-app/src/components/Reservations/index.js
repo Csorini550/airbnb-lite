@@ -5,6 +5,7 @@ import { getVenueReviews } from "../../store/VenueReviews";
 import { createReservation } from "../../store/reservation";
 import "./Reservations.css";
 import VenueReviews from "../../components/VenueReview";
+import VenueInfo from "../../components/VenueInfo";
 
 const Reservations = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -37,7 +38,6 @@ const Reservations = () => {
   };
 
   useEffect(() => {
-    console.log("I'm inside use");
     dispatch(getVenueReviews(venueId));
   }, []);
 
@@ -49,7 +49,7 @@ const Reservations = () => {
         </div>
         <div className="info-form">
             <div className="info">
-            <h1> INFO ON THE VENUE</h1>
+                <VenueInfo />
             </div>
             <div className="rating-form">
                 {avgRating(reviews)}

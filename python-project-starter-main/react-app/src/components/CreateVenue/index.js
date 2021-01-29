@@ -54,7 +54,7 @@ const CreateVenue = () => {
             </div>
             <form>
                 <label className="create-venue">
-                    Experience Owner
+                    Owner Name
                     <input
                         type="text"
                         className="owner-id"
@@ -64,7 +64,7 @@ const CreateVenue = () => {
                     />
                 </label>
                 <label className="create-venue">
-                    Name
+                    Name of Experience
                     <input
                         type="text"
                         className="name"
@@ -161,6 +161,91 @@ const CreateVenue = () => {
                         placeholder="State"
                     />
                 </label>
+                <label className="create-venue">
+                    <input
+                        type="text"
+                        className="city"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        required
+                        placeholder="City"
+                    />
+                </label>
+                <div className="radio-buttons">
+                    <p>Is there a bar?</p>
+                    <input
+                        type="radio"
+                        name="bar"
+                        value="Yes"
+                        onChange={(e) => setHas_Bar(e.target.value)}
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="bar"
+                        value="No"
+                        onChange={(e) => setHas_Bar(e.target.value)}
+                    /> No
+                </div>
+                <div className="radio-buttons">
+                    <p>Is liquor provided?</p>
+                    <input
+                        type="radio"
+                        name="liquor"
+                        value="Yes"
+                        onChange={(e) => setHas_Liquor(e.target.value)}
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="bar"
+                        value="No"
+                        onChange={(e) => setHas_Liquor(e.target.value)}
+                    /> No
+                </div>
+                <div className="radio-buttons">
+                    <p>Is beer provided?</p>
+                    <input
+                        type="radio"
+                        name="beer"
+                        value="Yes"
+                        onChange={(e) => setHas_Beer(e.target.value)}
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="bar"
+                        value="No"
+                        onChange={(e) => setHas_Beer(e.target.value)}
+                    /> No
+                </div>
+                <div className="radio-buttons">
+                    <p>Can guests bring their own alcohol?</p>
+                    <input
+                        type="radio"
+                        name="byob"
+                        value="Yes"
+                        onChange={(e) => setHas_Byob(e.target.value)}
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="bar"
+                        value="No"
+                        onChange={(e) => setHas_Byob(e.target.value)}
+                    /> No
+                </div>
+                <div className="radio-buttons">
+                    <p>Is there a kitchen?</p>
+                    <input
+                        type="radio"
+                        name="kitchen"
+                        value="Yes"
+                        onChange={(e) => setHas_Kitchen(e.target.value)}
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="bar"
+                        value="No"
+                        onChange={(e) => setHas_Kitchen(e.target.value)}
+                    /> No
+                </div>
             </form>
         </div>
     );

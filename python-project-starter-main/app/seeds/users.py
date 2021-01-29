@@ -126,4 +126,5 @@ def seed_users():
 
 def undo_users():
     db.session.execute('TRUNCATE users restart identity cascade;')
+    db.session.execute('TRUNCATE venues restart identity cascade;')
     db.session.commit()
