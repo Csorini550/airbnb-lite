@@ -37,6 +37,7 @@ const VenueReview = () => {
                                     emptyIcon={<i className="far fa-star"></i>}
                                     halfIcon={<i className="fa fa-star-half-alt"></i>}
                                     fullIcon={<i className="fa fa-star"></i>}
+                                    edit={false}
                                 />
                                 <h3>{review.comment}</h3>
                             </div>
