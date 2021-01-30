@@ -15,7 +15,7 @@ const getVenueAction = (body) => ({
     payload: body
 })
 
-export const createVenue = (body) => {
+export const createVenueForm = (body) => {
     return async (dispatch) => {
         const res = await fetch(`/api/venues`, {
             method: 'POST',
@@ -23,7 +23,9 @@ export const createVenue = (body) => {
                 body
             )
         })
-        dispatch(createVenueAction(res.data))
+        if (res.ok) {
+            dispatch(createVenueAction(res.data))
+        }
     };
 }
 

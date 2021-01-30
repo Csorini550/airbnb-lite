@@ -23,11 +23,11 @@ export const login = async (email, password) => {
     return res;
 };
 
-// export const restoreUser = () => async (dispatch) => {
-//     const res = await fetch('/api/session');
-//     dispatch(setUser(res.data.user));
-//     return res;
-// };
+export const restoreUser = () => async (dispatch) => {
+    const res = await fetch('/api/session');
+    dispatch(setUser(res.data.user));
+    return res;
+};
 
 export const signup = (user) => async (dispatch) => {
     const { email, password, first_name, last_name, phone_number, description, profile_image, business_owner } = user;
