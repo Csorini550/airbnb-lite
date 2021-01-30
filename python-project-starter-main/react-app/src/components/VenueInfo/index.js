@@ -107,9 +107,7 @@ const VenueInfo = () => {
     return (
         <>
             {/* GET VENUE PHOTO FROM CONNECTED TABLE */}
-            {/* <img src={venue[venueId].img_url}></img> */}
-            {console.log(venue[venueId])}
-            <img src={venue[venueId].img_url}></img>
+            {/* <img src={venue[venueId].}></img> */}
             <h3> Hello VenueInfo</h3>
             <div className="venInfCont">
 

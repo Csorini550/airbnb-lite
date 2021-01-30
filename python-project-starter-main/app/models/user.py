@@ -71,9 +71,6 @@ class Venue(db.Model):
     street_address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
-    img_url = db.Column(db.String)
-    lat = db.Column(db.Float)
-    lng = db.Column(db.Float)
 
     # user = db.relationship("User", back_populates="venue")
     reservation = db.relationship("Review", back_populates="venue")
@@ -107,9 +104,6 @@ class Venue(db.Model):
             "street_address": self.street_address,
             "city": self.city,
             "state": self.state,
-            "img_url": self.img_url,
-            "lat": self.lat,
-            "lng": self.lng
         }
 
 
