@@ -7,7 +7,7 @@ import * as AiIcons from "react-icons/ai"
 import * as MdIcons from "react-icons/md"
 import * as GdIcons from "react-icons/gr"
 import * as GiIcons from 'react-icons/gi'
-
+import "./VenueInfo.css"
 
 
 const VenueInfo = () => {
@@ -93,7 +93,7 @@ const VenueInfo = () => {
         return venueBooleans.map((venueBoolean, index) => {
             if (venueBoolean.bool === true) {
                 return (
-                    <li key={index} className="">
+                    <li key={index} className="booleanInfoLi">
 
                         <h3> {venueBoolean.icon} {venueBoolean.text}</h3>
                     </li>
@@ -108,7 +108,6 @@ const VenueInfo = () => {
         <>
             {/* GET VENUE PHOTO FROM CONNECTED TABLE */}
             {/* <img src={venue[venueId].}></img> */}
-            <h3> Hello VenueInfo</h3>
             <div className="venInfCont">
 
                 <div>
@@ -117,14 +116,21 @@ const VenueInfo = () => {
                     <a href="{venue[venueId].link}" alt="Link is down" >
                         {venue[venueId].link}
                     </a>
-                    <div>
-                        <h3>Location {venue[venueId].street_address}, {venue[venueId].state}, {venue[venueId].city}</h3>
-                        <h4>Max Occupancy {venue[venueId].total_occupancy} </h4>
+                    <div className="location">
+                        <div>
+                            <h3 className="locationh3">Address - {venue[venueId].street_address}, {venue[venueId].state}, {venue[venueId].city}</h3>
+                        </div>
+                        <div>
+                            <h3> Max Occupancy: {venue[venueId].total_occupancy}</h3>
+                        </div>
                     </div>
                     <ul>
                         {mapFunc()}
                     </ul>
                     <div>
+                        <div className="sum">
+                            <h2>Summary</h2>
+                        </div>
                         {venue[venueId].summary}
                     </div>
                 </div>
