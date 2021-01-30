@@ -4,8 +4,8 @@ const initialState = {}
 const SET_SEARCHED_VENUES = 'venueSearch/setVenueSearch';
 
 const searchVenuesAction = (results) => ({
-  type: SET_SEARCHED_VENUES,
-  payload: results
+    type: SET_SEARCHED_VENUES,
+    payload: results
 });
 
 
@@ -19,21 +19,31 @@ export const pictureSearch = (searchTerm) => {
     };
 };
 
+export const searchByState = (searchTerm) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/results/${searchTerm}`)
+        dispatch(
+            searchVenuesAction(res.data)
+        )
+    }
+}
+
 export const search = (search) => {
-    const {location, date, time, guestCount} = search
+    const { location, date, time, guestCount } = search
     return async (dispatch) => {
         let res = await fetch('/api/results/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-            location: location,
-            date: date,
-            time: time,
-            guest_count: guestCount
-      })
-    })
-    dispatch(searchVenuesAction(res.data))
-}};
+                location: location,
+                date: date,
+                time: time,
+                guest_count: guestCount
+            })
+        })
+        dispatch(searchVenuesAction(res.data))
+    }
+};
 
 export const noSearch = () => {
     return async (dispatch) => {
