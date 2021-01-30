@@ -26,6 +26,10 @@ const Reservations = () => {
     return state.VenueReviews;
   });
 
+  const venue = useSelector((state) => {
+    return state.venue
+  })
+
   const avgRating = (reviews) => {
     if (reviews === null) {
       return <h4>New Venue</h4>;
@@ -60,7 +64,7 @@ const Reservations = () => {
       })
     });
     let data = await res.json()
-}
+  }
 
   return (
     <>
@@ -70,15 +74,15 @@ const Reservations = () => {
           <h1> PICTURES WILL GO HERE</h1>
         </div>
         <div className="info-form">
-            <div className="info">
-                <VenueInfo />
-            </div>
-            <div className="rating-form">
-                {avgRating(reviews)}
-                <div className="reserve-form">
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                        Price
+          <div className="info">
+            <VenueInfo />
+          </div>
+          <div className="rating-form">
+            {avgRating(reviews)}
+            <div className="reserve-form">
+              <form onSubmit={handleSubmit}>
+                <label>
+                  Price
                         <input
                     type="integer"
                     value={price}
@@ -135,7 +139,7 @@ const Reservations = () => {
         </div>
         <div className="calendar">
           <h1> CALendar!!!!!</h1>
-          <Map />
+          <Map venue={venue} venueId={venueId} />
         </div>
       </div>
     </>
