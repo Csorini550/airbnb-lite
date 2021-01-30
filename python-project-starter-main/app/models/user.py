@@ -103,7 +103,7 @@ class Venue(db.Model):
             "links": self.links,
             "street_address": self.street_address,
             "city": self.city,
-            "state": self.state,      
+            "state": self.state,
         }
 
 
@@ -183,3 +183,12 @@ class Media(db.Model):
 
     review = db.relationship("Review", back_populates="media")
     venue = db.relationship("Venue", back_populates="media")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "venue_id": self.venue_id,
+            "url": self.url,
+            "review_id": self.review_id,
+
+        }

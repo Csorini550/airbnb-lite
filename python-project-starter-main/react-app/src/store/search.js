@@ -10,8 +10,6 @@ const searchVenuesAction = (results) => ({
 
 
 export const pictureSearch = (searchTerm) => {
-    // const {searchTerm} = searchTerm
-    console.log('does this work?', searchTerm)
     return async (dispatch) => {
         const res = await fetch(`/api/results/${searchTerm}`)
         console.log(res.data)
@@ -35,7 +33,17 @@ export const search = (search) => {
       })
     })
     dispatch(searchVenuesAction(res.data))
-}}
+}};
+
+export const noSearch = () => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/venues/`)
+        console.log(res.data)
+        dispatch(
+            searchVenuesAction(res.data)
+        );
+    };
+};
 
 
 function reducer(state = initialState, action) {
