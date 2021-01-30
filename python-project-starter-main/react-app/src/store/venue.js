@@ -17,7 +17,7 @@ const getVenueAction = (body) => ({
 
 export const createVenue = (body) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/venues/#####`, {
+        const res = await fetch(`/api/venues`, {
             method: 'POST',
             body: JSON.stringify(
                 body
