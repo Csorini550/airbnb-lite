@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import './CreateVenue.css';
 import { noSearch } from '../../store/search';
 import { useHistory } from 'react-router-dom';
+import { createVenue } from '../../store/venue';
 
 const CreateVenue = () => {
-    const [owner_id, setOwner_Id] = useState(""); // Pull from state?
+    // const [owner_id, setOwner_Id] = useState("1"); // Pull from state?
+    const [links, setLinks] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [type, setType] = useState("Venue"); // Dropdown
@@ -52,11 +54,11 @@ const CreateVenue = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await fetch('/api/venues/', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                owner_id: 1,
+        // RETURNS TO RESULTS PAGE AFTER USER CREATES A VENUE
+        return (
+            // dispatch(noSearch(), history.push('/results')),
+            await dispatch(createVenue(
+                // owner_id = 1,
                 name,
                 price,
                 type,
@@ -66,25 +68,19 @@ const CreateVenue = () => {
                 kid_friendly,
                 summary,
                 street_address,
-                city,
                 state,
+                city,
                 has_bar,
-                has_kitchen,
-                has_rooftop,
-                has_heated_outdoor_seating,
                 has_liquor,
                 has_beer,
                 has_byob,
+                has_kitchen,
                 has_outdoor_seating,
-                // created_at: '2020-01-20',
-                // update_at: '2020-01-20'
-
-            })
-        })
-
-        // return res.json()
-        // RETURNS TO RESULTS PAGE AFTER USER CREATES A VENUE
-        return dispatch(noSearch(), history.push('/results'))
+                has_heated_outdoor_seating,
+                has_rooftop,
+                links,
+            ))
+        )
 
     }
 
@@ -95,12 +91,12 @@ const CreateVenue = () => {
             </div>
             <form className="create-venue" onSubmit={handleSubmit}>
                 <label className="create-venue">
-                    Owner Name
+                    Picture Link
                     <input
                         type="text"
                         className="owner-id"
-                        value={owner_id}
-                        onChange={(e) => setOwner_Id(e.target.value)}
+                        value={links}
+                        onChange={(e) => setLinks(e.target.value)}
                         required
                     />
                 </label>
@@ -143,6 +139,12 @@ const CreateVenue = () => {
                         <option value="kid-friendly">Kid Friendly</option>
                         <option value="venue-with-view">Venue With a View</option>
                         <option value="heated-outdoor-seating">Heated Outdoor Seating</option>
+                        <option disabled>---</option>
+                        <option value="cocktail-making">Cocktail Making</option>
+                        <option value="cooking-with-master-chef">Cooking With a Master Chef</option>
+                        <option value="decorating-plating-entrees">Decorating & Plating Entrees</option>
+                        <option value="chicago-pizza-making">Chicago Pizza Making</option>
+                        <option disabled>---</option>
                         <option value="other">Other</option>
                     </select>
                 </label>

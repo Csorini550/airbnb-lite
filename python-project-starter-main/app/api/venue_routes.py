@@ -46,7 +46,7 @@ def new_venue():
     # form['csrf_token'].data = request.cookies['csrf_token']
     # if form.validate_on_submit():
     newVenue = Venue(
-        owner_id=form.data['owner_id'],
+        # owner_id=form.data['owner_id'],
         name=form.data['name'],
         price=form.data['price'],
         type=form.data['type'],

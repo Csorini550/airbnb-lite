@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactStars from "react-rating-stars-component"
+import { createReview } from "../../store/reviews";
 import './CreateReview.css';
 
 const CreateReview = () => {
@@ -13,6 +14,18 @@ const CreateReview = () => {
     const loggedInUser = useSelector((state) => {
         return state.session.user;
     });
+
+    // For Redux dispatch
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Pass this into backend
+        const newReview = {
+            rating,
+            title,
+            review,
+        };
+    };
 
     return (
         <div className="container-review">

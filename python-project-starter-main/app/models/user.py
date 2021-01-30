@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
 
     reservations = db.relationship("Reservation", back_populates="user")
     # venue = db.relationship("Venue", back_populates="user")
-    favorites = db.relationship("Favorite", back_populates="user")
+    # favorites = db.relationship("Favorite", back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
 
     @property
@@ -58,7 +58,6 @@ class Venue(db.Model):
     has_heated_outdoor_seating = db.Column(db.Boolean, nullable=False)
     has_liquor = db.Column(db.Boolean, nullable=False)
     price = db.Column(db.Float, nullable=False)
-    owner_id = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     update_at = db.Column(db.DateTime, nullable=False)
     has_beer = db.Column(db.Boolean, nullable=False)
@@ -75,7 +74,7 @@ class Venue(db.Model):
     # user = db.relationship("User", back_populates="venue")
     reservation = db.relationship("Review", back_populates="venue")
     media = db.relationship("Media", back_populates="venue")
-    favorite = db.relationship("Favorite", back_populates="venue")
+    # favorite = db.relationship("Favorite", back_populates="venue")
     review = db.relationship("Review", back_populates="venue")
 
     def to_dict(self):
@@ -91,7 +90,6 @@ class Venue(db.Model):
             "has_heated_outdoor_seating": self.has_heated_outdoor_seating,
             "has_liquor": self.has_liquor,
             "price": self.price,
-            "owner_id": self.owner_id,
             "created_at": self.created_at,
             "update_at": self.update_at,
             "has_beer": self.has_beer,
@@ -136,15 +134,15 @@ class Reservation(db.Model):
         }
 
 
-class Favorite(db.Model):
-    __tablename__ = 'favorites'
+# class Favorite(db.Model):
+#     __tablename__ = 'favorites'
 
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    venue_id = db.Column(db.Integer, db.ForeignKey("venues.id"))
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#     venue_id = db.Column(db.Integer, db.ForeignKey("venues.id"))
 
-    user = db.relationship("User", back_populates="favorites")
-    venue = db.relationship("Venue", back_populates="favorite")
+#     user = db.relationship("User", back_populates="favorites")
+#     venue = db.relationship("Venue", back_populates="favorite")
 
 
 class Review(db.Model):

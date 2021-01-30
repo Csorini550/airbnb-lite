@@ -1,15 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import session from './session'
+import session from './session';
 import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
-import search from './search'
-import venue from './venue'
+import search from './search';
+import venue from './venue';
+import review from './reviews'; // Can name whatever since its default export
 
 const rootReducer = combineReducers({
     session,
     VenueReviews,
     search,
     venue,
+    review,
 });
 
 let enhancer;
