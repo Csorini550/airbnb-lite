@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {noSearch} from '../store/search';
 import Map from './Map';
+import './SearchResults.css'
 
 
 const SearchResults = () => {
@@ -23,12 +24,25 @@ const SearchResults = () => {
     <>
       <h2 id="results">Event spaces near you</h2>
       <div>
-        {console.log(venues, 'thisss')}
         {venues.map(venue => {
           return (
-            <Link to={`/reservations/${venue.id}`} key={venue.id}>
-              <h1>{venue.name}</h1>
-            </Link>
+            <>
+              <div className='individualVenue'>
+                <Link to={`/reservations/${venue.id}`} key={venue.id} className='link'>
+                  <div className='summary'>
+                    <p>{venue.summary}</p>
+                  </div>
+                  <div className='title'>
+                    <p>{venue.name}</p>
+                  </div>
+                  <div className='smallBorder'></div>
+                  <div className='summary'>
+                    <p>Total Occupancy: {venue.total_occupancy}</p>
+                  </div>
+                  <p className='price'>Price: ${venue.price}</p>
+                </Link>
+              </div>
+            </>
           );
         })}
       </div>

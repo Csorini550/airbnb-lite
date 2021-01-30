@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './CreateVenue.css';
+import { noSearch } from '../../store/search';
+import { useHistory } from 'react-router-dom';
 
 const CreateVenue = () => {
     const [owner_id, setOwner_Id] = useState(""); // Pull from state?
@@ -25,6 +27,7 @@ const CreateVenue = () => {
     const [has_rooftop, setHas_Rooftop] = useState("No");
 
     const dispatch = useDispatch();
+    let history = useHistory();
 
     const loggedInUser = useSelector((state) => {
         return state.session.user;
@@ -79,7 +82,9 @@ const CreateVenue = () => {
             })
         })
 
-        return res.json()
+        // return res.json()
+        // RETURNS TO RESULTS PAGE AFTER USER CREATES A VENUE
+        return dispatch(noSearch(), history.push('/results'))
 
     }
 
