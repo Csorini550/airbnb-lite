@@ -4,12 +4,14 @@ import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
 import search from './search'
 import venue from './venue'
+import media from './media'
 
 const rootReducer = combineReducers({
     session,
     VenueReviews,
     search,
     venue,
+    media
 });
 
 let enhancer;

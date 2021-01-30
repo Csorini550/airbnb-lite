@@ -1,0 +1,30 @@
+name: aws
+runtime: nodejs12.x
+profile:
+region:
+stage: dev
+environment:
+    tableName: $(self:custom.tableName)
+    bucketName: $(self:custom.bucketName)
+    imageUploadBucket: $(self:custom.imageUploadBucket)
+iAmRoleStatement:
+    Effect: Allow
+    action:
+      - dynamodb:*
+      - s3:*
+      - ses:*
+    Recources: '*'
+
+plugins:
+  -serverless-webpack
+
+package:
+    individually: true
+
+custom:
+    tableName: Venues
+    bucketName: SpeakEasyuploadbucket-1231121
+    imageUploadBucket: my-image-imageUploadBucket
+
+function:
+    

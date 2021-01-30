@@ -15,15 +15,17 @@ const getVenueAction = (body) => ({
     payload: body
 })
 
-export const createVenue = (body) => {
+export const createVenueForm = (body) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/venues/#####`, {
+        const res = await fetch(`/api/venues`, {
             method: 'POST',
             body: JSON.stringify(
                 body
             )
         })
-        dispatch(createVenueAction(res.data))
+        if (res.ok) {
+            dispatch(createVenueAction(res.data))
+        }
     };
 }
 
