@@ -30,6 +30,22 @@ const Media = () => {
 
     }
 
+
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
+    //     const res = await fetch('/api/venues/media', {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({
+    //             url: images
+    //         })
+    //     })
+
+    //     return res.json()
+
+    // }
+
     const updateFiles = (e) => {
         const file = e.target.files[0];
         setImages(file);

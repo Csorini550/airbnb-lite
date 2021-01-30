@@ -1,0 +1,6 @@
+stars
+    https://www.npmjs.com/package/react-rating-stars-component
+
+
+
+    summary, has_bar, has_kitchen, has_rooftop, has_heated_outdoor_seating, has_liquor, price, owner_id, created_at, update_at, has_beer, has_byob, has_outdoor_seating, name, twentyone_plus, kid_friendly, links, street_address, city, state 
