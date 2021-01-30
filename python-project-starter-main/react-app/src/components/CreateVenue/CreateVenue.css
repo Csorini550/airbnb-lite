@@ -4,16 +4,18 @@
     padding: 0;
 }
 
-.container {
-    position: absolute;
-    top: 80px;
+.container-venue {
     width: 100%;
-    padding: 30px;
+    padding: 110px 30px 30px 30px;
 }
 
 form.create-venue {
     font-weight: bold;
     font-size: 10pt;
+}
+
+label.create-venue {
+    width: 300px;
 }
 
 label.create-venue input,
@@ -25,6 +27,27 @@ form.create-venue select {
     border-radius: 7px;
     padding: 10px;
     margin: 5px 0 20px 0;
+}
+
+label#summary textarea {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 300px;
+    height: 200px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+}
+
+label.create-venue input#price,
+label.create-venue input#total-occupancy {
+    width: 110px;
+}
+
+label.create-venue#price,
+label.create-venue#total-occupancy {
+    width: 110px;
 }
 
 form.create-venue select {

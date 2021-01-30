@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import CreateVenue from "./components/CreateVenue";
+import CreateReview from "./components/CreateReview";
 import Reservations from "./components/Reservations";
 // import AddReview from "./components/AddReview";
 import NavBar from "./components/NavBar/NavBar";
@@ -64,9 +65,9 @@ function App() {
         <ProtectedRoute path="/create-venue" exact={true} authenticated={authenticated}>
           <CreateVenue />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/reviews" exact={true} authenticated={authenticated}>
-          <AddReview />
-        </ProtectedRoute> */}
+        <ProtectedRoute path="/create-review" exact={true} authenticated={authenticated}>
+          <CreateReview />
+        </ProtectedRoute>
         <ProtectedRoute path="/reviews/:venueId" exact={true} authenticated={authenticated}>
           <VenueReview />
         </ProtectedRoute>
