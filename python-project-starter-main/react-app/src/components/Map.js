@@ -1,32 +1,15 @@
-import React from 'react';
+import React, { useSelector } from 'react';
 
 import { Circle, GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 
 
 
+const Map = ({ venue, venueId }) => {
 
-// var map;
-// function initMap() {
-//   var geocoder = new Geocoder();
-
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: { lat: 0, lng: 0 },
-//     zoom: 8
-//   });
-
-//   geocoder.geocode({ 'address': "Chicago" }, function (results, status) {
-//     if (status === 'OK') {
-//       map.setCenter(results[0].geometry.location);
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
-
-
-
-const Map = ({ location }) => {
+  // const venue = useSelector(state => {
+  //   return state.venue
+  // })
   const mapContainerStyle = {
     height: "400px",
     width: "800px"
@@ -42,15 +25,27 @@ const Map = ({ location }) => {
     lng: -122.214
   }
 
+  // const venueObj = venue[venueId]
+  // console.log(venueObj)
+  // const coordslat = parseFloat(venueObj.lat)
+  // const coordslng = parseFloat(venueObj.lng)
+  // console.log(venue)
+  // console.log(venue[venue.id])
+
+
+  // console.log(coordslat)
+  // console.log(venue[id].lat)
+
   const center = {
-    lat: location.lat,
-    lng: location.lng
+    lat: venue.lat,
+    lng: venue.lng
+  }
+  const position = {
+    lat: venue.lat,
+    lng: venue.lng
   }
 
-  const position = {
-    lat: location.lat,
-    lng: location.lng
-  }
+
 
   return (
     <div id='map-container'>
