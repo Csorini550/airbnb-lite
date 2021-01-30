@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import logo from './logo.png'
 import Dropdown from './Dropdown';
 import SearchBar from './SearchBar';
 import "./NavBar.css"
@@ -10,13 +10,25 @@ const NavBar = ({ setAuthenticated }) => {
   const [searchBar, setSearchbar] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
+  /*
+   * TODO: overlay aka put shadow over inactive
+   * TODO: change background color of search bar
+   * TODO: make searchbar fit in fucking container
+   * TODO: css for searchbar
+   * TODO: change logo
+   * TODO: change search button red
+   * TODO: figure out transition transform from navbar before to navbar after REaCT
+   * 
+   */
+
   return (
     <>
+      {/* SEARCH BAR CLOSED */}
       {searchBar === false &&
         <nav id="navbar">
           <div className="navtext">
             <NavLink className="navtext" to="/" exact={true} activeClassName="active">
-              <img id="logo" src="https://1000logos.net/wp-content/uploads/2017/08/Airbnb-logo.jpg"></img>
+              <img id="logo" src={logo}></img>
             </NavLink>
           </div>
           <div id="navbar-search-container">
@@ -50,6 +62,7 @@ const NavBar = ({ setAuthenticated }) => {
           </div>
         </nav>
       }
+      {/* SEARCH BAR OPEN */}
       {searchBar === true &&
         <>
           <nav id="navbar-after">
@@ -58,17 +71,17 @@ const NavBar = ({ setAuthenticated }) => {
                 <img id="logo" src="https://1000logos.net/wp-content/uploads/2017/08/Airbnb-logo.jpg"></img>
               </NavLink>
             </div>
-            <div>
-              <div>Venues to Book</div>
-            </div>
-            <div>
-              <div>Experiences</div>
-            </div>
-            <div>
-              <div>Online Experiences</div>
+            <div className="navtext hover-shadow">
+              <div className="navtext">Venues to Book</div>
             </div>
             <div className="navtext hover-shadow">
-              <div>Become a host</div>
+              <div className="navtext">Experiences</div>
+            </div>
+            <div className="navtext hover-shadow">
+              <div className="navtext">Online Experiences</div>
+            </div>
+            <div className="navtext hover-shadow">
+              <div className="navtext">Become a host</div>
             </div>
             <div className="user-dropdown">
               <button id="profile-button" onClick={() => setDropdown(!dropdown)}>

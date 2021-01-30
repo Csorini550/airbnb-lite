@@ -11,6 +11,7 @@
   top: 0px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
   left: 0px;
+  
 }
 
 
@@ -26,6 +27,7 @@
   padding: 0;
   top: 0px;
   left: 0px;
+ 
 }
 
 #white-space {
@@ -48,18 +50,21 @@ body {
 
 .hover-shadow {
   padding: 15px;
+   cursor: pointer;
 }
 
 .hover-shadow:hover {
   background-color: rgb(242, 242, 242);
   padding: 15px;
   border-radius: 32px;
+  cursor: pointer;
 }
 
 
 .navtext {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 #logo {
@@ -101,11 +106,13 @@ body {
   border-radius: 32px;
   height: 66px;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px; */
   text-align: left;
   font-size: 14px;
   line-height: 1.43;
   /* position: absolute; */
+ padding: 20px;
+
   
   
   
@@ -115,25 +122,51 @@ body {
 #search-rows {
   display: flex;
   align-items: center;
-  padding: 5%;
+
+  cursor: pointer;
+
 
 
 
 
 }
 
+#guests, #submit {
+  border-right: none;
+}
 
+#submit {
+  display: flex;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  padding: 0px;
+  border-radius: 24px;
+  height: 48px;
+  background-color: cadetblue;
+}
 
 .search {
   flex-direction: row;
+    /* width: fit-content; */
+  cursor: pointer;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right: 1px solid rgb(221, 221, 221);
 }
 
+input {
+  background-color: ;
+}
 
 #navbar-search-container {
   padding: 0 24px;
 
   border-radius: 32px;
   /* position: relative; */
+  /* width: auto; */
 
   
 }
@@ -173,4 +206,5 @@ body {
 input {
   border: none;
   outline: none;
+  background-color: rgb(247, 247, 247);
 }
