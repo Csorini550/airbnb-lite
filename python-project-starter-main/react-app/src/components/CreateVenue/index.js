@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createVenueForm } from "../../store/venue"
 import './CreateVenue.css';
+import { noSearch } from '../../store/search';
+import { useHistory } from 'react-router-dom';
 
 const CreateVenue = () => {
     const [name, setName] = useState("");
@@ -26,6 +28,7 @@ const CreateVenue = () => {
     const [links, setLinks] = useState("")
 
     const dispatch = useDispatch();
+    let history = useHistory();
 
     const loggedInUser = useSelector((state) => {
         return state.session.user;
