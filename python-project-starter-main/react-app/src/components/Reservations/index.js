@@ -50,13 +50,13 @@ const Reservations = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        user_id: 1, //loggedInUser.id,
-        venue_id: 2, //venueId,
+        user_id: 1, //hard coded for time
+        venue_id: venueId,
         start_date: startDate,
         end_date: endDate,
         price: price,
         total: totalPrice,
-        guest_count: 2 //guestCount
+        guest_count: guestCount
       })
     });
     let data = await res.json()

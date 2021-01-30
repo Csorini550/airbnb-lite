@@ -64,12 +64,12 @@ def new_reservation():
     form['csrf_token'].data = request.cookies['csrf_token']
     # demo reservation if form doesn't validate. Hard coded due to time
     demoReservation = Reservation(
-            user_id=1,
-            venue_id=2,
+            user_id=2,
+            venue_id=1,
             start_date='2021-02-01 12:00:00',
             end_date='2021-02-01 16:00:00',
-            price=100.00,
-            total=110.00,
+            price=350.00,
+            total=360.00,
             guest_count=10,
         )
     if form.validate_on_submit():
