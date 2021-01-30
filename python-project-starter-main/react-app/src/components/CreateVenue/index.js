@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './CreateVenue.css';
 import { noSearch } from '../../store/search';
@@ -33,7 +33,7 @@ const CreateVenue = () => {
         return state.session.user;
     });
 
-    // Change state for type and room_type
+    // Change state for dropdown menus
     const handleVenueTypeChange = (e) => {
         setType(e.target.value);
     }
@@ -89,7 +89,7 @@ const CreateVenue = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container-venue">
             <div className="create-venue">
                 <h3 className="create-venue">Create an Experience</h3>
             </div>
@@ -114,13 +114,15 @@ const CreateVenue = () => {
                         required
                     />
                 </label>
-                <label className="create-venue">
+                <label className="create-venue" id="price">
                     Price
                     <input
-                        type="text"
-                        className="price"
+                        type="number"
+                        id="price"
                         value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        onChange={(e) => {
+                            setPrice(e.target.value);
+                        }}
                         required
                     />
                 </label>
@@ -144,11 +146,11 @@ const CreateVenue = () => {
                         <option value="other">Other</option>
                     </select>
                 </label>
-                <label className="create-venue">
+                <label className="create-venue" id="total-occupancy">
                     Total occupancy
                     <input
-                        type="text"
-                        className="total-occupancy"
+                        type="number"
+                        id="total-occupancy"
                         value={total_occupancy}
                         onChange={(e) => setTotal_Occupancy(e.target.value)}
                         required
@@ -168,9 +170,9 @@ const CreateVenue = () => {
                         <option value="highchairs-available">Highchairs are available</option>
                     </select>
                 </label>
-                <label className="create-venue">
+                <label className="create-venue" id="summary">
                     Provide a description of the Experience
-                    <input
+                    <textarea
                         type="text"
                         className="summary"
                         value={summary}
