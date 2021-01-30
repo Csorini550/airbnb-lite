@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createVenueForm } from "../../store/venue"
-import './CreateVenue.css';
 import { noSearch } from '../../store/search';
 import { useHistory } from 'react-router-dom';
+import { createVenueForm } from "../../store/venue"
+import './CreateVenue.css';
 
 const CreateVenue = () => {
     const [name, setName] = useState("");
