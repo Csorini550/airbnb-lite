@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './CreateVenue.css';
 import { noSearch } from '../../store/search';
 import { useHistory } from 'react-router-dom';
-import { createVenue } from '../../store/venue';
+import { createVenueForm } from "../../store/venue"
+import './CreateVenue.css';
 
 const CreateVenue = () => {
-    // const [owner_id, setOwner_Id] = useState("1"); // Pull from state?
-    const [links, setLinks] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [type, setType] = useState("Venue"); // Dropdown
@@ -27,6 +25,7 @@ const CreateVenue = () => {
     const [has_outdoor_seating, setHas_Outdoor_Seating] = useState("No");
     const [has_heated_outdoor_seating, setHas_Heated_Outdoor_Seating] = useState("No");
     const [has_rooftop, setHas_Rooftop] = useState("No");
+    const [links, setLinks] = useState("")
 
     const dispatch = useDispatch();
     let history = useHistory();
@@ -54,35 +53,34 @@ const CreateVenue = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // RETURNS TO RESULTS PAGE AFTER USER CREATES A VENUE
-        return (
-            // dispatch(noSearch(), history.push('/results')),
-            await dispatch(createVenue(
-                // owner_id = 1,
-                name,
-                price,
-                type,
-                room_type,
-                total_occupancy,
-                twentyone_plus,
-                kid_friendly,
-                summary,
-                street_address,
-                state,
-                city,
-                has_bar,
-                has_liquor,
-                has_beer,
-                has_byob,
-                has_kitchen,
-                has_outdoor_seating,
-                has_heated_outdoor_seating,
-                has_rooftop,
-                links,
-            ))
-        )
+        const newVenue = {
+            type,
+            room_type,
+            total_occupancy,
+            summary,
+            has_bar,
+            has_kitchen,
+            has_rooftop,
+            has_heated_outdoor_seating,
+            has_liquor,
+            price,
+            owner_id: loggedInUser.id,
+            has_beer,
+            has_byob,
+            has_outdoor_seating,
+            name,
+            twentyone_plus,
+            kid_friendly,
+            links,
+            street_address,
+            city,
+            state
+        }
+        dispatch(createVenueForm(newVenue))
+
 
     }
+
 
     return (
         <div className="container-venue">
@@ -124,7 +122,7 @@ const CreateVenue = () => {
                 </label>
                 <label className="create-venue">
                     Choose Your Experience
-                    <select className="venue-type" onChange={handleVenueTypeChange} required>
+                    <select className="venue-type" value={type} onChange={handleVenueTypeChange} required>
                         <option default value="venue">Venue</option>
                         <option value="online-experience">Online Experience</option>
                         <option value="outdoor-experience">Outdoor Experience</option>
@@ -132,7 +130,7 @@ const CreateVenue = () => {
                 </label>
                 <label className="create-venue">
                     Choose Your Room Type
-                    <select className="room-type" onChange={handleRoomTypeChange} required>
+                    <select className="room-type" value={room_type} onChange={handleRoomTypeChange} required>
                         <option default value="restaurant">Restaurant</option>
                         <option value="tiki-bar">Tiki Bar</option>
                         <option value="sports-bar">Sports Bar</option>
@@ -226,7 +224,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="bar"
-                            value="Yes"
+                            value={has_bar}
                             onChange={(e) => setHas_Bar(e.target.value)}
                         /> Yes
                     </div>
@@ -234,7 +232,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="bar"
-                            value="No"
+                            value={has_bar}
                             onChange={(e) => setHas_Bar(e.target.value)}
                         /> No
                     </div>
@@ -245,7 +243,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="liquor"
-                            value="Yes"
+                            value={has_liquor}
                             onChange={(e) => setHas_Liquor(e.target.value)}
                         /> Yes
                     </div>
@@ -253,7 +251,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="liquor"
-                            value="No"
+                            value={has_liquor}
                             onChange={(e) => setHas_Liquor(e.target.value)}
                         /> No
                     </div>
@@ -264,7 +262,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="beer"
-                            value="Yes"
+                            value={has_beer}
                             onChange={(e) => setHas_Beer(e.target.value)}
                         /> Yes
                     </div>
@@ -272,7 +270,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="beer"
-                            value="No"
+                            value={has_beer}
                             onChange={(e) => setHas_Beer(e.target.value)}
                         /> No
                     </div>
@@ -283,7 +281,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="byob"
-                            value="Yes"
+                            value={has_byob}
                             onChange={(e) => setHas_Byob(e.target.value)}
                         /> Yes
                     </div>
@@ -291,7 +289,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="byob"
-                            value="No"
+                            value={has_byob}
                             onChange={(e) => setHas_Byob(e.target.value)}
                         /> No
                     </div>
@@ -302,7 +300,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="kitchen"
-                            value="Yes"
+                            value={has_kitchen}
                             onChange={(e) => setHas_Kitchen(e.target.value)}
                         /> Yes
                     </div>
@@ -310,7 +308,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="kitchen"
-                            value="No"
+                            value={has_kitchen}
                             onChange={(e) => setHas_Kitchen(e.target.value)}
                         /> No
                     </div>
@@ -321,7 +319,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="outdoor-seating"
-                            value="Yes"
+                            value={has_outdoor_seating}
                             onChange={(e) => setHas_Outdoor_Seating(e.target.value)}
                         /> Yes
                     </div>
@@ -329,18 +327,18 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="outdoor-seating"
-                            value="No"
+                            value={has_outdoor_seating}
                             onChange={(e) => setHas_Outdoor_Seating(e.target.value)}
                         /> No
                     </div>
                 </div>
                 <div className="radio-buttons">
-                    <p>If there is outdoor seating, is it heated?</p>
+                    <p>If the rooftop heated?</p>
                     <div className="radio-yes">
                         <input
                             type="radio"
                             name="heated-outdoor-seating"
-                            value="Yes"
+                            value={has_heated_outdoor_seating}
                             onChange={(e) => setHas_Heated_Outdoor_Seating(e.target.value)}
                         /> Yes
                     </div>
@@ -348,7 +346,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="heated-outdoor-seating"
-                            value="No"
+                            value={has_heated_outdoor_seating}
                             onChange={(e) => setHas_Heated_Outdoor_Seating(e.target.value)}
                         /> No
                     </div>
@@ -359,7 +357,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="rooftop"
-                            value="Yes"
+                            value={has_rooftop}
                             onChange={(e) => setHas_Rooftop(e.target.value)}
                         /> Yes
                     </div>
@@ -367,7 +365,7 @@ const CreateVenue = () => {
                         <input
                             type="radio"
                             name="rooftop"
-                            value="No"
+                            value={has_rooftop}
                             onChange={(e) => setHas_Rooftop(e.target.value)}
                         /> No
                     </div>

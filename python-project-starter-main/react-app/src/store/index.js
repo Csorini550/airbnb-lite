@@ -3,8 +3,9 @@ import session from './session';
 import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
 import search from './search';
-import venue from './venue';
 import review from './reviews'; // Can name whatever since its default export
+import venue from './venue'
+import media from './media'
 
 const rootReducer = combineReducers({
     session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     search,
     venue,
     review,
+    media
 });
 
 let enhancer;

@@ -15,7 +15,7 @@ import { authenticate } from "./services/auth";
 import SearchResults from "./components/SearchResults";
 import VenueReview from "./components/VenueReview";
 import VenueInfo from "./components/VenueInfo";
-
+import Media from "./components/Media"
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +55,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/media" exact={true} authenticated={authenticated}>
+          <Media />
         </ProtectedRoute>
         <ProtectedRoute path="/results" exact={true} authenticated={authenticated}>
           <SearchResults />
