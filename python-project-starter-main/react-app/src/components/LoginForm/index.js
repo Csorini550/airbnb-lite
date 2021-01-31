@@ -30,6 +30,16 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
+  const demoLogin = async (e) => {
+    setEmail('demo_user@aa.io');
+    setPassword('password')
+    const user = await login(email, password);
+    console.log("USER", user)
+    setAuthenticated(true);
+    dispatch(setUser(user.data));
+
+  }
+
   if (authenticated) {
     return <Redirect to="/" />;
   }
@@ -61,6 +71,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updatePassword}
         />
         <button type="submit">Login</button>
+        <button onClick={demoLogin}>Demo Login</button>
       </div>
     </form>
   );
