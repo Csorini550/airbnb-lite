@@ -4,8 +4,8 @@ import { Circle, GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 const Map = () => {
 
   const mapContainerStyle = {
-    height: "400px",
-    width: "800px"
+      width: "100%",
+      height: "200px",
   }
 
   const center = {
@@ -17,9 +17,6 @@ const Map = () => {
     lat: 37.772,
     lng: -122.214
   }
-
-
-
 
   return (
     <LoadScript

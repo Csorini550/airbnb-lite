@@ -33,7 +33,7 @@ export const createVenueForm = (body) => {
 export const getVenue = (venueId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/venues/${venueId}`);
-        const data = res.data
+        const data = res.json();
         dispatch(getVenueAction(data));
         return data;
     };

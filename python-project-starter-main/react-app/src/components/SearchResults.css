@@ -1,10 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.event-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+h2#results {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-top: 40px;
+}
+
 .individualVenue {
   background-color: #fff;
-  height: 250px;
   width: 600px;
-  border-bottom: #b6b5b5 solid 1px;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin: 40px;
+  border: 1px solid rgb(221, 221, 221);
+  box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px;
+  border-radius: 7px;
+  padding: 20px;
 }
 
 .link {
@@ -15,17 +36,18 @@
 .title {
   font-size: 18px;
   font-weight: bold;
-  margin-top: 5px;
+  margin: 10px 0;
 }
 
 .summary {
   font-size: 13px;
+  margin-bottom: 30px;
 }
 
 .smallBorder {
   border-bottom: #b6b5b5 solid 1px;
   width: 50px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .price {
@@ -34,4 +56,8 @@
   font-weight: bold;
   margin-top: 100px;
   padding: 0px;
+}
+
+div#map-container {
+    width: 100%;
 }

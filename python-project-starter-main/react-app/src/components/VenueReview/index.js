@@ -45,9 +45,6 @@ const VenueReview = () => {
                 })}
 
             </div>
-
-        // TODO!! Some if statement that checks if the user has stayed at a 
-        // venue and then allows them to see this form
         </>
     )
 
