@@ -1,4 +1,4 @@
-import { fetch } from './csrf';
+// import { fetch } from './csrf';
 const initialState = {}
 
 const CREATE_VENUE = 'venue/createVenue'
@@ -17,14 +17,15 @@ const getVenueAction = (body) => ({
 
 export const createVenueForm = (body) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/venues`, {
+        const res = await fetch(`/api/venues/`, {
             method: 'POST',
             body: JSON.stringify(
                 body
             )
         })
         if (res.ok) {
-            dispatch(createVenueAction(res.data))
+            const data = res.json()
+            dispatch(createVenueAction(data))
         }
     };
 }
@@ -32,7 +33,7 @@ export const createVenueForm = (body) => {
 export const getVenue = (venueId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/venues/${venueId}`);
-        const data = res.data
+        const data = res.json();
         dispatch(getVenueAction(data));
         return data;
     };

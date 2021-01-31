@@ -18,13 +18,13 @@ const getReservationAction = (reservation) => ({
 
 export const createReservation = (body) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/reservations`, {
+        const res = await fetch(`/api/reservations/`, {
             method: "POST",
             body: JSON.stringify(
                 body
             )
         })
-        dispatch(createReservation(res.data))
+        dispatch(createReservationAction(res.data))
     }
 }
 
@@ -43,11 +43,11 @@ function reducer(state = initialState, action) {
             return { ...state, [action.payload.id]: action.payload };
         case GET_RESERVATION:
             const newObj = {};
-            Object.values(action.payload).forEach(function(reservation) {
+            Object.values(action.payload).forEach(function (reservation) {
                 newObj[reservation.id] = reservation;
             })
             // return {...state, [action.payload.id]: action.payload};
-            return {...newObj};
+            return { ...newObj };
         default:
             return state;
     }

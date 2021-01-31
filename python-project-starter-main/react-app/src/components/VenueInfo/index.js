@@ -10,16 +10,16 @@ import * as GiIcons from 'react-icons/gi'
 import "./VenueInfo.css"
 
 
-const VenueInfo = () => {
+const VenueInfo = ({ venue }) => {
     let { venueId } = useParams();
     const dispatch = useDispatch();
 
-    const venue = useSelector(state => {
-        return state.venue
-    })
+    // const venue = useSelector(state => {
+    //     return state.venue
+    // })
 
     useEffect(() => {
-        dispatch(getVenue(venueId))
+        dispatch(getVenue(venue.id))
     }, [])
 
 
@@ -31,42 +31,42 @@ const VenueInfo = () => {
 
         venueBooleans = [
             {
-                bool: venue[venueId].has_bar,
+                bool: venue.has_bar,
                 text: "Has a bar",
                 icon: <MdIcons.MdLocalBar />
             },
             {
-                bool: venue[venueId].has_kitchen,
+                bool: venue.has_kitchen,
                 text: "Has a Kitchen",
                 icon: <MdIcons.MdKitchen />
             },
             {
-                bool: venue[venueId].has_rooftop,
+                bool: venue.has_rooftop,
                 text: "Has a rooftop",
                 icon: <GdIcons.GrOverview />
             },
             {
-                bool: venue[venueId].has_outdoor_seating,
+                bool: venue.has_outdoor_seating,
                 text: "Has outdoor seating",
                 icon: <GiIcons.GiTreeSwing />
             },
             {
-                bool: venue[venueId].has_heated_outdoor_seating,
+                bool: venue.has_heated_outdoor_seating,
                 text: "Has heated outdoor seating",
                 icon: <AiIcons.AiFillFire />
             },
             {
-                bool: venue[venueId].has_liquor,
+                bool: venue.has_liquor,
                 text: "Has liquor",
                 icon: <FaIcons.FaCocktail />
             },
             {
-                bool: venue[venueId].has_beer,
+                bool: venue.has_beer,
                 text: "Has beer",
                 icon: <GiIcons.GiBeerStein />
             },
             {
-                bool: venue[venueId].has_byob,
+                bool: venue.has_byob,
                 text: "This bar is BYOB",
                 icon: <GiIcons.GiShoppingBag />
             },
@@ -74,12 +74,12 @@ const VenueInfo = () => {
         ]
     }
     const kidOrTwenty = () => {
-        if (venue[venueId].twentyone_plus) {
+        if (venue.twentyone_plus) {
             return (
                 "| This venue is 21+ |"
             )
         }
-        else if (venue[venueId].kid_friendly) {
+        else if (venue.kid_friendly) {
             return (
                 "| This venue is kid friendly |"
             )
@@ -112,16 +112,16 @@ const VenueInfo = () => {
 
                 <div>
                     {!venue && <h4>Loading...</h4>}
-                    <h2>{venue[venueId].name} | {venue[venueId].type} | {venue[venueId].room_type} {kidOrTwenty()}</h2>
-                    <a href="{venue[venueId].link}" alt="Link is down" >
-                        {venue[venueId].link}
+                    <h2>{venue.name} | {venue.type} | {venue.room_type} {kidOrTwenty()}</h2>
+                    <a href="{venue.link}" alt="Link is down" >
+                        {venue.link}
                     </a>
                     <div className="location">
                         <div>
-                            <h3 className="locationh3">Address - {venue[venueId].street_address}, {venue[venueId].state}, {venue[venueId].city}</h3>
+                            <h3 className="locationh3">Address - {venue.street_address}, {venue.state}, {venue.city}</h3>
                         </div>
                         <div>
-                            <h3> Max Occupancy: {venue[venueId].total_occupancy}</h3>
+                            <h3> Max Occupancy: {venue.total_occupancy}</h3>
                         </div>
                     </div>
                     <ul>
@@ -131,7 +131,7 @@ const VenueInfo = () => {
                         <div className="sum">
                             <h2>Summary</h2>
                         </div>
-                        {venue[venueId].summary}
+                        {venue.summary}
                     </div>
                 </div>
             </div>

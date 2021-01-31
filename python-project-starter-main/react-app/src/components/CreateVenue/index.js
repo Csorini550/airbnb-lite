@@ -4,6 +4,7 @@ import { noSearch } from '../../store/search';
 import { useHistory } from 'react-router-dom';
 import { createVenueForm } from "../../store/venue"
 import './CreateVenue.css';
+import Media from "../Media"
 
 const CreateVenue = () => {
     const [name, setName] = useState("");
@@ -28,7 +29,7 @@ const CreateVenue = () => {
     const [links, setLinks] = useState("")
 
     const dispatch = useDispatch();
-    let history = useHistory();
+    // let history = useHistory();
 
     const loggedInUser = useSelector((state) => {
         return state.session.user;
@@ -50,6 +51,8 @@ const CreateVenue = () => {
     const handleKidChange = (e) => {
         setKid_Friendly(e.target.value);
     }
+
+    const history = useHistory()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -76,7 +79,12 @@ const CreateVenue = () => {
             city,
             state
         }
-        dispatch(createVenueForm(newVenue));
+        dispatch(createVenueForm(newVenue))
+
+
+        history.push("/media")
+
+
     }
 
     return (
@@ -377,6 +385,7 @@ const CreateVenue = () => {
                     </div>
                 </div>
             </form>
+            {/* <Media /> */}
         </div>
     );
 };

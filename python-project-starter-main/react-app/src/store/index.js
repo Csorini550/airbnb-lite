@@ -1,5 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import session from './session';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
 import search from './search';
@@ -18,6 +20,12 @@ const rootReducer = combineReducers({
     media
 });
 
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 let enhancer;
 
 if (process.env.NODE_ENV === 'production') {
@@ -30,7 +38,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const configureStore = (preloadedState) => {
-    return createStore(rootReducer, preloadedState, enhancer);
+    let store = createStore(persistedReducer, preloadedState, enhancer);
+    let persistor = persistStore(store)
+    return { store, persistor }
 };
 
 export default configureStore;
+
+

@@ -7,6 +7,8 @@ from app.models import db
 review_routes = Blueprint('reviews', __name__)
 
 # GET ALL REVIEWS FOR A SPECIFIC VENUE -- DOES NOT NEED TO BE LOGGED IN
+
+
 @review_routes.route('/<int:venueId>')
 def all_reviews_for_venue(venueId):
     reviews = Review.query.filter_by(venue_id=venueId).all()
@@ -25,7 +27,7 @@ def new_review():
             user_id=form.data['user_id'],
             reservation_id=form.data['reservation_id'],
             venue_id=form.data['venue_id'],
-            title=form.data('title'),
+            title=form.data['title'],
             rating=form.data['rating'],
             comment=form.data['comment'],
         )
