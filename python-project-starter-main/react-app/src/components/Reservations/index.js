@@ -88,11 +88,8 @@ const Reservations = () => {
       })
     });
     let data = await res.json();
-    if (data) {
 
-      dispatch(createReservation(data))
-      return history.push(`/`);
-    }
+    history.push(`/create-review/${venueId}`);
   }
 
   // let totalPrice = () => {
