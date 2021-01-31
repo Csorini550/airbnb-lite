@@ -8,8 +8,9 @@ import { Provider } from 'react-redux';
 // import { ModalProvider } from './context/Modal';
 import { restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
+import { PersistGate } from 'redux-persist/integration/react'
 
-const store = configureStore();
+const { store, persistor } = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
@@ -34,8 +35,9 @@ if (process.env.NODE_ENV !== "production") {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

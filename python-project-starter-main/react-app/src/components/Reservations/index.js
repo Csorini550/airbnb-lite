@@ -11,12 +11,13 @@ import { getVenue } from "../../store/venue";
 import ReactStars from "react-rating-stars-component";
 
 const Reservations = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [price, setPrice] = useState("");
   const [total, setTotal] = useState("$700");
   const [guestCount, setGuestCount] = useState("");
   let { venueId } = useParams();
+  // console.log(venueId)
 
   const dispatch = useDispatch();
 
@@ -59,11 +60,13 @@ const Reservations = () => {
   };
 
   // Access to venue state from front end (redux)
-  const venue = useSelector(state => state.venue);
+  const venue = useSelector((state) => {
+    return state.search[venueId]
+  });
 
   useEffect(() => {
-    dispatch(getVenueReviews(venueId)); //venueId
-    dispatch(getVenue(venueId));
+    dispatch(getVenue(venue.id));
+    dispatch(getVenueReviews(venue.id)); //venueId
     dispatch(getReservation(loggedInUser.id));
   }, []);
 
@@ -105,7 +108,7 @@ const Reservations = () => {
         </div>
         <div className="info-form">
           <div className="info">
-            <VenueInfo />
+            <VenueInfo venue={venue} />
           </div>
           <div className="rating-form">
             <ReactStars
@@ -120,7 +123,7 @@ const Reservations = () => {
             />
             <div className="reserve-form">
               <div>
-                <h3>Price: {venue[venueId].price}</h3>
+                <h3>Price: {venue.price}</h3>
               </div>
               <form onSubmit={handleSubmit}>
                 <div>

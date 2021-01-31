@@ -1,3 +1,4 @@
+import { fetch } from './csrf';
 const initialState = {};
 
 const CREATE_REVIEW = "reviews/createReview";
@@ -12,23 +13,23 @@ const createReviewAction = (review) => ({
 export const createReview = (body) => {
     return async (dispatch) => {
         // Make server call
-        const result = await fetch("/api/reviews", {
+        const result = await fetch("/api/reviews/", {
             method: "POST",
             body: JSON.stringify(
                 body
             ),
         });
         if (result.ok) {
-            const review = await result.json();
-            dispatch(createReviewAction(review));
+            // const review = await result.json();
+            dispatch(createReviewAction(result.data));
         }
     };
 };
 
 function reducer(state = initialState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case CREATE_REVIEW:
-            return {...action.payload} // payload from Action Creator
+            return { ...action.payload } // payload from Action Creator
         default:
             return state;
     }
