@@ -11,13 +11,13 @@ import { getVenue } from "../../store/venue";
 import ReactStars from "react-rating-stars-component";
 
 const Reservations = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [price, setPrice] = useState("");
   const [total, setTotal] = useState("$700");
   const [guestCount, setGuestCount] = useState("");
   let { venueId } = useParams();
-  console.log(venueId)
+  // console.log(venueId)
 
   const dispatch = useDispatch();
 
@@ -88,7 +88,11 @@ const Reservations = () => {
       })
     });
     let data = await res.json();
-    // history.push(`/create-review/${venueId}/${newReservationId}`);
+    if (data) {
+
+      dispatch(createReservation(data))
+      return history.push(`/`);
+    }
   }
 
   // let totalPrice = () => {
