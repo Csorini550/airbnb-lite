@@ -5,7 +5,8 @@ from app.models import db
 from app.forms import NewVenueForm
 from app.forms import NewMediaForm
 from werkzeug.utils import secure_filename
-import boto3, botocore
+import boto3
+import botocore
 from app.config import Config
 
 
@@ -33,20 +34,20 @@ def venue(venueId):
 
 @venue_routes.route("/media", methods=["POST"])
 def upload_file():
-    newFile = Media (
-        venue_id=form.data["venue_id"],
-        url=form.data["url"],
-        review_id=str(output)
-    )
-    
-    print("LOOK AT ME!!!!!", newFile)
-        
-	# A
+    # newFile = Media(
+    #     venue_id=form.data["venue_id"],
+    #     url=str(output)
+    #     review_id=str(output)
+    # )
+
+    # print("LOOK AT ME!!!!!", newFile)
+
+    # A
     if "file" not in request.files:
         for file in request.files:
             return {"errors": "No file key in request.files"}, 500
 
-	# B
+        # B
     file = request.files["file"]
 
     """
@@ -59,24 +60,32 @@ def upload_file():
 
     """
 
-	# C.
+    # C.
     if file.filename == "":
         return "Please select a file"
 
-	# D.
+        # D.
     file.filename = secure_filename(file.filename)
     output = upload_file_to_s3(file, Config.S3_BUCKET)
     form = NewMediaForm()  # not sure if class will be called this
-    
+
+    newFile = Media(
+        venue_id=form.data["venue_id"],
+        url=str(output)
+        # review_id=str(output)
+    )
+
+    db.session.add(newFile)
+    db.session.commit()
     return str(output)
-    
 
 
 s3 = boto3.client(
-   "s3",
-   aws_access_key_id=Config.S3_KEY,
-   aws_secret_access_key=Config.S3_SECRET
+    "s3",
+    aws_access_key_id=Config.S3_KEY,
+    aws_secret_access_key=Config.S3_SECRET
 )
+
 
 def upload_file_to_s3(file, bucket_name, acl="public-read"):
 
@@ -92,7 +101,6 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
                 "ContentType": file.content_type
             }
         )
-    
 
     except Exception as e:
         # This is a catch all exception, edit this part to fit your needs.
