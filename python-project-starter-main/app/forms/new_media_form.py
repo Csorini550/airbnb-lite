@@ -8,4 +8,3 @@ class NewMediaForm(FlaskForm):
     venue_id = IntegerField('venue_id')
     review_id = IntegerField('review_id')
     url = StringField("url")
-

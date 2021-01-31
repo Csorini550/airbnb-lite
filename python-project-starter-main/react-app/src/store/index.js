@@ -1,16 +1,20 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import session from './session'
+import session from './session';
 import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
-import search from './search'
-import venue from './venue'
-import media from './media'
+import search from './search';
+import review from './reviews'; // Can name whatever since its default export
+import venue from './venue';
+import media from './media';
+import reservations from './reservation';
 
 const rootReducer = combineReducers({
     session,
     VenueReviews,
+    reservations,
     search,
     venue,
+    review,
     media
 });
 

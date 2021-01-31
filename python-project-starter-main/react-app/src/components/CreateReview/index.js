@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactStars from "react-rating-stars-component"
+import { createReview } from "../../store/reviews";
 import './CreateReview.css';
 
 const CreateReview = () => {
+    const { venueId } = useParams();
     const [rating, setRating] = useState(null);
     const [title, setTitle] = useState("");
     const [review, setReview] = useState("");
@@ -13,6 +16,21 @@ const CreateReview = () => {
     const loggedInUser = useSelector((state) => {
         return state.session.user;
     });
+
+    // For Redux dispatch
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Pass this into backend
+        const newReview = {
+            user_id: loggedInUser.id,
+            // reservation_id,
+            venue_id: venueId,
+            rating,
+            title,
+            review,
+        };
+    };
 
     return (
         <div className="container-review">

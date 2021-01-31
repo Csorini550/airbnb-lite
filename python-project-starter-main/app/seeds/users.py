@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash
-from app.models import db, User, Venue, Favorite, Review, Reservation, Media
+from app.models import db, User, Venue, Review, Reservation, Media
 
 # Adds a demo user, you can add other users here if you want
 
@@ -26,10 +26,10 @@ def seed_users():
         phone_number = 12223334444,
         password='password')
 
-    favorite1 = Favorite(
-        user_id=1,
-        venue_id=1,
-    )
+    # favorite1 = Favorite(
+    #     user_id=1,
+    #     venue_id=1,
+    # )
 
     venue1 = Venue(
 
@@ -43,7 +43,6 @@ def seed_users():
         has_heated_outdoor_seating=True,
         has_liquor=True,
         price=350,
-        owner_id=1,
         created_at='2020-01-20',
         update_at='2020-01-20',
         has_beer=True,
@@ -69,7 +68,6 @@ def seed_users():
         has_heated_outdoor_seating=False,
         has_liquor=True,
         price=750,
-        owner_id=2,
         created_at='2020-01-15',
         update_at='2020-01-15',
         has_beer=True,
@@ -87,6 +85,7 @@ def seed_users():
         user_id=2,
         reservation_id=1,
         venue_id=1,
+        title="Very fun experience",
         rating=3,
         comment="I thought the food was ok, but the drinks were pretty amazing. One thing that could have been better was more heat on the outdoor patio. Not only were we a little cold, but the food cooled off very quickly.",
     )
@@ -109,7 +108,7 @@ def seed_users():
 
     db.session.add(review1)
     db.session.add(media1)
-    db.session.add(favorite1)
+    # db.session.add(favorite1)
     db.session.add(venue1)
     db.session.add(venue2)
     db.session.add(reservation1)

@@ -30,3 +30,7 @@ def downgrade():
     op.drop_column('venues', 'lat')
     op.drop_column('venues', 'img_url')
     # ### end Alembic commands ###
+
+
+# File Name
+# 25743e5f94ce_.py

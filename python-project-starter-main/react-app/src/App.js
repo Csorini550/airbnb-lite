@@ -65,7 +65,7 @@ function App() {
         <ProtectedRoute path="/create-venue" exact={true} authenticated={authenticated}>
           <CreateVenue />
         </ProtectedRoute>
-        <ProtectedRoute path="/create-review" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/create-review/:venueId/:reservationId" exact={true} authenticated={authenticated}>
           <CreateReview />
           // route should end in venueId so it passes to the right venue
           // increase length of review title

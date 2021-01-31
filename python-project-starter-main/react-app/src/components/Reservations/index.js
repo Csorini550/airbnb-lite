@@ -1,18 +1,20 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { getVenueReviews } from "../../store/VenueReviews";
-import { createReservation } from "../../store/reservation";
+import { createReservation, getReservation } from "../../store/reservation";
 import "./Reservations.css";
 import VenueReviews from "../../components/VenueReview";
 import VenueInfo from "../../components/VenueInfo";
 import Map from "../../components/Map";
+import { getVenue } from "../../store/venue";
+import ReactStars from "react-rating-stars-component";
 
 const Reservations = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [price, setPrice] = useState("");
-  const [totalPrice, setTotalPrice] = useState("");
+  const [total, setTotal] = useState("$700");
   const [guestCount, setGuestCount] = useState("");
   let { venueId } = useParams();
 
@@ -21,6 +23,24 @@ const Reservations = () => {
   const loggedInUser = useSelector((state) => {
     return state.session.user;
   });
+
+  const reservations = useSelector((state) => {
+    return state.reservations;
+  });
+
+//   console.log("RESERVATIONS!!!!!!!!!!!!!!!!!!!!", reservations);
+//   console.log("LENGTH!!!!!!!!!!!!!!!!!!!", Object.keys(reservations).length);
+
+//   const newReservationId = (reservations) => {
+//     const reservationIdCount = Object.keys(reservations).length;
+//     // console.log("COUNT!!!!!!!!!!!!!!!!!!!!", reservationIdCount)
+//     const reservationId = reservationIdCount + 1;
+//     return reservationId;
+//   };
+
+//   const reservationId = newReservationId();
+//   console.log("RESERVATION_ID!!!!!!!!!!", reservationId);
+//   console.log("NEW_RESERVATION_ID!!!!!!!!!!", newReservationId());
 
   const reviews = useSelector((state) => {
     return state.VenueReviews;
@@ -38,29 +58,42 @@ const Reservations = () => {
     }
   };
 
+  // Access to venue state from front end (redux)
+  const venue = useSelector(state => state.venue);
+
   useEffect(() => {
     dispatch(getVenueReviews(venueId)); //venueId
+    dispatch(getVenue(venueId));
+    dispatch(getReservation(loggedInUser.id));
   }, []);
 
-
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let res = await fetch('/api/reservations/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        user_id: 1, //hard coded for time
+        user_id: loggedInUser.id,
         venue_id: venueId,
         start_date: startDate,
         end_date: endDate,
         price: price,
-        total: totalPrice,
+        total,
         guest_count: guestCount
       })
     });
-    let data = await res.json()
+    let data = await res.json();
+    // history.push(`/create-review/${venueId}/${newReservationId}`);
 }
+
+    // let totalPrice = () => {
+    //     let total = price * days;
+    // };
+
+    // Prevents "undefined" error from trying to load before state is updated
+    if (Object.keys(venue).length === 0) return null;
 
   return (
     <>
@@ -74,19 +107,21 @@ const Reservations = () => {
                 <VenueInfo />
             </div>
             <div className="rating-form">
-                {avgRating(reviews)}
+                    <ReactStars
+                        count={5}
+                        value={avgRating(reviews)}
+                        color="#ffd700"
+                        isHalf={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        edit={false}
+                    />
                 <div className="reserve-form">
+                <div>
+                    <h3>Price: {venue[venueId].price}</h3>
+                </div>
                     <form onSubmit={handleSubmit}>
-                        <label>
-                        Price
-                        <input
-                    type="integer"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    className="input"
-                    required
-                  />
-                </label>
                 <div>
                   <label>
                     Check in Date
@@ -111,20 +146,14 @@ const Reservations = () => {
                     />
                   </label>
                 </div>
-                <div>
-                  <label>
-                    Total Price
-                            <input
-                      type="text"
-                      value={totalPrice}
-                      onChange={(e) => setTotalPrice(e.target.value)}
-                      className="input"
-                      required
-                    />
-                  </label>
-                </div>
                 <div id="reserve-btn">
                   <button id="availability">Check Availability</button>
+                </div>
+                  <div>
+                    <h3>Total Price: {total}</h3>
+                  </div>
+                <div id="reserve-btn">
+                  <button id="reserve">Reserve</button>
                 </div>
               </form>
             </div>
@@ -134,7 +163,7 @@ const Reservations = () => {
           <VenueReviews />
         </div>
         <div className="calendar">
-          <h1> CALendar!!!!!</h1>
+          <h1> Calendar!!!!!</h1>
           <Map />
         </div>
       </div>

@@ -13,7 +13,7 @@ const createVenueAction = (venue) => ({
 const getVenueAction = (body) => ({
     type: GET_VENUE,
     payload: body
-})
+});
 
 export const createVenueForm = (body) => {
     return async (dispatch) => {
@@ -55,6 +55,3 @@ function reducer(state = initialState, action) {
 }
 
 export default reducer;
-
-
-

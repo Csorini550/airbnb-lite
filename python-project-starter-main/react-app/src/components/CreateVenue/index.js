@@ -137,6 +137,12 @@ const CreateVenue = () => {
                         <option value="kid-friendly">Kid Friendly</option>
                         <option value="venue-with-view">Venue With a View</option>
                         <option value="heated-outdoor-seating">Heated Outdoor Seating</option>
+                        <option disabled>---</option>
+                        <option value="cocktail-making">Cocktail Making</option>
+                        <option value="cooking-with-master-chef">Cooking With a Master Chef</option>
+                        <option value="decorating-plating-entrees">Decorating & Plating Entrees</option>
+                        <option value="chicago-pizza-making">Chicago Pizza Making</option>
+                        <option disabled>---</option>
                         <option value="other">Other</option>
                     </select>
                 </label>

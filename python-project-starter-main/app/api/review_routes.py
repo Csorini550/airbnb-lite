@@ -25,6 +25,7 @@ def new_review():
             user_id=form.data['user_id'],
             reservation_id=form.data['reservation_id'],
             venue_id=form.data['venue_id'],
+            title=form.data('title'),
             rating=form.data['rating'],
             comment=form.data['comment'],
         )
