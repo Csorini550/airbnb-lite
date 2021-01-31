@@ -154,6 +154,7 @@ class Review(db.Model):
     venue_id = db.Column(db.Integer, db.ForeignKey("venues.id"))
     rating = db.Column(db.Float)
     comment = db.Column(db.Text)
+    title = db.Column(db.String(76))
 
     media = db.relationship("Media", back_populates="review")
     user = db.relationship("User", back_populates="reviews")
@@ -166,6 +167,7 @@ class Review(db.Model):
             "user_id": self.user_id,
             "reservation_id": self.reservation_id,
             "venue_id": self.venue_id,
+            "title": self.title,
             "rating": self.rating,
             "comment": self.comment,
         }

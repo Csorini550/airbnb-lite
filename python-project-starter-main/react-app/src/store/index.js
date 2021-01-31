@@ -4,12 +4,14 @@ import thunk from 'redux-thunk';
 import VenueReviews from './VenueReviews';
 import search from './search';
 import review from './reviews'; // Can name whatever since its default export
-import venue from './venue'
-import media from './media'
+import venue from './venue';
+import media from './media';
+import reservations from './reservation';
 
 const rootReducer = combineReducers({
     session,
     VenueReviews,
+    reservations,
     search,
     venue,
     review,

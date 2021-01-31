@@ -1,14 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { getVenueReviews } from "../../store/VenueReviews"
-import ReactStars from "react-rating-stars-component"
+import { getVenueReviews } from "../../store/VenueReviews";
+import ReactStars from "react-rating-stars-component";
 
 const VenueReview = () => {
     let { venueId } = useParams();
     const dispatch = useDispatch();
-
-
 
     const loggedInUser = useSelector(state => {
         return state.session.user;
@@ -20,6 +18,7 @@ const VenueReview = () => {
     useEffect(() => {
         dispatch(getVenueReviews(venueId))
     }, [])
+
     return (
         <>
             <h1>Look at all these reviews</h1>

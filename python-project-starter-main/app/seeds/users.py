@@ -85,6 +85,7 @@ def seed_users():
         user_id=2,
         reservation_id=1,
         venue_id=1,
+        title="Very fun experience",
         rating=3,
         comment="I thought the food was ok, but the drinks were pretty amazing. One thing that could have been better was more heat on the outdoor patio. Not only were we a little cold, but the food cooled off very quickly.",
     )
