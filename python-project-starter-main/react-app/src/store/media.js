@@ -66,6 +66,7 @@ export const createMedia = (media) => async (dispatch) => {
     //     }
     // }
     if (media) formData.append("file", media);
+    formData.append("venue_id", 1)
 
     // formData.append("type", type);
     // helper();

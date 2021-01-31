@@ -28,19 +28,19 @@ const Reservations = () => {
     return state.reservations;
   });
 
-//   console.log("RESERVATIONS!!!!!!!!!!!!!!!!!!!!", reservations);
-//   console.log("LENGTH!!!!!!!!!!!!!!!!!!!", Object.keys(reservations).length);
+  //   console.log("RESERVATIONS!!!!!!!!!!!!!!!!!!!!", reservations);
+  //   console.log("LENGTH!!!!!!!!!!!!!!!!!!!", Object.keys(reservations).length);
 
-//   const newReservationId = (reservations) => {
-//     const reservationIdCount = Object.keys(reservations).length;
-//     // console.log("COUNT!!!!!!!!!!!!!!!!!!!!", reservationIdCount)
-//     const reservationId = reservationIdCount + 1;
-//     return reservationId;
-//   };
+  //   const newReservationId = (reservations) => {
+  //     const reservationIdCount = Object.keys(reservations).length;
+  //     // console.log("COUNT!!!!!!!!!!!!!!!!!!!!", reservationIdCount)
+  //     const reservationId = reservationIdCount + 1;
+  //     return reservationId;
+  //   };
 
-//   const reservationId = newReservationId();
-//   console.log("RESERVATION_ID!!!!!!!!!!", reservationId);
-//   console.log("NEW_RESERVATION_ID!!!!!!!!!!", newReservationId());
+  //   const reservationId = newReservationId();
+  //   console.log("RESERVATION_ID!!!!!!!!!!", reservationId);
+  //   console.log("NEW_RESERVATION_ID!!!!!!!!!!", newReservationId());
 
   const reviews = useSelector((state) => {
     return state.VenueReviews;
@@ -85,15 +85,16 @@ const Reservations = () => {
       })
     });
     let data = await res.json();
-    // history.push(`/create-review/${venueId}/${newReservationId}`);
-}
 
-    // let totalPrice = () => {
-    //     let total = price * days;
-    // };
+    history.push(`/create-review/${venueId}`);
+  }
 
-    // Prevents "undefined" error from trying to load before state is updated
-    if (Object.keys(venue).length === 0) return null;
+  // let totalPrice = () => {
+  //     let total = price * days;
+  // };
+
+  // Prevents "undefined" error from trying to load before state is updated
+  if (Object.keys(venue).length === 0) return null;
 
   return (
     <>
@@ -103,25 +104,25 @@ const Reservations = () => {
           <h1> PICTURES WILL GO HERE</h1>
         </div>
         <div className="info-form">
-            <div className="info">
-                <VenueInfo />
-            </div>
-            <div className="rating-form">
-                    <ReactStars
-                        count={5}
-                        value={avgRating(reviews)}
-                        color="#ffd700"
-                        isHalf={true}
-                        emptyIcon={<i className="far fa-star"></i>}
-                        halfIcon={<i className="fa fa-star-half-alt"></i>}
-                        fullIcon={<i className="fa fa-star"></i>}
-                        edit={false}
-                    />
-                <div className="reserve-form">
-                <div>
-                    <h3>Price: {venue[venueId].price}</h3>
-                </div>
-                    <form onSubmit={handleSubmit}>
+          <div className="info">
+            <VenueInfo />
+          </div>
+          <div className="rating-form">
+            <ReactStars
+              count={5}
+              value={avgRating(reviews)}
+              color="#ffd700"
+              isHalf={true}
+              emptyIcon={<i className="far fa-star"></i>}
+              halfIcon={<i className="fa fa-star-half-alt"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              edit={false}
+            />
+            <div className="reserve-form">
+              <div>
+                <h3>Price: {venue[venueId].price}</h3>
+              </div>
+              <form onSubmit={handleSubmit}>
                 <div>
                   <label>
                     Check in Date
@@ -149,9 +150,9 @@ const Reservations = () => {
                 <div id="reserve-btn">
                   <button id="availability">Check Availability</button>
                 </div>
-                  <div>
-                    <h3>Total Price: {total}</h3>
-                  </div>
+                <div>
+                  <h3>Total Price: {total}</h3>
+                </div>
                 <div id="reserve-btn">
                   <button id="reserve">Reserve</button>
                 </div>

@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactStars from "react-rating-stars-component"
 import { createReview } from "../../store/reviews";
+import { createReservation, getReservation } from "../../store/reservation";
 import './CreateReview.css';
+import Reservations from '../Reservations';
 
 const CreateReview = () => {
     const { venueId } = useParams();
     const [rating, setRating] = useState(null);
     const [title, setTitle] = useState("");
     const [review, setReview] = useState("");
+    const history = useHistory();
 
     const dispatch = useDispatch();
+    useEffect(() => {
+
+        dispatch(getReservation(loggedInUser.id));
+    }, [])
 
     const loggedInUser = useSelector((state) => {
         return state.session.user;
     });
+
+    const reservation = useSelector((state) => {
+        return state.reservations
+    })
+
+    if (Object.keys(reservation).length === 0) return null;
+    const reservation_id = Object.keys(reservation).length - 1
+
 
     // For Redux dispatch
     const handleSubmit = async (e) => {
@@ -24,12 +39,14 @@ const CreateReview = () => {
         // Pass this into backend
         const newReview = {
             user_id: loggedInUser.id,
-            // reservation_id,
+            reservation_id,
             venue_id: venueId,
             rating,
             title,
             review,
         };
+        history.push(`/reservations/${venueId}`);
+        dispatch(createReview(newReview))
     };
 
     return (
@@ -51,7 +68,7 @@ const CreateReview = () => {
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                                 required
-                                placeholder="Review Title" 
+                                placeholder="Review Title"
                             />
                         </div>
                         <div className="create-review" id="stars">
@@ -64,7 +81,7 @@ const CreateReview = () => {
                                 halfIcon={<i className="fa fa-star-half-alt"></i>}
                                 fullIcon={<i className="fa fa-star"></i>}
                                 edit={true}
-                                // onChange={(e) => setRating(e.target.value)}
+                            // onChange={(e) => setRating(e.target.value)}
                             />
                         </div>
                     </div>
