@@ -98,9 +98,13 @@ const Reservations = () => {
   return (
     <>
       <div className="container">
+      <Map />
         <div className="pics">
-
-          <h1> PICTURES WILL GO HERE</h1>
+            <div className="small-pics"></div>
+            <div className="small-pics"></div>
+            <div className="small-pics"></div>
+            <div className="small-pics"></div>
+            <div className="small-pics"></div>
         </div>
         <div className="info-form">
             <div className="info">
@@ -162,10 +166,9 @@ const Reservations = () => {
         <div className="reviews">
           <VenueReviews />
         </div>
-        <div className="calendar">
+        {/* <div className="calendar">
           <h1> Calendar!!!!!</h1>
-          <Map />
-        </div>
+        </div> */}
       </div>
     </>
   );

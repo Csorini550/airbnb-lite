@@ -4,11 +4,9 @@ import LogoutButton from '../auth/LogoutButton';
 
 const Dropdown = ({ setAuthenticated }) => {
 
-
   return (
     <>
       <div className="profile-menu">
-
         <div>
           <NavLink className="navtext profile-links" to="/login" exact={true} activeClassName="active">
             Login

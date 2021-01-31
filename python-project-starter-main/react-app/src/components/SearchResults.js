@@ -21,7 +21,10 @@ const SearchResults = () => {
   }  
   
   return (
-    <>
+    <div className="event-container">
+      <div id="map-container">
+        <Map />
+      </div>
       <h2 id="results">Event spaces near you</h2>
       <div>
         {venues.map(venue => {
@@ -29,11 +32,11 @@ const SearchResults = () => {
             <>
               <div className='individualVenue'>
                 <Link to={`/reservations/${venue.id}`} key={venue.id} className='link'>
-                  <div className='summary'>
-                    <p>{venue.summary}</p>
-                  </div>
                   <div className='title'>
                     <p>{venue.name}</p>
+                  </div>
+                  <div className='summary'>
+                    <p>{venue.summary}</p>
                   </div>
                   <div className='smallBorder'></div>
                   <div className='summary'>
@@ -46,8 +49,7 @@ const SearchResults = () => {
           );
         })}
       </div>
-      <Map />
-    </>
+    </div>
   )
 }
 

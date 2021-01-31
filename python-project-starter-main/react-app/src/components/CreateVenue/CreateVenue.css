@@ -5,8 +5,15 @@
 }
 
 .container-venue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     padding: 110px 30px 30px 30px;
+}
+
+h3.create-venue {
+    margin-bottom: 30px;
 }
 
 form.create-venue {
@@ -80,4 +87,23 @@ form.create-venue select {
     display: flex;
     justify-content: left;
     margin-top: 20px;
+}
+
+div#venue-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#submit-input {
+    background-color: rgba(254, 59, 94, 1);
+    width: 80px;
+    height: 42px;
+    border: 1px solid rgba(254, 59, 94, 0.5);
+    border-radius: 24px;
+    box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    letter-spacing: 0.5pt;
 }

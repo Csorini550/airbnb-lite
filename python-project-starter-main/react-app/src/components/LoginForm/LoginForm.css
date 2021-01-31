@@ -1,3 +1,35 @@
-#login {
-  padding: 100px;
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+div.login-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 80px;
+}
+
+form#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin-top: 100px;
+}
+
+#email,
+#password {
+    width: 300px;
+    height: 30px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px;
+    border-radius: 7px;
+    padding: 7px;
+    margin: 5px 0 20px 0;
+}
+
+div.login-btn {
+    display: flex;
+    justify-content: center;
 }

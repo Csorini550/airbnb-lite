@@ -76,11 +76,8 @@ const CreateVenue = () => {
             city,
             state
         }
-        dispatch(createVenueForm(newVenue))
-
-
+        dispatch(createVenueForm(newVenue));
     }
-
 
     return (
         <div className="container-venue">
@@ -370,7 +367,15 @@ const CreateVenue = () => {
                         /> No
                     </div>
                 </div>
-                <input type="submit" value="submit" />
+                {/* <input type="submit" value="Submit" id="submit-input" /> */}
+                <div id="venue-btns">
+                    <div className="btns">
+                        <button id="submit-btn" value="submit">Submit</button>
+                    </div>
+                    <div className="btns">
+                        <button id="cancel-btn" value="cancel">Cancel</button>
+                    </div>
+                </div>
             </form>
         </div>
     );
