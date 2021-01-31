@@ -77,6 +77,7 @@ const CreateVenue = () => {
             state
         }
         dispatch(createVenueForm(newVenue))
+        return "<h1>Submitted!</h1>"
 
 
     }
