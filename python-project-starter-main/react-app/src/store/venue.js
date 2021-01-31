@@ -1,4 +1,4 @@
-import { fetch } from './csrf';
+// import { fetch } from './csrf';
 const initialState = {}
 
 const CREATE_VENUE = 'venue/createVenue'
@@ -24,7 +24,8 @@ export const createVenueForm = (body) => {
             )
         })
         if (res.ok) {
-            dispatch(createVenueAction(res.data))
+            const data = res.json()
+            dispatch(createVenueAction(data))
         }
     };
 }
