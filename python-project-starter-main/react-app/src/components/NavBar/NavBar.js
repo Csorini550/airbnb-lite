@@ -35,7 +35,7 @@ const NavBar = ({ setAuthenticated }) => {
             </div>
           </div>
           <div className="navtext hover-shadow">
-            <NavLink className="navtext" to="/create-venue" exact={true} activeClassName="active">
+            <NavLink className="navtext" to="/media" exact={true} activeClassName="active">
               Become a host
             </NavLink>
           </div>
