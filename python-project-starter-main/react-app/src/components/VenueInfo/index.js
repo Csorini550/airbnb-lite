@@ -93,10 +93,11 @@ const VenueInfo = ({ venue }) => {
         return venueBooleans.map((venueBoolean, index) => {
             if (venueBoolean.bool === true) {
                 return (
-                    <li key={index} className="booleanInfoLi">
 
+                    <li key={index} >
                         <h3> {venueBoolean.icon} {venueBoolean.text}</h3>
                     </li>
+
                 )
             };
 
@@ -113,9 +114,7 @@ const VenueInfo = ({ venue }) => {
                 <div>
                     {!venue && <h4>Loading...</h4>}
                     <h2>{venue.name} | {venue.type} | {venue.room_type} {kidOrTwenty()}</h2>
-                    <a href="{venue.link}" alt="Link is down" >
-                        {venue.link}
-                    </a>
+                    {/* {venue.link} */}
                     <div className="location">
                         <div>
                             <h3 className="locationh3">Address - {venue.street_address}, {venue.state}, {venue.city}</h3>
@@ -124,14 +123,16 @@ const VenueInfo = ({ venue }) => {
                             <h3> Max Occupancy: {venue.total_occupancy}</h3>
                         </div>
                     </div>
-                    <ul>
-                        {mapFunc()}
-                    </ul>
+                    <div className="parent">
+                        <ul className="booleanInfoLi">
+                            {mapFunc()}
+                        </ul>
+                    </div>
                     <div>
-                        <div className="sum">
-                            <h2>Summary</h2>
+                        <div className="sun">
+                            <h2 >Summary</h2>
                         </div>
-                        {venue.summary}
+                        <h3 id="sum">{venue.summary}</h3>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,8 @@ import Dropdown from './Dropdown';
 import SearchBar from './SearchBar';
 import "./NavBar.css"
 
+import logo from "./logo.jpg"
+
 
 const NavBar = ({ setAuthenticated }) => {
   const [searchBar, setSearchbar] = useState(false);
@@ -16,7 +18,7 @@ const NavBar = ({ setAuthenticated }) => {
         <nav id="navbar">
           <div className="navtext">
             <NavLink className="navtext" to="/" exact={true} activeClassName="active">
-              <img id="logo" src="https://1000logos.net/wp-content/uploads/2017/08/Airbnb-logo.jpg"></img>
+              <img id="logo" src={logo}></img>
             </NavLink>
           </div>
           <div id="navbar-search-container">

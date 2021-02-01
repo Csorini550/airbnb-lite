@@ -103,13 +103,17 @@ const Reservations = () => {
   return (
     <>
       <div className="container">
-      <Map />
+        <Map />
         <div className="pics">
-            <div className="small-pics"></div>
-            <div className="small-pics"></div>
-            <div className="small-pics"></div>
-            <div className="small-pics"></div>
-            <div className="small-pics"></div>
+          <div className="small-pics">
+            <img id="img-fit" src={venue.links} />
+          </div>
+          <div className="small-pics">
+            <img id="img-fit" src={venue.links} />
+          </div>
+          <div className="small-pics"><img id="img-fit" src={venue.links} /></div>
+          <div className="small-pics"><img id="img-fit" src={venue.links} /></div>
+          <div className="small-pics"><img id="img-fit" src={venue.links} /></div>
         </div>
         <div className="info-form">
           <div className="info">
