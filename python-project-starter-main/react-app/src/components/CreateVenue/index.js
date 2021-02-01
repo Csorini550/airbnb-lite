@@ -26,7 +26,7 @@ const CreateVenue = () => {
     const [has_outdoor_seating, setHas_Outdoor_Seating] = useState("No");
     const [has_heated_outdoor_seating, setHas_Heated_Outdoor_Seating] = useState("No");
     const [has_rooftop, setHas_Rooftop] = useState("No");
-    const [links, setLinks] = useState("")
+    const [links, setLinks] = useState(null)
 
     const dispatch = useDispatch();
     // let history = useHistory();
@@ -52,6 +52,10 @@ const CreateVenue = () => {
         setKid_Friendly(e.target.value);
     }
 
+    const updateFiles = (e) => {
+        const file = e.target.files[0];
+        setLinks(file);
+    };
     const history = useHistory()
 
     const handleSubmit = async (e) => {
@@ -82,7 +86,7 @@ const CreateVenue = () => {
         dispatch(createVenueForm(newVenue))
 
 
-        history.push("/media")
+        history.push("/")
 
 
     }
@@ -92,16 +96,14 @@ const CreateVenue = () => {
             <div className="create-venue">
                 <h3 className="create-venue">Create an Experience</h3>
             </div>
-            <form className="create-venue" onSubmit={handleSubmit}>
+            <form className="" onSubmit={handleSubmit}>
                 <label className="create-venue">
                     Picture Link
-                    <input
-                        type="text"
-                        className="owner-id"
-                        value={links}
-                        onChange={(e) => setLinks(e.target.value)}
-                        required
-                    />
+                   <input
+                        // value={links}
+                        type="file"
+                        multiple
+                        onChange={updateFiles} />
                 </label>
                 <label className="create-venue">
                     Name of Experience

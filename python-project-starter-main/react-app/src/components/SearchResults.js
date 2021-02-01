@@ -20,10 +20,11 @@ const SearchResults = () => {
     return venues = Object.values(venues)
   }
 
-
-
   return (
     <div className="event-container">
+      <div>
+
+      </div>
       <div id="map-container">
         <Map />
       </div>
