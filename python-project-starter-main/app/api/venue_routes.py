@@ -32,81 +32,73 @@ def venue(venueId):
     return '<h1>Could not find venue</h1>'
 
 
-# @venue_routes.route("/media", methods=["POST"])
-# def upload_file():
-#     # newFile = Media(
-#     #     venue_id=form.data["venue_id"],
-#     #     url=str(output)
-#     #     review_id=str(output)
-#     # )
+@venue_routes.route("/media", methods=["POST"])
+def upload_file():
 
-#     # print("LOOK AT ME!!!!!", newFile)
+    # A
+    if "file" not in request.files:
+        for file in request.files:
+            return {"errors": "No file key in request.files"}, 500
 
-#     # A
-#     if "file" not in request.files:
-#         for file in request.files:
-#             return {"errors": "No file key in request.files"}, 500
+        # B
+    file = request.files["file"]
 
-#         # B
-#     file = request.files["file"]
+    """
+        These attributes are also available
 
-#     """
-#         These attributes are also available
+        file.filename               # The actual name of the file
+        file.content_type
+        file.content_length
+        file.mimetype
 
-#         file.filename               # The actual name of the file
-#         file.content_type
-#         file.content_length
-#         file.mimetype
+    """
 
-#     """
+    # C.
+    if file.filename == "":
+        return "Please select a file"
 
-#     # C.
-#     if file.filename == "":
-#         return "Please select a file"
+        # D.
+    file.filename = secure_filename(file.filename)
+    output = upload_file_to_s3(file, Config.S3_BUCKET)
+    form = NewMediaForm()  # not sure if class will be called this
 
-#         # D.
-#     file.filename = secure_filename(file.filename)
-#     output = upload_file_to_s3(file, Config.S3_BUCKET)
-#     form = NewMediaForm()  # not sure if class will be called this
+    newFile = Media(
+        venue_id=form.data["venue_id"],
+        url=str(output)
+        # review_id=str(output)
+    )
 
-#     newFile = Media(
-#         venue_id=form.data["venue_id"],
-#         url=str(output)
-#         # review_id=str(output)
-#     )
-
-#     db.session.add(newFile)
-#     db.session.commit()
-#     return str(output)
+    db.session.add(newFile)
+    db.session.commit()
+    return str(output)
 
 
-# s3 = boto3.client(
-#     "s3",
-#     aws_access_key_id=Config.S3_KEY,
-#     aws_secret_access_key=Config.S3_SECRET
-# )
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=Config.S3_KEY,
+    aws_secret_access_key=Config.S3_SECRET
+)
 
 
-# def upload_file_to_s3(file, bucket_name, acl="public-read"):
+def upload_file_to_s3(file, bucket_name, acl="public-read"):
 
-# print("PLEASE SHOW!!!", Config.S3_BUCKET, Config.S3_SECRET, Config.S3_KEY)
-#     try:
+    try:
 
-#         s3.upload_fileobj(
-#             file,
-#             bucket_name,
-#             file.filename,
-#             ExtraArgs={
-#                 "ACL": acl,
-#                 "ContentType": file.content_type
-#             }
-#         )
+        s3.upload_fileobj(
+            file,
+            bucket_name,
+            file.filename,
+            ExtraArgs={
+                "ACL": acl,
+                "ContentType": file.content_type
+            }
+        )
 
-#     except Exception as e:
-#         # This is a catch all exception, edit this part to fit your needs.
-#         print("Something Happened: ", e)
-#         return e
-#     return "{}{}".format(Config.S3_LOCATION, file.filename)
+    except Exception as e:
+        # This is a catch all exception, edit this part to fit your needs.
+        print("Something Happened: ", e)
+        return e
+    return "{}{}".format(Config.S3_LOCATION, file.filename)
 
 # @venue_routes.route('/media', methods=["POST"])
 # def media():
@@ -122,7 +114,7 @@ def venue(venueId):
 
 @venue_routes.route('/', methods=['POST'])
 # @login_required
-def upload_file():
+def new_venue():
     form = NewVenueForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
     # if form.validate_on_submit():
