@@ -44,6 +44,10 @@
   padding-bottom: 25px;
 }
 
+#placeholder {
+  color: black
+}
+
 /* div {
   transition: all 3s;
 } */
@@ -153,7 +157,11 @@ body {
   align-content: center ;
 }
 
-
+#search-button {
+  position: absolute;
+  align-self: center;
+  z-index: 1;
+}
 
 #navbar-search-container {
   padding: 0 24px;
@@ -196,6 +204,10 @@ body {
   /* margin: 7px 7px 7px 0 */
 }
 
+#baby-submit {
+  position: relative
+}
+
 input {
   border: none;
   outline: none;
@@ -224,4 +236,10 @@ div.profile-menu {
 
 .profile-links:hover {
     font-weight: bold;
+}
+
+
+
+#carrot {
+  text-align: left;
 }

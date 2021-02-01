@@ -1,22 +1,30 @@
 import React from 'react';
 import { Circle, GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-const Map = () => {
+const Map = ({ lat, lng }) => {
+  // console.log(lat, lng)
 
   const mapContainerStyle = {
-      width: "100%",
-      height: "200px",
+    width: "100%",
+    height: "200px",
   }
 
-  const center = {
+  const defaultCenter = {
     lat: 37.772,
     lng: -122.214
   }
 
-  const position = {
+  const defaultPosition = {
     lat: 37.772,
     lng: -122.214
   }
+
+  // const center = {
+  //   lat: lat.lat,
+  //   lng: lng.lng
+  // }
+
+
 
   return (
     <LoadScript
@@ -24,9 +32,9 @@ const Map = () => {
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={13}
-        center={center}
+        center={defaultCenter}
       >
-        <Marker position={position} />
+        <Marker position={defaultPosition} />
 
       </GoogleMap>
     </LoadScript>
