@@ -17,11 +17,12 @@ const getVenueAction = (body) => ({
 
 export const createVenueForm = (body) => {
     return async (dispatch) => {
-        const formData = new FormData()
+        // const formData = new FormData()
 
-        if (body) formData.append("file", body);
+        // if (body) formData.append("file", body);
         const res = await fetch(`/api/venues/`, {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(
                 body
             )
