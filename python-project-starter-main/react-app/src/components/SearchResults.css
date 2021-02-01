@@ -61,3 +61,7 @@ h2#results {
 div#map-container {
     width: 100%;
 }
+
+#forceImgUp {
+  margin-top: -150px
+}
