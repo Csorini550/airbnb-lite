@@ -3,9 +3,12 @@ from wtforms import StringField, IntegerField, FloatField, TextAreaField, Select
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Venue
 
+
 class NewVenueForm(FlaskForm):
-    type = SelectField('type', choices=[('Venue'), ('Online Experience'), ('Outdoor Experience')])
-    room_type = SelectField('room_type', choices=[('Tiki Bar'), ('Sports Bar'), ('Restaurant'), ('Kid Friendly'), ('Venue with a view')])
+    type = SelectField(
+        'type', choices=[('Venue'), ('Online Experience'), ('Outdoor Experience')])
+    room_type = SelectField('room_type', choices=[(
+        'Tiki Bar'), ('Sports Bar'), ('Restaurant'), ('Kid Friendly'), ('Venue with a view')])
     total_occupancy = IntegerField('total_occupancy')
     summary = TextAreaField('summary')
     has_bar = BooleanField('has_bar')
@@ -27,18 +30,3 @@ class NewVenueForm(FlaskForm):
     street_address = StringField('street_address')
     city = StringField('city')
     state = StringField('state')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

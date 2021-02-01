@@ -52,10 +52,10 @@ const CreateVenue = () => {
         setKid_Friendly(e.target.value);
     }
 
-    const updateFiles = (e) => {
-        const file = e.target.files[0];
-        setLinks(file);
-    };
+    // const updateFiles = (e) => {
+    //     const file = e.target.files[0];
+    //     setLinks(file);
+    // };
     const history = useHistory()
 
     const handleSubmit = async (e) => {
@@ -71,7 +71,6 @@ const CreateVenue = () => {
             has_heated_outdoor_seating,
             has_liquor,
             price,
-            owner_id: loggedInUser.id,
             has_beer,
             has_byob,
             has_outdoor_seating,
@@ -98,12 +97,12 @@ const CreateVenue = () => {
             </div>
             <form className="" onSubmit={handleSubmit}>
                 <label className="create-venue">
-                    Picture Link
+                    Venue Link
                    <input
-                        // value={links}
-                        type="file"
+                        value={links}
+                        type="text"
                         multiple
-                        onChange={updateFiles} />
+                        onChange={(e) => setLinks(e.target.value)} />
                 </label>
                 <label className="create-venue">
                     Name of Experience
