@@ -17,7 +17,7 @@ const Reservations = () => {
   const [total, setTotal] = useState("");
   const [guestCount, setGuestCount] = useState("");
   let { venueId } = useParams();
-  // console.log(venueId)
+
 
   const dispatch = useDispatch();
 
@@ -29,19 +29,6 @@ const Reservations = () => {
     return state.reservations;
   });
 
-  //   console.log("RESERVATIONS!!!!!!!!!!!!!!!!!!!!", reservations);
-  //   console.log("LENGTH!!!!!!!!!!!!!!!!!!!", Object.keys(reservations).length);
-
-  //   const newReservationId = (reservations) => {
-  //     const reservationIdCount = Object.keys(reservations).length;
-  //     // console.log("COUNT!!!!!!!!!!!!!!!!!!!!", reservationIdCount)
-  //     const reservationId = reservationIdCount + 1;
-  //     return reservationId;
-  //   };
-
-  //   const reservationId = newReservationId();
-  //   console.log("RESERVATION_ID!!!!!!!!!!", reservationId);
-  //   console.log("NEW_RESERVATION_ID!!!!!!!!!!", newReservationId());
 
   const reviews = useSelector((state) => {
     return state.VenueReviews;
