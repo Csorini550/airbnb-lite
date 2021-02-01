@@ -8,7 +8,7 @@ from app.models import db
 media_routes = Blueprint('media', __name__)
 
 
-@venue_routes.route('/<int:venueId>')
+@media_routes.route('/<int:venueId>')
 def media(venueId):
     media = Media.query.get(venueId)
     if media:

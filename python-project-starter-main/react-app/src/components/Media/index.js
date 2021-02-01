@@ -5,14 +5,15 @@ import { createMedia } from "../../store/media"
 import { useHistory, useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 import { getVenue } from "../../store/venue"
+import { getMedia } from "../../store/media"
 import "./TEST.css"
 
 
 const Media = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { venueId } = useParams
-    // let { venueId, reviewId } = useParams();
+    const { venueId } = useParams();
+    // let { venueId } = useParams();
 
     const [images, setImages] = useState(null)
     const [text, setText] = useState("")
@@ -34,9 +35,10 @@ const Media = () => {
     // if (Object.keys(venue).length === 0) return null;
     // const venueId = Object.keys(venue).length - 1
 
-    // useEffect(() => {
-    //     dispatch(getVenue(venue.id))
-    // }, [])
+    useEffect(() => {
+        // dispatch(getVenue(venue.id))
+        dispatch(getMedia(venueId))
+    }, [])
 
     // const data = {
     //     url: images,
@@ -56,13 +58,13 @@ const Media = () => {
             venue_id: venueId,
 
         }
-
         dispatch(createMedia(data))
         //help
         //i should have access to venueId via use params but i cant get the venues to show up in state from create-venues
         // change line64 to history.push(/reservations/${<one higher than how ever many venues we have in our db i.e. 50>}) for presentation
-        history.push(`/reservations/${venueId}`)
+        history.push(`/reservations/19`)
     }
+    //for panic
 
 
     const updateFiles = (e) => {
