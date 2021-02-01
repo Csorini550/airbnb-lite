@@ -47,7 +47,7 @@ const CreateReview = () => {
             venue_id: venueId,
             rating,
             title,
-            review,
+            comment: review,
         };
         console.log("THIS SHOULD BE THE RATING:", typeof Object.entries(rating))
         dispatch(createReview(newReview))

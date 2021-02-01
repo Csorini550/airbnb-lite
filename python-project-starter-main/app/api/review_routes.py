@@ -21,22 +21,22 @@ def all_reviews_for_venue(venueId):
 # @login_required
 def new_review():
     form = NewReviewForm()  # not sure if class will be called this
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        newReview = Review(
-            user_id=form.data['user_id'],
-            reservation_id=form.data['reservation_id'],
-            venue_id=form.data['venue_id'],
-            title=form.data['title'],
-            rating=form.data['rating'],
-            comment=form.data['comment'],
-        )
-        db.session.add(newReview)
-        db.session.commit()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    newReview = Review(
+        user_id=form.data['user_id'],
+        reservation_id=form.data['reservation_id'],
+        venue_id=form.data['venue_id'],
+        title=form.data['title'],
+        rating=form.data['rating'],
+        comment=form.data['comment'],
+    )
+    db.session.add(newReview)
+    db.session.commit()
 
-        return newReview.to_dict()
+    return newReview.to_dict()
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    # return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 # DELETE A REVIEW -- NOT SURE WHAT TO RETURN, WILL PROBABLY NEED TO CHANGE
