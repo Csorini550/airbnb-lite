@@ -8,7 +8,7 @@ from app.models import db
 media_routes = Blueprint('media', __name__)
 
 
-@venue_routes.route('/<int:venueId>')
+@media_routes.route('/<int:venueId>')
 def media(venueId):
     media = Media.query.get(venueId)
     if media:
@@ -18,5 +18,5 @@ def media(venueId):
     print(media)
     return '<h1>Could not find picture</h1>'
 
-#help
-    #Also need a route to search all media with the key being userId
+# help
+    # Also need a route to search all media with the key being userId

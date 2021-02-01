@@ -31,6 +31,7 @@
   padding: 0;
   top: 0px;
   left: 0px;
+
 }
 
 #white-space {
@@ -43,6 +44,10 @@
   padding-bottom: 25px;
 }
 
+#placeholder {
+  color: black
+}
+
 /* div {
   transition: all 3s;
 } */
@@ -53,17 +58,20 @@ body {
 
 .hover-shadow {
   padding: 15px;
+  cursor: pointer
 }
 
 .hover-shadow:hover {
   background-color: rgb(242, 242, 242);
   padding: 15px;
   border-radius: 32px;
+  cursor: pointer
 }
 
 .navtext {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 #logo {
@@ -111,6 +119,7 @@ body {
   font-size: 14px;
   line-height: 1.43;
   /* position: absolute; */
+  padding: 20px
   
   
   
@@ -120,7 +129,8 @@ body {
 #search-rows {
   display: flex;
   align-items: center;
-  padding: 5%;
+
+  cursor: pointer;
 
 
 
@@ -131,8 +141,27 @@ body {
 
 .search {
   flex-direction: row;
+    cursor: pointer;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right: 1px solid rgb(221, 221, 221);
 }
 
+
+#guests, #submit {
+  border-right: none;
+}
+
+
+#search-bar-submit {
+  align-content: center ;
+}
+
+#search-button {
+  position: absolute;
+  align-self: center;
+  z-index: 1;
+}
 
 #navbar-search-container {
   padding: 0 24px;
@@ -175,6 +204,10 @@ body {
   /* margin: 7px 7px 7px 0 */
 }
 
+#baby-submit {
+  position: relative
+}
+
 input {
   border: none;
   outline: none;
@@ -203,4 +236,10 @@ div.profile-menu {
 
 .profile-links:hover {
     font-weight: bold;
+}
+
+
+
+#carrot {
+  text-align: left;
 }

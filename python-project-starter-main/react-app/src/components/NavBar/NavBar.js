@@ -1,19 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import logo from './logo.jpg'
 import Dropdown from './Dropdown';
 import SearchBar from './SearchBar';
 import "./NavBar.css"
 
-import logo from "./logo.jpg"
-
 
 const NavBar = ({ setAuthenticated }) => {
+  const wrapperRef = useRef(null);
   const [searchBar, setSearchbar] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, false);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, false);
+    };
+  }, []);
+
+  const handleClickOutside = event => {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      setSearchbar(false);
+    }
+  }
+  /*
+   * TODO: overlay aka put shadow over inactive
+   * TODO: change background color of search bar
+   * TODO: make searchbar fit in fucking container
+   * TODO: css for searchbar
+   * TODO: change logo
+   * TODO: change search button red
+   * TODO: figure out transition transform from navbar before to navbar after REaCT
+   * 
+   */
+
   return (
     <>
+      {/* SEARCH BAR CLOSED */}
       {searchBar === false &&
         <nav id="navbar">
           <div className="navtext">
@@ -23,7 +46,7 @@ const NavBar = ({ setAuthenticated }) => {
           </div>
           <div id="navbar-search-container">
             <button id="search-bar-button" onClick={() => setSearchbar(!searchBar)}>
-              <div>Start your search</div>
+              <div id='placeholder'>Start your search</div>
               <div id="red-circle">
                 <div id="search-icon">
                   <img id="search-icon" alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMzAiIGhlaWdodD0iMzAiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTc0LjUzMzMzLDE3LjJjLTMxLjU5NjQyLDAgLTU3LjMzMzMzLDI1LjczNjkyIC01Ny4zMzMzMyw1Ny4zMzMzM2MwLDMxLjU5NjQyIDI1LjczNjkyLDU3LjMzMzMzIDU3LjMzMzMzLDU3LjMzMzMzYzEzLjczOTk4LDAgMjYuMzU4MzQsLTQuODc5MTUgMzYuMjQ3NjYsLTEyLjk3ODM5bDM0LjIzMjAzLDM0LjIzMjAzYzEuNDM4MDIsMS40OTc3OCAzLjU3MzQsMi4xMDExMyA1LjU4MjYsMS41NzczNWMyLjAwOTIsLTAuNTIzNzggMy41NzgyNiwtMi4wOTI4NCA0LjEwMjA0LC00LjEwMjA0YzAuNTIzNzgsLTIuMDA5MiAtMC4wNzk1NywtNC4xNDQ1OCAtMS41NzczNSwtNS41ODI2bC0zNC4yMzIwMywtMzQuMjMyMDNjOC4wOTkyNCwtOS44ODkzMiAxMi45NzgzOSwtMjIuNTA3NjggMTIuOTc4MzksLTM2LjI0NzY2YzAsLTMxLjU5NjQyIC0yNS43MzY5MiwtNTcuMzMzMzMgLTU3LjMzMzMzLC01Ny4zMzMzM3pNNzQuNTMzMzMsMjguNjY2NjdjMjUuMzk5MzcsMCA0NS44NjY2NywyMC40NjczIDQ1Ljg2NjY3LDQ1Ljg2NjY3YzAsMjUuMzk5MzcgLTIwLjQ2NzI5LDQ1Ljg2NjY3IC00NS44NjY2Nyw0NS44NjY2N2MtMjUuMzk5MzcsMCAtNDUuODY2NjcsLTIwLjQ2NzI5IC00NS44NjY2NywtNDUuODY2NjdjMCwtMjUuMzk5MzcgMjAuNDY3MywtNDUuODY2NjcgNDUuODY2NjcsLTQ1Ljg2NjY3eiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+" />
@@ -52,25 +75,28 @@ const NavBar = ({ setAuthenticated }) => {
           </div>
         </nav>
       }
+      {/* SEARCH BAR OPEN */}
       {searchBar === true &&
         <>
           <nav id="navbar-after">
             <div className="navtext">
               <NavLink className="navtext" to="/" exact={true} activeClassName="active">
-                <img id="logo" src="https://1000logos.net/wp-content/uploads/2017/08/Airbnb-logo.jpg"></img>
+                <img id="logo" src={logo}></img>
               </NavLink>
             </div>
-            <div>
-              <div>Venues to Book</div>
-            </div>
-            <div>
-              <div>Experiences</div>
-            </div>
-            <div>
-              <div>Online Experiences</div>
+            <div className="navtext hover-shadow">
+              <div className="navtext">Venues to Book</div>
             </div>
             <div className="navtext hover-shadow">
-              <div>Become a host</div>
+              <div className="navtext">Experiences</div>
+            </div>
+            <div className="navtext hover-shadow">
+              <NavLink className="navtext" to="/create-venue/" exact={true} activeClassName="active">
+                <div className="navtext">Online Experiences</div>
+              </NavLink>
+            </div>
+            <div className="navtext hover-shadow">
+              <div className="navtext">Become a host</div>
             </div>
             <div className="user-dropdown">
               <button id="profile-button" onClick={() => setDropdown(!dropdown)}>
@@ -84,7 +110,8 @@ const NavBar = ({ setAuthenticated }) => {
               </div>
             </div>
           </nav >
-          <div id="white-space">
+          <div onClick={() => setSearchbar(!searchBar)} id="white-space">
+
 
             <div>
               {searchBar ? <SearchBar setAuthenticated={setAuthenticated} /> : null}
