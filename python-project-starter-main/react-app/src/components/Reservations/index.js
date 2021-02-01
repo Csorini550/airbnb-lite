@@ -14,7 +14,7 @@ const Reservations = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [price, setPrice] = useState("");
-  const [total, setTotal] = useState("$700");
+  const [total, setTotal] = useState("");
   const [guestCount, setGuestCount] = useState("");
   let { venueId } = useParams();
   // console.log(venueId)
@@ -74,6 +74,7 @@ const Reservations = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(startDate, 'dateeeeeee')
     let res = await fetch('/api/reservations/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -82,9 +83,9 @@ const Reservations = () => {
         venue_id: venueId,
         start_date: startDate,
         end_date: endDate,
-        price: price,
-        total,
-        guest_count: guestCount
+        price: venue.price,
+        total: venue.price,
+        guest_count: 1
       })
     });
     let data = await res.json();
@@ -162,7 +163,7 @@ const Reservations = () => {
                   <button id="availability">Check Availability</button>
                 </div>
                 <div>
-                  <h3>Total Price: {total}</h3>
+                  <h3>Total Price: {venue.price}</h3>
                 </div>
                 <div id="reserve-btn">
                   <button id="reserve">Reserve</button>
