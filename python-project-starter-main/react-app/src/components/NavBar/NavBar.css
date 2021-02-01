@@ -31,6 +31,7 @@
   padding: 0;
   top: 0px;
   left: 0px;
+
 }
 
 #white-space {
@@ -53,17 +54,20 @@ body {
 
 .hover-shadow {
   padding: 15px;
+  cursor: pointer
 }
 
 .hover-shadow:hover {
   background-color: rgb(242, 242, 242);
   padding: 15px;
   border-radius: 32px;
+  cursor: pointer
 }
 
 .navtext {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 #logo {
@@ -111,6 +115,7 @@ body {
   font-size: 14px;
   line-height: 1.43;
   /* position: absolute; */
+  padding: 20px
   
   
   
@@ -120,7 +125,8 @@ body {
 #search-rows {
   display: flex;
   align-items: center;
-  padding: 5%;
+
+  cursor: pointer;
 
 
 
@@ -131,7 +137,20 @@ body {
 
 .search {
   flex-direction: row;
+    cursor: pointer;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right: 1px solid rgb(221, 221, 221);
 }
+
+
+#guests, #submit {
+  border-right: none;
+}
+
+
+
+
 
 
 #navbar-search-container {
