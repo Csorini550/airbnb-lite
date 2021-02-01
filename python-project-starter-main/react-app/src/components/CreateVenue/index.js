@@ -104,7 +104,7 @@ const CreateVenue = () => {
         //i should have access to all the venues ever made but for what ever reason they arent showing up in the redux so this gives you undefined
         // change line107 to history.push(/media/${<one higher than how ever many venues we have in our db i.e. 50>}) for presentation
         const venueId = Object.keys(venue).length - 1
-        history.push(`/media/${venueId}`)
+        history.push(`/media/19`)
 
 
     }

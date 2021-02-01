@@ -24,9 +24,10 @@ const createMediaAction = (media) => ({
 
 export const getMedia = (venueId) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/venues/${venueId}/`);
+        const res = await fetch(`/api/venues/${venueId}`);
         const data = res.json();
         dispatch(getMediaAction(data));
+        console.log(data, "Data for media!!!!")
         return data;
     };
 }
@@ -40,13 +41,14 @@ export const createMedia = (data) => async (dispatch) => {
     if (data.url) formData.append("file", data.url);
     formData.append("venue_id", data.venue_id)
 
-    const res = await fetch(`/api/venues/media/`, {
+    const res = await fetch(`/api/venues/media`, {
         method: "POST",
         body: formData,
     });
     if (res.ok) {
 
         const data = await res.json()
+        // dispatch(createMediaAction(data))
     }
 
     // const res2 = await fetch('/api/venues', {
