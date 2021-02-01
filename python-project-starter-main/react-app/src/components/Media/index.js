@@ -2,7 +2,7 @@
 // import { createUser } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { createMedia } from "../../store/media"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 import { getVenue } from "../../store/venue"
 import "./TEST.css"
@@ -10,10 +10,15 @@ import "./TEST.css"
 
 const Media = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+    const { venueId } = useParams
     // let { venueId, reviewId } = useParams();
 
     const [images, setImages] = useState(null)
     const [text, setText] = useState("")
+
+
+
 
     const loggedInUser = useSelector(state => {
         return state.session.user;
@@ -26,40 +31,39 @@ const Media = () => {
     const venue = useSelector((state) => {
         return state.venue;
     })
+    // if (Object.keys(venue).length === 0) return null;
+    // const venueId = Object.keys(venue).length - 1
 
-    // const venueId = venue[0].id;
-    console.log(venue)
-    const data = ({
-        url: images,
-        // venue_id: venueId,
+    // useEffect(() => {
+    //     dispatch(getVenue(venue.id))
+    // }, [])
 
-    })
+    // const data = {
+    //     url: images,
+    //     venue_id: venueId,
+
+    // }
+
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createMedia(images))
 
-        // dispatch(getVenue(loggedInUser.id))
-        //TODO!!
-        // Have to add this dispatch into barrys handle submit then can delete this submit
+        const data = {
+            url: images,
+            venue_id: venueId,
 
+        }
+
+        dispatch(createMedia(data))
+        //help
+        //i should have access to venueId via use params but i cant get the venues to show up in state from create-venues
+        // change line64 to history.push(/reservations/${<one higher than how ever many venues we have in our db i.e. 50>}) for presentation
+        history.push(`/reservations/${venueId}`)
     }
 
-
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
-    //     const res = await fetch('/api/venues/media', {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({
-    //             url: images
-    //         })
-    //     })
-
-    //     return res.json()
-
-    // }
 
     const updateFiles = (e) => {
         const file = e.target.files[0];
@@ -70,7 +74,7 @@ const Media = () => {
         <div className="big-div">
 
             <div id="test">
-                <h4> Step 1</h4>
+                <h4> Step 2</h4>
                 <h3>Choose an image that best describes the experience a customer will have</h3>
 
                 <form className="file" onSubmit={handleSubmit} >

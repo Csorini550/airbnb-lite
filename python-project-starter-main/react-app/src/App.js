@@ -56,7 +56,7 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <HomePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/media" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/media/:venueId" exact={true} authenticated={authenticated}>
           <Media />
         </ProtectedRoute>
         <ProtectedRoute path="/results" exact={true} authenticated={authenticated}>

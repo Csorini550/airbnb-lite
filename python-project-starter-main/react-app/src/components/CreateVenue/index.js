@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { noSearch } from '../../store/search';
 import { useHistory } from 'react-router-dom';
-import { createVenueForm } from "../../store/venue"
+import { createVenueForm, getAllVenues } from "../../store/venue"
 import './CreateVenue.css';
 import Media from "../Media"
 
@@ -31,9 +31,23 @@ const CreateVenue = () => {
     const dispatch = useDispatch();
     // let history = useHistory();
 
+
+    //Should be getting all venues into the state for this component
+    // need this to work so line 102 creates the correct venueId
+    useEffect(() => {
+        dispatch(getAllVenues())
+    }, [])
+
+
+
+
+
     const loggedInUser = useSelector((state) => {
         return state.session.user;
     });
+    const venue = useSelector((state) => {
+        return state.venue;
+    })
 
     // Change state for dropdown menus
     const handleVenueTypeChange = (e) => {
@@ -84,8 +98,13 @@ const CreateVenue = () => {
         }
         dispatch(createVenueForm(newVenue))
 
+        // if (Object.keys(venue).length === 0) return null;
 
-        history.push("/")
+        //help
+        //i should have access to all the venues ever made but for what ever reason they arent showing up in the redux so this gives you undefined
+        // change line107 to history.push(/media/${<one higher than how ever many venues we have in our db i.e. 50>}) for presentation
+        const venueId = Object.keys(venue).length - 1
+        history.push(`/media/${venueId}`)
 
 
     }
@@ -93,11 +112,12 @@ const CreateVenue = () => {
     return (
         <div className="container-venue">
             <div className="create-venue">
+                <h4 id="h4-id">Step 1</h4>
                 <h3 className="create-venue">Create an Experience</h3>
             </div>
             <form className="" onSubmit={handleSubmit}>
                 <label className="create-venue">
-                    Venue Link
+                    Your venues website link
                    <input
                         value={links}
                         type="text"
