@@ -38,6 +38,7 @@ const Media = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createMedia(images))
+
         // dispatch(getVenue(loggedInUser.id))
         //TODO!!
         // Have to add this dispatch into barrys handle submit then can delete this submit
@@ -66,17 +67,22 @@ const Media = () => {
     };
 
     return (
-        <div className="test">
-            <form onSubmit={handleSubmit} >
-                <label>
-                    Upload an image
-            <input
-                        type="file"
-                        multiple
-                        onChange={updateFiles} />
-                </label>
-                <button type="submit">Upload Image</button>
-            </form>
+        <div className="big-div">
+
+            <div id="test">
+                <h4> Step 1</h4>
+                <h3>Choose an image that best describes the experience a customer will have</h3>
+
+                <form className="file" onSubmit={handleSubmit} >
+                    <label>
+                        <input
+                            type="file"
+                            multiple
+                            onChange={updateFiles} />
+                    </label>
+                    <button type="submit">Upload Image</button>
+                </form>
+            </div>
         </div>
     )
 
