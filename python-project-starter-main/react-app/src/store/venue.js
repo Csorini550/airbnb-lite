@@ -17,6 +17,9 @@ const getVenueAction = (body) => ({
 
 export const createVenueForm = (body) => {
     return async (dispatch) => {
+        const formData = new FormData()
+
+        if (body) formData.append("file", body);
         const res = await fetch(`/api/venues/`, {
             method: 'POST',
             body: JSON.stringify(
@@ -24,8 +27,8 @@ export const createVenueForm = (body) => {
             )
         })
         if (res.ok) {
-            const data = res.json()
-            dispatch(createVenueAction(data))
+            const data = await res.json()
+            // dispatch(createVenueAction(data))
         }
     };
 }

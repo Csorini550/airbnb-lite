@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {noSearch} from '../store/search';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { noSearch } from '../store/search';
 import Map from './Map';
 import './SearchResults.css'
 
@@ -11,17 +11,20 @@ const SearchResults = () => {
 
   let venues = useSelector(state => {
     return Object.values(state.search)
-    });
+  });
 
   // IF THERE'S NO VENUES IN THE STORE (SOMEONE DIDN'T SEARCH FOR A VENUE) THEN THIS GRABS ALL VENUES AND DISPLAYS THEM
   // SO THAT THE PAGE WILL NOT BE BLANK
-  if(venues.length<1){
+  if (venues.length < 1) {
     venues = dispatch(noSearch())
     return venues = Object.values(venues)
-  }  
-  
+  }
+
   return (
     <div className="event-container">
+      <div>
+
+      </div>
       <div id="map-container">
         <Map />
       </div>
