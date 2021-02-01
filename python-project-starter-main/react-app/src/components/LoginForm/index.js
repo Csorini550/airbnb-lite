@@ -44,6 +44,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   if (authenticated) {
     return <Redirect to="/" />;
+    //hi
   }
 
   return (
