@@ -149,7 +149,7 @@ const Home = () => {
                 {hostOptions.map((hostOption) => {
                     return (
                         <div className="img experience-block">
-                            <Link id="experience-link" className="link" to="/create-venue">
+                            <Link id="experience-link" className="link" to="/media">
                                 <img id="img" className="car-image" src={hostOption.img} />
                                 <h4>{hostOption.text}</h4>
                             </Link>

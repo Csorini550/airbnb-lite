@@ -339,7 +339,7 @@ const CreateVenue = () => {
                     </div>
                 </div>
                 <div className="radio-buttons">
-                    <p>If the rooftop heated?</p>
+                    <p>Is the outdoor seating heated?</p>
                     <div className="radio-yes">
                         <input
                             type="radio"
