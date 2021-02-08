@@ -103,6 +103,8 @@ const VenueInfo = ({ venue }) => {
 
         })
     }
+
+
     if (Object.keys(venue).length === 0) return null;
 
     return (

@@ -47,7 +47,7 @@ def upgrade():
                               sa.Boolean(), nullable=False),
                     sa.Column('has_liquor', sa.Boolean(), nullable=False),
                     sa.Column('price', sa.Float(), nullable=False),
-                    sa.Column('owner_id', sa.Integer(), nullable=False),
+                    # sa.Column('owner_id', sa.Integer(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), nullable=False),
                     sa.Column('update_at', sa.DateTime(), nullable=False),
                     sa.Column('has_beer', sa.Boolean(), nullable=False),

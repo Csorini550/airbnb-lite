@@ -17,7 +17,7 @@ class NewVenueForm(FlaskForm):
     has_heated_outdoor_seating = BooleanField('has_heated_outdoor_seating')
     has_liquor = BooleanField('has_liquor')
     price = FloatField('price')
-    # owner_id = IntegerField('owner_id')
+    
     created_at = DateTimeField('created_at')
     update_at = DateTimeField('update_at')
     has_beer = BooleanField('has_beer')

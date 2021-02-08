@@ -144,7 +144,7 @@ def new_venue():
     # output = upload_file_to_s3(file, Config.S3_BUCKET)
     # form = NewVenueForm()  # not sure if class will be called this
     newVenue = Venue(
-        # owner_id=form.data['owner_id'],
+       
         name=form.data['name'],
         price=form.data['price'],
         type=form.data['type'],
