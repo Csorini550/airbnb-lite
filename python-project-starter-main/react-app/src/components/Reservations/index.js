@@ -91,7 +91,7 @@ const Reservations = () => {
     let finalDate = parseInt(end[2])
     let start = startDate.split("-")
     let beginDate = parseInt(start[2])
-    let endPrice = venue.price * (finalDate - beginDate);
+    let endPrice = Math.abs(venue.price * (finalDate - beginDate));
     console.log("endPrice", endPrice)
     setTotal(endPrice)
   };

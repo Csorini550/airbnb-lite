@@ -36,6 +36,10 @@ const CreateReview = () => {
         setRating(newRating)
         console.log(newRating);
     };
+
+    const handleCancel = () => {
+        history.push("/")
+    }
     // For Redux dispatch
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,7 +64,7 @@ const CreateReview = () => {
                 <h1>Add Your Review</h1>
             </div>
             <div className="review-form">
-                <form onSubmit={handleSubmit} className="create-review">
+                <form className="create-review">
                     <div className="create-review" id="review-description">
                         <p>
                             We would love to hear about your experience with SpeakEasy. Please provide any thoughts you may have so that we can improve based on your feedback!
@@ -103,10 +107,10 @@ const CreateReview = () => {
                     </div>
                     <div className="create-review" id="review-btns">
                         <div className="btns">
-                            <button id="submit-btn" value="submit">Submit</button>
+                            <button onClick={handleSubmit} id="submit-btn" value="submit">Submit</button>
                         </div>
                         <div className="btns">
-                            <button id="cancel-btn" value="cancel">Cancel</button>
+                            <button onClick={handleCancel} id="cancel-btn" value="cancel">Cancel</button>
                         </div>
                     </div>
                 </form>
