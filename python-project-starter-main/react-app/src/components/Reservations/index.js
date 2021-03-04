@@ -90,7 +90,7 @@ const Reservations = () => {
   return (
     <>
       <div className="container">
-        <Map lat={venue.lat} lng={venue.lng} />
+        <Map address={venue.street_address} city={venue.city} state={venue.state} />
         <div className="pics">
           <div className="small-pics">
             <img id="img-fit" src={venue.links} />
