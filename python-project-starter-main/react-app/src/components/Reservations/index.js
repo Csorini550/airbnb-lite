@@ -82,7 +82,8 @@ const Reservations = () => {
     history.push(`/create-review/${venueId}`);
   }
 
-  let totalPrice = (total) => {
+  let totalPrice = (e) => {
+    e.preventDefault();
     console.log("total", total)
     console.log("start date", startDate)
     console.log("end date", endDate)
@@ -132,7 +133,7 @@ const Reservations = () => {
               <div>
                 <h3>Price: {venue.price}</h3>
               </div>
-              <form onSubmit={handleSubmit}>
+              <form>
                 <div>
                   <label>
                     Check in Date
@@ -164,7 +165,7 @@ const Reservations = () => {
                   <h3>Total Price: ${total}</h3>
                 </div>
                 <div id="reserve-btn">
-                  <button id="reserve">Reserve</button>
+                  <button onClick={handleSubmit} id="reserve">Reserve</button>
                 </div>
               </form>
             </div>
