@@ -14,7 +14,7 @@ const Reservations = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [price, setPrice] = useState("");
-  const [total, setTotal] = useState("");
+
   const [guestCount, setGuestCount] = useState("");
   let { venueId } = useParams();
 
@@ -50,6 +50,7 @@ const Reservations = () => {
   const venue = useSelector((state) => {
     return state.search[venueId]
   });
+  const [total, setTotal] = useState(venue.price);
 
   useEffect(() => {
     dispatch(getVenue(venue.id));
@@ -62,6 +63,7 @@ const Reservations = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(startDate, 'dateeeeeee')
+
     let res = await fetch('/api/reservations/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -71,7 +73,7 @@ const Reservations = () => {
         start_date: startDate,
         end_date: endDate,
         price: venue.price,
-        total: venue.price,
+        total: total,
         guest_count: 1
       })
     });
@@ -80,9 +82,19 @@ const Reservations = () => {
     history.push(`/create-review/${venueId}`);
   }
 
-  // let totalPrice = () => {
-  //     let total = price * days;
-  // };
+  let totalPrice = (e) => {
+    e.preventDefault();
+    console.log("total", total)
+    console.log("start date", startDate)
+    console.log("end date", endDate)
+    let end = endDate.split("-")
+    let finalDate = parseInt(end[2])
+    let start = startDate.split("-")
+    let beginDate = parseInt(start[2])
+    let endPrice = Math.abs(venue.price * (finalDate - beginDate));
+    console.log("endPrice", endPrice)
+    setTotal(endPrice)
+  };
 
   // Prevents "undefined" error from trying to load before state is updated
   if (Object.keys(venue).length === 0) return null;
@@ -121,7 +133,7 @@ const Reservations = () => {
               <div>
                 <h3>Price: {venue.price}</h3>
               </div>
-              <form onSubmit={handleSubmit}>
+              <form>
                 <div>
                   <label>
                     Check in Date
@@ -147,13 +159,13 @@ const Reservations = () => {
                   </label>
                 </div>
                 <div id="reserve-btn">
-                  <button id="availability">Check Availability</button>
+                  <button onClick={totalPrice} id="availability">Check Total Price</button>
                 </div>
                 <div>
-                  <h3>Total Price: {venue.price}</h3>
+                  <h3>Total Price: ${total}</h3>
                 </div>
                 <div id="reserve-btn">
-                  <button id="reserve">Reserve</button>
+                  <button onClick={handleSubmit} id="reserve">Reserve</button>
                 </div>
               </form>
             </div>
