@@ -63,6 +63,7 @@ const Reservations = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(startDate, 'dateeeeeee')
+
     let res = await fetch('/api/reservations/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -72,7 +73,7 @@ const Reservations = () => {
         start_date: startDate,
         end_date: endDate,
         price: venue.price,
-        total: totalPrice,
+        total: total,
         guest_count: 1
       })
     });
