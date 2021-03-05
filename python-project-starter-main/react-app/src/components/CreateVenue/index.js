@@ -48,7 +48,6 @@ const CreateVenue = () => {
         return state.venue;
     })
     const venueId = Object.values(venue).length + 1
-    console.log(venueId, "IM VENUEID!!!!")
 
     // Change state for dropdown menus
     const handleVenueTypeChange = (e) => {
@@ -97,8 +96,11 @@ const CreateVenue = () => {
             city,
             state
         }
-        dispatch(createVenueForm(newVenue));
-        dispatch(searchById(venueId));
+        
+        // NEED TO MAKE SURE SEARCH BY ID IS BEING EXECUTED AFTER VENUE IS CREATED
+        dispatch(createVenueForm(newVenue)).then(() => {
+            dispatch(searchById(venueId))
+        })
 
         // if (Object.keys(venue).length === 0) return null;
 

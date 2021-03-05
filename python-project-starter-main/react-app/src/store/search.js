@@ -41,7 +41,7 @@ export const onlineExperienceTypeSearch = (searchTerm) => {
 export const searchById = (venueId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/results/id/${venueId}`);
-        dispatch(searchVenuesAction(res.data), console.log(res.data));
+        dispatch(searchVenuesAction(res.data));
     };
 }
 

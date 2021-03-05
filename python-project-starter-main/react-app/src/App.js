@@ -38,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
-      <Footer setAuthenticated={setAuthenticated} />
+      {/* <Footer setAuthenticated={setAuthenticated} /> */}
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
