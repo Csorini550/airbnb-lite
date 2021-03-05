@@ -41,13 +41,14 @@ const CreateVenue = () => {
 
 
 
-
     const loggedInUser = useSelector((state) => {
         return state.session.user;
     });
     const venue = useSelector((state) => {
         return state.venue;
     })
+    const venueId = Object.values(venue).length + 1
+    console.log(venueId, "IM VENUEID!!!!")
 
     // Change state for dropdown menus
     const handleVenueTypeChange = (e) => {
@@ -103,8 +104,8 @@ const CreateVenue = () => {
         //help
         //i should have access to all the venues ever made but for what ever reason they arent showing up in the redux so this gives you undefined
         // change line107 to history.push(/media/${<one higher than how ever many venues we have in our db i.e. 50>}) for presentation
-        const venueId = Object.keys(venue).length - 1
-        history.push(`/media/19`)
+
+        history.push(`/media/${venueId}`)
 
 
     }

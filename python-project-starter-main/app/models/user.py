@@ -57,7 +57,7 @@ class Venue(db.Model):
     has_rooftop = db.Column(db.Boolean, nullable=False)
     has_heated_outdoor_seating = db.Column(db.Boolean, nullable=False)
     has_liquor = db.Column(db.Boolean, nullable=False)
-    price = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     update_at = db.Column(db.DateTime, nullable=False)
     has_beer = db.Column(db.Boolean, nullable=False)
