@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { noSearch } from '../store/search';
+// import { noSearch } from '../store/search';
+import { stateSearch } from '../store/search'
 import { getMedia } from "../store/media"
 import Map from './Map';
 import './SearchResults.css'
@@ -14,6 +15,11 @@ const SearchResults = () => {
     return Object.values(state.search)
   });
 
+  const searchByState = (state) => {
+    let searchTerm = state
+    return dispatch(stateSearch(searchTerm))
+  }
+
   //help
   //allows us to key inot media to get the url
   // we will change all venue.links to media.links
@@ -25,8 +31,25 @@ const SearchResults = () => {
   // IF THERE'S NO VENUES IN THE STORE (SOMEONE DIDN'T SEARCH FOR A VENUE) THEN THIS GRABS ALL VENUES AND DISPLAYS THEM
   // SO THAT THE PAGE WILL NOT BE BLANK
   if (venues.length < 1) {
-    venues = dispatch(noSearch())
-    return venues = Object.values(venues)
+    
+    return (
+      <>
+        <div className="event-container">
+          <h2 id="results">Sorry, there are no matching events for the searched criteria.</h2>
+          <h4 className='no-events-heading'> Create an event or check out popular events near you. </h4>
+          <div className='no-search-results-div'>
+            <button>
+              <Link to={`/create-venue`} key='event' className='link'>Create An Event</Link>
+            </button>
+            <button>
+              <Link onClick={() => searchByState('Illinois')} className="state-link" to="/results" >Popular Events</Link>
+            </button>
+          </div>
+        </div>
+      </>
+    )
+    // venues = dispatch(noSearch())
+    // return venues = Object.values(venues)
   }
 
   //help

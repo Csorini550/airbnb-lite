@@ -18,21 +18,47 @@ def venue_results():
     venues = Venue.query.all()
     return {"venues": venue.to_dict() for venue in venues}
 
-# FIND VENUE BY CITY OR STATE
-@results_routes.route('/<searchTerm>')
-def venues_by_city_or_state(searchTerm):
-    venues_room_type = Venue.query.filter(Venue.room_type.ilike(f'{searchTerm}%')).all()
-    venues_state = Venue.query.filter(Venue.state.ilike(f'{searchTerm}%')).all()
+# FIND VENUE BY ROOM TYPE
+
+
+@results_routes.route('/venue/<searchTerm>')
+def venues_by_room_type(searchTerm):
+    venues_room_type = Venue.query.filter(
+        Venue.room_type.ilike(f'{searchTerm}%')).all()
+    venues_state = Venue.query.filter(
+        Venue.state.ilike(f'{searchTerm}%')).all()
     venues_type = Venue.query.filter(Venue.type.ilike(f'{searchTerm}%')).all()
     if venues_room_type:
         return {venue.id: venue.to_dict() for venue in venues_room_type}
-    elif venues_state:
+    else:
+        return '<h1>None</>'
+
+# SEARCH BY LOCATION
+
+
+@results_routes.route('/location/<searchTerm>')
+def venues_by_city_or_state(searchTerm):
+    venues_state = Venue.query.filter(
+        Venue.state.ilike(f'{searchTerm}%')).all()
+    venues_type = Venue.query.filter(Venue.type.ilike(f'{searchTerm}%')).all()
+    if venues_state:
         return {venue.id: venue.to_dict() for venue in venues_state}
     elif venues_type:
         return {venue.id: venue.to_dict() for venue in venues_type}
     else:
         return '<h1>None</>'
 
+# SEARCH FOR ONLINE EXPERIENCES BY TYPE
+
+
+@results_routes.route('/online/<searchTerm>')
+def online_experience_by_type(searchTerm):
+    online_experience_type = Venue.query.filter(
+        Venue.room_type.ilike(f'{searchTerm}%'), Venue.type.ilike('Online')).all()
+    if online_experience_type:
+        return {venue.id: venue.to_dict() for venue in online_experience_type}
+    else:
+        return '<h1>None</>'
 
 
 @results_routes.route('/', methods=['POST'])
@@ -50,4 +76,3 @@ def search_query():
     elif venues_state:
         return {"venues": venue.to_dict() for venue in venues_state}
     return '<h1>None</h1>'
-
