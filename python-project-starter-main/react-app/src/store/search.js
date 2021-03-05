@@ -9,19 +9,29 @@ const searchVenuesAction = (results) => ({
 });
 
 
-export const pictureSearch = (searchTerm) => {
+export const roomTypeSearch = (searchTerm) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/results/${searchTerm}`)
-        console.log(res.data)
+        const res = await fetch(`/api/results/venue/${searchTerm}`)
         dispatch(
             searchVenuesAction(res.data)
         );
     };
 };
 
-export const searchByState = (searchTerm) => {
+export const stateSearch = (searchTerm) => {
+    
     return async (dispatch) => {
-        const res = await fetch(`/api/results/${searchTerm}`)
+        const res = await fetch(`/api/results/location/${searchTerm}`)
+        dispatch(
+            searchVenuesAction(res.data)
+        )
+    }
+}
+
+export const onlineExperienceTypeSearch = (searchTerm) => {
+    
+    return async (dispatch) => {
+        const res = await fetch(`/api/results/online/${searchTerm}`)
         dispatch(
             searchVenuesAction(res.data)
         )
@@ -48,7 +58,6 @@ export const search = (search) => {
 export const noSearch = () => {
     return async (dispatch) => {
         const res = await fetch(`/api/venues/`)
-        console.log(res.data)
         dispatch(
             searchVenuesAction(res.data)
         );

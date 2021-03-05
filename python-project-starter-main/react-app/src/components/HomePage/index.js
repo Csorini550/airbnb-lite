@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from "react";
-import { pictureSearch, searchByState } from '../../store/search'
+import { roomTypeSearch, stateSearch, onlineExperienceTypeSearch } from '../../store/search'
 import cooking from "./cooking.jpg"
 import chicago from "./pizza.jpg"
 import drink from "./drink-making.jpg"
@@ -46,9 +46,9 @@ let states = [
     { text: "Mississippi" },
     { text: "Montana" },
     { text: "North Carolina" },
-    { text: " North Dakota" },
+    { text: "North Dakota" },
     { text: "Nebraska" },
-    { text: "New Hamps}hire" },
+    { text: "New Hampshire" },
     { text: "New Jersey" },
     { text: "New Mexico" },
     { text: "Nevada" },
@@ -80,12 +80,12 @@ let venueTypes = [
     { text: "Venue with a view", img: rooftopBar, type: 'View' },
     { text: "Heated Outdoor Seating", img: heatedSeating, type: 'HeatedOutdoorSeating' }
 ]
-
+// SEARCH ONLINE EXPERIENCES FOR TYPE. HAS TO BE ONE WORD. CURRENTLY NO SEEDERS IN DATABASE FOR ONLINE EXPERIENCE
 let onlineExperiences = [
-    { text: "Cocktail making", img: drink },
-    { text: "Cooking with a master chef", img: cooking },
-    { text: "Decorating & Plating entres", img: plating },
-    { text: "Chicago Pizza Making", img: chicago }
+    { text: "Cocktail making", img: drink, type: 'Cocktail' },
+    { text: "Cooking with a master chef", img: cooking, type: 'Cooking' },
+    { text: "Decorating & Plating entres", img: plating, type: 'Decorating' },
+    { text: "Chicago Pizza Making", img: chicago, type: 'ChicagoPizza' }
 ]
 
 let hostOptions = [
@@ -103,19 +103,19 @@ const Home = () => {
 
     const dispatch = useDispatch();
 
-    const searchPicture = (venueType) => {
+    const searchByRoomType = (venueType) => {
         let searchTerm = venueType.type
-        return dispatch(pictureSearch(searchTerm))
+        return dispatch(roomTypeSearch(searchTerm))
     }
 
     const searchByState = (state) => {
         let searchTerm = state.text
-        return dispatch(pictureSearch(searchTerm))
+        return dispatch(stateSearch(searchTerm))
     }
 
-    const searchByRoomType = (onlineExperience) => {
-        let searchTerm = onlineExperience.text
-        return dispatch(pictureSearch(searchTerm))
+    const searchOnlineExperience = (onlineExperience) => {
+        let searchTerm = onlineExperience.type
+        return dispatch(onlineExperienceTypeSearch(searchTerm))
     }
 
 
@@ -133,7 +133,7 @@ const Home = () => {
                     {venueTypes.map((venueType) => {
                         return (
                             <div className="img">
-                                <Link onClick={() => searchPicture(venueType)} to='/results' className="venueType link">
+                                <Link onClick={() => searchByRoomType(venueType)} to='/results' className="venueType link">
                                     <h4>{venueType.text}</h4>
                                     <img id="img" className="online-image" src={venueType.img} />
                                 </Link>
@@ -165,7 +165,7 @@ const Home = () => {
                     return (
                         <div className="img">
                             <h4>{onlineExperience.text}</h4>
-                            <Link onClick={() => searchByRoomType(onlineExperience)} className="link" to="/results" >
+                            <Link onClick={() => searchOnlineExperience(onlineExperience)} className="link" to="/results" >
                                 <img id="img" className="online-image" src={onlineExperience.img} />
                             </Link>
                         </div>
