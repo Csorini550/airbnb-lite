@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { noSearch } from '../../store/search';
+import { noSearch, searchById } from '../../store/search';
 import { useHistory } from 'react-router-dom';
 import { createVenueForm, getAllVenues } from "../../store/venue"
 import './CreateVenue.css';
@@ -97,7 +97,8 @@ const CreateVenue = () => {
             city,
             state
         }
-        dispatch(createVenueForm(newVenue))
+        dispatch(createVenueForm(newVenue));
+        dispatch(searchById(venueId));
 
         // if (Object.keys(venue).length === 0) return null;
 
