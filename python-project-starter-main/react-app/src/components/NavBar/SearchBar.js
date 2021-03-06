@@ -8,8 +8,8 @@ const SearchBar = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [guestCount, setGuestCount] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -36,7 +36,7 @@ const SearchBar = () => {
     //   return dispatch(search({searchTerm}), setSearchTerm(''), history.push('/results') )
     // }
     if (location) {
-      return dispatch(search({ location, date, time, guestCount }), history.push('/results'))
+      return dispatch(search({ location, setStartDate, setEndDate, guestCount }), history.push('/results'))
     }
 
 
@@ -57,21 +57,21 @@ const SearchBar = () => {
             ></input>
           </div>
           <div className="search">
-            <div>Date</div>
+            <div>Start Date</div>
             <input
               type="date"
-              value={date}
+              value={startDate}
               placeholder="Add date"
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => setStartDate(e.target.value)}
             ></input>
           </div>
           <div className="search">
-            <div>Time</div>
+            <div>End Date</div>
             <input
-              type="time"
-              value={time}
-              placeholder="Add time"
-              onChange={(e) => setTime(e.target.value)}
+              type="date"
+              value={endDate}
+              placeholder="Add date"
+              onChange={(e) => setEndDate(e.target.value)}
             ></input>
           </div>
           <div className="search" id="guests">

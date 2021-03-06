@@ -16,6 +16,7 @@ import SearchResults from "./components/SearchResults";
 import VenueReview from "./components/VenueReview";
 import VenueInfo from "./components/VenueInfo";
 import Media from "./components/Media"
+import NavBar2 from "./components/NavBar/NavBar2";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar2 setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
