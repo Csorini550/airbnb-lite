@@ -1,21 +1,21 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .event-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
 }
 
 h2#results {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-top: 40px;
 }
 
 .individualVenue {
@@ -59,9 +59,20 @@ h2#results {
 }
 
 div#map-container {
-    width: 100%;
+  width: 100%;
 }
 
 #forceImgUp {
-  margin-top: -150px
+  margin-top: -150px;
+}
+
+.no-events-heading {
+  margin-top: 20px;
+}
+
+.no-search-results-div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 500px;
 }

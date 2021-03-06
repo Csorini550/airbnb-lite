@@ -148,8 +148,8 @@ def seed_users():
         twentyone_plus=True,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Oklahoma",
+        city="Tulsa",
         links="https://cdn.pixabay.com/photo/2013/11/12/01/29/bar-209148_1280.jpg"
     )
     venue6 = Venue(
@@ -173,8 +173,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Wisconsin",
+        city="Milwaukee",
         links="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_1280.jpg"
     )
     venue7 = Venue(
@@ -198,8 +198,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Texas",
+        city="Houston",
         links="https://cdn.pixabay.com/photo/2015/04/20/13/43/illumination-731494_1280.jpg"
     )
     venue8 = Venue(
@@ -223,8 +223,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=True,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Washington",
+        city="Seattle",
         links="https://cdn.pixabay.com/photo/2016/11/21/16/02/bar-1846137_1280.jpg"
     )
     venue9 = Venue(
@@ -248,8 +248,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=True,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Illinois",
+        city="Springfield",
         links="https://cdn.pixabay.com/photo/2016/11/18/22/21/architecture-1837150_1280.jpg"
     )
     venue10 = Venue(
@@ -273,8 +273,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=True,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Michigan",
+        city="Detroit",
         links="https://cdn.pixabay.com/photo/2015/09/02/12/35/bar-918541_1280.jpg"
     )
     venue11 = Venue(
@@ -298,8 +298,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Michigan",
+        city="Grand Rapids",
         links="https://cdn.pixabay.com/photo/2015/09/02/12/35/bar-918541_1280.jpg"
     )
     venue12 = Venue(
@@ -323,8 +323,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Michigan",
+        city="Kalamazoo",
         links="https://cdn.pixabay.com/photo/2015/07/02/10/27/bar-828768_1280.jpg"
     )
     venue13 = Venue(
@@ -348,8 +348,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Alabama",
+        city="Montgomery",
         links="https://cdn.pixabay.com/photo/2016/10/16/21/13/drinks-1746272_1280.jpg"
     )
     venue14 = Venue(
@@ -373,8 +373,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Virginia",
+        city="Richmond",
         links="https://cdn.pixabay.com/photo/2018/09/04/02/13/pool-bar-3652849_1280.jpg"
     )
     venue15 = Venue(
@@ -398,8 +398,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Illinois",
+        city="Chicago",
         links="https://cdn.pixabay.com/photo/2015/03/26/09/42/breakfast-690128_1280.jpg"
     )
     venue16 = Venue(
@@ -423,8 +423,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="Florida",
+        city="Miami",
         links="https://cdn.pixabay.com/photo/2017/08/17/00/26/breakfast-2649620_1280.jpg"
     )
     venue17 = Venue(
@@ -448,8 +448,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="California",
+        city="Los Angeles",
         links="https://cdn.pixabay.com/photo/2017/08/07/11/14/restaurant-2602736_1280.jpg"
     )
     venue18 = Venue(
@@ -473,8 +473,8 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Chicago",
-        city="Illinois",
+        state="California",
+        city="San Francisco",
         links="https://cdn.pixabay.com/photo/2017/03/27/14/21/chairs-2179044_1280.jpg"
     )
 

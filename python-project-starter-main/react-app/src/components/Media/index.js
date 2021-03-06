@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createMedia } from "../../store/media"
 import { useHistory, useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react";
-import { getVenue } from "../../store/venue"
+import { getVenue, getAllVenues } from "../../store/venue"
 import { getMedia } from "../../store/media"
 import "./TEST.css"
 
@@ -36,7 +36,7 @@ const Media = () => {
     // const venueId = Object.keys(venue).length - 1
 
     useEffect(() => {
-        // dispatch(getVenue(venue.id))
+        dispatch(getAllVenues())
         dispatch(getMedia(venueId))
     }, [])
 
@@ -62,7 +62,7 @@ const Media = () => {
         //help
         //i should have access to venueId via use params but i cant get the venues to show up in state from create-venues
         // change line64 to history.push(/reservations/${<one higher than how ever many venues we have in our db i.e. 50>}) for presentation
-        history.push(`/reservations/19`)
+        history.push(`/reservations/${venueId}`)
     }
     //for panic
 

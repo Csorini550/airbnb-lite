@@ -52,9 +52,8 @@ export const getVenue = (venueId) => {
 export const getAllVenues = () => {
     return async (dispatch) => {
         const res = await fetch(`/api/venues/`);
-        const data = res.json();
+        const data = await res.json();
         dispatch(getAllVenuesAction(data));
-        console.log(data, "I'mDATA!!!1")
         return data;
     };
 }
