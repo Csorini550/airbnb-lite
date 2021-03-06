@@ -9,10 +9,10 @@ const Map = ({ address, city, state }) => {
   let geocoded;
   let oneLineAddress = `${address} ${city} ${state}`;
 
-  // const { isLoaded, loadError } = useJsApiLoader({
-  //   googleMapsApiKey: "AIzaSyCJMuSmneTfi_MCV_-PK-DpQSOA7-aw4uU" // ,
-  //   // ...otherOptions
-  // })
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyCJMuSmneTfi_MCV_-PK-DpQSOA7-aw4uU" // ,
+    // ...otherOptions
+  })
 
 
   const mapContainerStyle = {
@@ -38,14 +38,14 @@ const Map = ({ address, city, state }) => {
   //     }
   //   )
   return <GoogleMap
-  // options={options}
-  // onLoad={onLoad}
-  // mapContainerStyle={mapContainerStyle}
-  // zoom={13}
-  // center={geocoded}
+    // options={options}
+    // onLoad={onLoad}
+    mapContainerStyle={mapContainerStyle}
+    zoom={13}
+    center={geocoded}
   >
 
-    {/* <Marker position={geocoded} /> */}
+    <Marker position={geocoded} />
 
   </GoogleMap>
 }
