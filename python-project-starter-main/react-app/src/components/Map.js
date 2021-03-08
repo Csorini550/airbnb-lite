@@ -13,45 +13,37 @@ const Map = ({ lat, lng }) => {
     // ...otherOptions
   })
 
+  const defaultCenter = {
+    lat: lat,
+    lng: lng
+  }
 
   const mapContainerStyle = {
     width: "100%",
     height: "200px",
   }
 
-  return <GoogleMap
+
+  if (loadError) {
+    return <div>Map cannot be loaded right now, sorry.</div>
+  }
+
+  return isLoaded ? (<GoogleMap
     // options={options}
     // onLoad={onLoad}
     mapContainerStyle={mapContainerStyle}
     zoom={13}
-    center={geocoded}
+    center={defaultCenter}
   >
 
-    <Marker position={geocoded} />
+    <Marker position={defaultCenter} />
 
-  </GoogleMap>
+  </GoogleMap>) : null
 }
 
 
-// if (loadError) {
-//   return <div>Map cannot be loaded right now, sorry.</div>
-// }
-
-// return isLoaded ? renderMap() : null
-// }
 
 
-
-
-// const defaultCenter = {
-//   lat: 37.772,
-//   lng: -122.214
-// }
-
-// const defaultPosition = {
-//   lat: 37.772,
-//   lng: -122.214
-// }
 
 
 export default Map;
