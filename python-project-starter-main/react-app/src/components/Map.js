@@ -5,9 +5,8 @@ import { Circle, GoogleMap, LoadScript, Marker, useJsApiLoader } from '@react-go
 
 
 
-const Map = ({ address, city, state }) => {
-  let geocoded;
-  let oneLineAddress = `${address} ${city} ${state}`;
+const Map = ({ lat, lng }) => {
+
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCJMuSmneTfi_MCV_-PK-DpQSOA7-aw4uU" // ,
@@ -20,23 +19,6 @@ const Map = ({ address, city, state }) => {
     height: "200px",
   }
 
-  // const renderMap = () => {
-  //   // wrapping to a function is useful in case you want to access `window.google`
-  //   // to eg. setup options or create latLng object, it won't be available otherwise
-  //   // feel free to render directly if you don't need that
-  //   const onLoad = useCallback(
-  //     function onLoad(mapInstance) {
-  //       const geocoder = new google.maps.Geocoder();
-  //       geocoder.geocode({ 'address': oneLineAddress }, function (results, status) {
-  //         if (status == 'OK') {
-  //           geocoded = results[0].geometry.location;
-
-  //         } else {
-  //           alert('Geocode was not successful for the following reason: ' + status);
-  //         }
-  //       })
-  //     }
-  //   )
   return <GoogleMap
     // options={options}
     // onLoad={onLoad}
