@@ -15,6 +15,7 @@ import restaurant from "./restaurant.jpg"
 import barCar from "./cartoonBar.jpg"
 import onlineCar from "./onlineCartoon.jpg"
 import outsideCar from "./outsideCartoon.jpg"
+import reserved from "./543675208-huge.jpg"
 import "./HomePage.css"
 
 
@@ -73,12 +74,10 @@ let states = [
 
 // USED ONE WORD FOR TYPE IN ORDER TO SEARCH DATABASE IN BACKEND. DATABASE ROOM_TYPE MUST MATCH
 let venueTypes = [
-    { text: "Tiki Bar", img: tikiBar, type: 'Tiki' },
-    { text: "Sports Bar", img: sportsBar, type: 'Sports' },
+
     { text: "Restaurant", img: restaurant, type: 'Restaurant' },
-    { text: "Kid Friendly", img: kidFriendly, type: 'KidFriendly' },
-    { text: "Venue with a view", img: rooftopBar, type: 'View' },
-    { text: "Heated Outdoor Seating", img: heatedSeating, type: 'HeatedOutdoorSeating' }
+    { text: "Bar", img: sportsBar, type: 'Sports' },
+    { text: "Event Space", img: rooftopBar, type: 'View' },
 ]
 // SEARCH ONLINE EXPERIENCES FOR TYPE. HAS TO BE ONE WORD. CURRENTLY NO SEEDERS IN DATABASE FOR ONLINE EXPERIENCE
 let onlineExperiences = [
@@ -86,6 +85,15 @@ let onlineExperiences = [
     { text: "Cooking with a master chef", img: cooking, type: 'Cooking' },
     { text: "Decorating & Plating entres", img: plating, type: 'Decorating' },
     { text: "Chicago Pizza Making", img: chicago, type: 'ChicagoPizza' }
+]
+
+let categories = [
+    { text: "Heated Outdoor Seating", img: heatedSeating, type: 'HeatedOutdoorSeating' },
+    { text: "Tiki Bar", img: tikiBar, type: 'Tiki' },
+    { text: "Kid Friendly", img: kidFriendly, type: 'KidFriendly' },
+    { text: "Venue with a view", img: rooftopBar, type: 'View' },
+    { text: "Sports Bar", img: sportsBar, type: 'Sports' },
+
 ]
 
 let hostOptions = [
@@ -123,51 +131,55 @@ const Home = () => {
         <>
             <div className="home-main">
                 <div className="home-header">
-                    <h1 className="font">Welcome to SpeakEasy</h1>
-                    <h2>It's never been so easy to host private events at your favorite venues</h2>
+                    <h1 className="font splash-head">Welcome to SpeakEasy</h1>
+                    <h2 className="home-splash">It's never been so easy</h2>
+                    <h2 className="home-splash">to host private events</h2>
+                    <h2 className="home-splash">at your favorite venues</h2>
                 </div>
-                <div>
+                <div className='home-categories'>
                     <div className="venuehome">
-                        <h3 className="font">Types of venues</h3>
+                        <h3 className="font homepage-headers">Types of venues</h3>
                     </div>
-                    {venueTypes.map((venueType) => {
+                    <div className="home-row">
+                        {venueTypes.map((venueType) => {
+                            return (
+                                <div className="img">
+                                    <Link onClick={() => searchByRoomType(venueType)} to='/results' className="venueType link">
+                                        <img className="online-image" src={venueType.img} />
+                                        <h4 className="home-labels">{venueType.text}</h4>
+                                    </Link>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>
+            <div className="onlineh3 textHome">
+                <h3 className="white font">Join millions of hosts on SpeakEasy</h3>
+                <div className="div experience">
+                    {hostOptions.map((hostOption) => {
                         return (
-                            <div className="img">
-                                <Link onClick={() => searchByRoomType(venueType)} to='/results' className="venueType link">
-                                    <h4>{venueType.text}</h4>
-                                    <img id="img" className="online-image" src={venueType.img} />
+                            <div className="img experience-block">
+                                <Link className="link experience-link" to="/create-venue">
+                                    <img className="car-image" src={hostOption.img} />
+                                    <h4>{hostOption.text}</h4>
                                 </Link>
                             </div>
                         )
                     })}
                 </div>
             </div>
-            <div className="onlineh3 textHome">
-                <h3 className="white font">Join millions of hosts on SpeakEasy</h3>
-            </div>
-            <div className="div experience">
-                {hostOptions.map((hostOption) => {
-                    return (
-                        <div className="img experience-block">
-                            <Link id="experience-link" className="link" to="/create-venue">
-                                <img id="img" className="car-image" src={hostOption.img} />
-                                <h4>{hostOption.text}</h4>
-                            </Link>
-                        </div>
-                    )
-                })}
-            </div>
             <div className="textHome">
-                <h3 className="font">Choose an Online Experience</h3>
+                <h3 className="font homepage-headers">Choose an Online Experience</h3>
             </div>
             <div className="div hosts">
                 {onlineExperiences.map((onlineExperience) => {
                     return (
-                        <div className="img">
-                            <h4>{onlineExperience.text}</h4>
+                        <div className="img online-image">
                             <Link onClick={() => searchOnlineExperience(onlineExperience)} className="link" to="/results" >
-                                <img id="img" className="online-image" src={onlineExperience.img} />
+                                <img className="experience-image" src={onlineExperience.img} />
                             </Link>
+                            <h4>{onlineExperience.text}</h4>
                         </div>
                     )
                 })}

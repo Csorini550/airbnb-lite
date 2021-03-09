@@ -47,7 +47,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit}>
         <div id="search-rows">
           <div className="search">
-            <div>Location</div>
+            <div className="search-text">Location</div>
             <input
               type="text"
               value={location}
@@ -57,7 +57,7 @@ const SearchBar = () => {
             ></input>
           </div>
           <div className="search">
-            <div>Start Date</div>
+            <div className="search-text">Start Date</div>
             <input
               type="date"
               value={startDate}
@@ -66,7 +66,7 @@ const SearchBar = () => {
             ></input>
           </div>
           <div className="search">
-            <div>End Date</div>
+            <div className="search-text">End Date</div>
             <input
               type="date"
               value={endDate}
@@ -75,7 +75,7 @@ const SearchBar = () => {
             ></input>
           </div>
           <div className="search" id="guests">
-            <div>Guests</div>
+            <div className="search-text">Guests</div>
             <input
               type="number"
               value={guestCount}

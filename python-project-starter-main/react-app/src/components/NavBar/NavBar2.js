@@ -37,9 +37,7 @@ const NavBar2 = ({ setAuthenticated }) => {
         <div className="navtext hover-shadow">
           <div className="navtext">Venues to Book</div>
         </div>
-        <div className="navtext hover-shadow">
-          <div className="navtext">Experiences</div>
-        </div>
+
         <div className="navtext hover-shadow">
           <NavLink className="navtext" to="/create-venue/" exact={true} activeClassName="active">
             <div className="navtext">Online Experiences</div>
