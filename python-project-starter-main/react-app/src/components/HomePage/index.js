@@ -170,19 +170,22 @@ const Home = () => {
                 </div>
             </div>
             <div className="textHome">
-                <h3 className="font homepage-headers">Choose an Online Experience</h3>
-            </div>
-            <div className="div hosts">
-                {onlineExperiences.map((onlineExperience) => {
-                    return (
-                        <div className="img online-image">
-                            <Link onClick={() => searchOnlineExperience(onlineExperience)} className="link" to="/results" >
-                                <img className="experience-image" src={onlineExperience.img} />
-                            </Link>
-                            <h4>{onlineExperience.text}</h4>
-                        </div>
-                    )
-                })}
+                <div className="experience-categories">
+
+                    <h3 className="font homepage-headers">Choose an Online Experience</h3>
+                </div>
+                <div className="div hosts">
+                    {onlineExperiences.map((onlineExperience) => {
+                        return (
+                            <div className="img online-image">
+                                <Link onClick={() => searchOnlineExperience(onlineExperience)} className="link" to="/results" >
+                                    <img className="experience-image" src={onlineExperience.img} />
+                                </Link>
+                                <h4 className="exp-labels">{onlineExperience.text}</h4>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
             <h3 className="font-states">Inspiration for future getaways</h3>
             <div className="states">

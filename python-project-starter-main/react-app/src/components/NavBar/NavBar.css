@@ -140,8 +140,8 @@ body {
   /* position: absolute; */
   padding: 20px;
   color: #222222;
-  width: 80%;
-  
+  width: 75%;
+  justify-content: space-evenly;
   
   
 }
@@ -273,4 +273,8 @@ div.profile-menu {
   /* width: 80%; */
 }
 
+
+.search-text {
+  font-weight: 600;
+}
 
