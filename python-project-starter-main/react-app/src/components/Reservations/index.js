@@ -101,7 +101,7 @@ const Reservations = () => {
 
   return (
     <>
-      <div className="container">
+      <div id="venue-map" className="container">
         <Map lat={venue.lat} lng={venue.lng} />
         <div className="pics">
           <div className="small-pics">

@@ -38,7 +38,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <NavBar setAuthenticated={setAuthenticated} /> */}
+      <SplashNav setAuthenticated={setAuthenticated} />
       <Footer setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
@@ -57,7 +57,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <SplashNav />
+          {/* <SplashNgtvhjav /> */}
           <HomePage />
         </ProtectedRoute>
         <ProtectedRoute path="/media/:venueId" exact={true} authenticated={authenticated}>
