@@ -1,6 +1,7 @@
-.main-footer {
+#main-footer {
   /* margin-bottom: -50px; */
   bottom: 0;
+  left: 0;
   /* padding:100px; */
     position:fixed;
 
@@ -27,11 +28,11 @@
     border-radius: 37.5px;
     
 }
-.footer-container {
+#footer-container {
 margin-bottom: 20px;
 }
 
-.footer-container h1 {
+#footer-container h1 {
 margin-left: 30px;
 }
 

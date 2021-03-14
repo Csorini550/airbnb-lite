@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { login, setUser } from "../../store/session";
 import { useDispatch } from 'react-redux'
 import "./LoginForm.css";
+import Footer from "../../components/Footer"
 
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -85,6 +86,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           </div>
         </div>
       </form>
+      <Footer />
     </div>
   );
 };

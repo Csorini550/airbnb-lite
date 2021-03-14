@@ -115,10 +115,10 @@ const CreateReview = () => {
                         </div>
                     </div>
                 </form>
+                <Footer />
             </div>
             {/* <div className="create-review" id="review-pics"> */}
             <div>
-                <Footer />
                 {/* <div id="pic-large"></div>
                 <div id="small-pic-container">
                     <div id="pic-small"></div>

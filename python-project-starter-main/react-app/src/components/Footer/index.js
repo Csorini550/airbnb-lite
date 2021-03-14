@@ -8,8 +8,8 @@ const Footer = () => {
 
 
     return (
-        <div className="main-footer">
-            <div className="footer-container">
+        <div id="main-footer">
+            <div id="footer-container">
                 <a href="https://github.com/Csorini550"> <AiFillGithub className="icon" /> </a>
                 <a href="http://chrissorini.com/">
                     <img title="Portfoli Website" className="image-wrap" src={chrisPic} id="personal-pic"></img>
@@ -18,7 +18,7 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/in/christopher-t-41a491206/"> <AiFillLinkedin className="icon" /> </a>
                 <h1>Chris Sorini</h1>
             </div>
-            <div className="footer-container">
+            <div id="footer-container">
                 <a href="https://github.com/Csorini550"> <AiFillGithub className="icon" /> </a>
                 <a href="http://chrissorini.com/">
                     <img title="Portfoli Website" className="image-wrap" src={chrisPic} id="personal-pic"></img>
@@ -27,7 +27,7 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/in/christopher-t-41a491206/"> <AiFillLinkedin className="icon" /> </a>
                 <h1>Angelica Wilson</h1>
             </div>
-            <div className="footer-container">
+            <div id="footer-container">
                 <a href="https://github.com/Csorini550"> <AiFillGithub className="icon" /> </a>
                 <a href="http://chrissorini.com/">
                     <img title="Portfoli Website" src={chrisPic} id="personal-pic"></img>
