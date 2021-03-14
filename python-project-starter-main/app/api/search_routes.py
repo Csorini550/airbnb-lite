@@ -18,6 +18,16 @@ def venue_results():
     venues = Venue.query.all()
     return {"venues": venue.to_dict() for venue in venues}
 
+
+@results_routes.route('/id/<int:venueId>')
+def venue_by_id(venueId):
+    venue = Venue.query.get(venueId)
+    if venue:
+        return {
+            venue.id: venue.to_dict()
+        }
+    return '<h1>Could not find venue</h1>'
+
 # FIND VENUE BY ROOM TYPE
 
 

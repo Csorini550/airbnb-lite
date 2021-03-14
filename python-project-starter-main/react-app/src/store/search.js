@@ -38,6 +38,13 @@ export const onlineExperienceTypeSearch = (searchTerm) => {
     }
 }
 
+export const searchById = (venueId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/results/id/${venueId}`);
+        dispatch(searchVenuesAction(res.data));
+    };
+}
+
 export const search = (search) => {
     const { location, date, time, guestCount } = search
     return async (dispatch) => {

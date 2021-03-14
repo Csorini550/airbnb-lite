@@ -17,6 +17,7 @@ import VenueReview from "./components/VenueReview";
 import VenueInfo from "./components/VenueInfo";
 import Media from "./components/Media"
 import Footer from "./components/Footer"
+import SplashNav from "./components/NavBar/SplashNav";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -37,8 +38,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
-      {/* <Footer setAuthenticated={setAuthenticated} /> */}
+      <SplashNav setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -56,6 +56,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+          {/* <SplashNgtvhjav /> */}
           <HomePage />
         </ProtectedRoute>
         <ProtectedRoute path="/media/:venueId" exact={true} authenticated={authenticated}>
