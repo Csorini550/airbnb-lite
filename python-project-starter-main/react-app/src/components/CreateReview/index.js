@@ -6,6 +6,7 @@ import { createReview } from "../../store/reviews";
 import { createReservation, getReservation } from "../../store/reservation";
 import './CreateReview.css';
 import Reservations from '../Reservations';
+import Footer from "../../components/Footer"
 
 const CreateReview = () => {
     const { venueId } = useParams();
@@ -115,12 +116,14 @@ const CreateReview = () => {
                     </div>
                 </form>
             </div>
-            <div className="create-review" id="review-pics">
-                <div id="pic-large"></div>
+            {/* <div className="create-review" id="review-pics"> */}
+            <div>
+                <Footer />
+                {/* <div id="pic-large"></div>
                 <div id="small-pic-container">
                     <div id="pic-small"></div>
                     <div id="pic-small"></div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

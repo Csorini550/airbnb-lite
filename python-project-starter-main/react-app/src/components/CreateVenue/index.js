@@ -72,6 +72,9 @@ const CreateVenue = () => {
     //     setLinks(file);
     // };
     const history = useHistory()
+    const handleCancel = () => {
+        history.push("/")
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -403,7 +406,7 @@ const CreateVenue = () => {
                         <button id="submit-btn" value="submit">Submit</button>
                     </div>
                     <div className="btns">
-                        <button id="cancel-btn" value="cancel">Cancel</button>
+                        <button id="cancel-btn" onClick={handleCancel} value="cancel">Cancel</button>
                     </div>
                 </div>
             </form>
