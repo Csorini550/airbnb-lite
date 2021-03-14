@@ -31,7 +31,7 @@ const SearchResults = () => {
   // IF THERE'S NO VENUES IN THE STORE (SOMEONE DIDN'T SEARCH FOR A VENUE) THEN THIS GRABS ALL VENUES AND DISPLAYS THEM
   // SO THAT THE PAGE WILL NOT BE BLANK
   if (venues.length < 1) {
-    
+
     return (
       <>
         <div className="event-container">
@@ -62,7 +62,7 @@ const SearchResults = () => {
 
       </div>
       <div id="map-container">
-        <Map />
+        {/* <Map /> */}
       </div>
       <h2 id="results">Event spaces near you</h2>
       <div>
@@ -85,7 +85,7 @@ const SearchResults = () => {
                   <p className='price'>Price: ${venue.price}/ night</p>
                 </Link>
                 <div id="forceImgUp">
-                  <img src={venue.links} />
+                  <img className="results-pic" src={venue.links} />
                 </div>
               </div>
             </>

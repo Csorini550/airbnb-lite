@@ -43,13 +43,15 @@ def seed_users():
         has_beer=True,
         has_byob=False,
         has_outdoor_seating=True,
-        name="The Best Bar",
+        name="Gramercy Tavern",
         twentyone_plus=True,
         kid_friendly=False,
-        street_address="1212",
-        state="Illinois",
-        city="Chicago",
-        links="https://cdn.pixabay.com/photo/2016/11/29/12/54/bar-1869656_960_720.jpg"
+        street_address="42 E. 20th Street",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2016/11/29/12/54/bar-1869656_960_720.jpg",
+        lat=40.738380,
+        lng=-73.988430
     )
 
     venue2 = Venue(
@@ -72,10 +74,12 @@ def seed_users():
         name="Frederic's",
         twentyone_plus=False,
         kid_friendly=True,
-        street_address="1212",
-        state="Idaho",
-        city="Boise",
-        links="https://cdn.pixabay.com/photo/2015/03/26/10/28/restaurant-691397_1280.jpg"
+        street_address="175 Canal Street",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2015/03/26/10/28/restaurant-691397_1280.jpg",
+        lat=42.933780,
+        lng=-74.625090
     )
     venue3 = Venue(
 
@@ -97,10 +101,12 @@ def seed_users():
         name="BBQ Inc.",
         twentyone_plus=False,
         kid_friendly=True,
-        street_address="1212",
-        state="Idaho",
-        city="Boise",
-        links="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_1280.jpg"
+        street_address="61 Hester Street",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_1280.jpg",
+        lat=40.715900,
+        lng=-73.990330
     )
     venue4 = Venue(
 
@@ -125,7 +131,9 @@ def seed_users():
         street_address="1212",
         state="Illinois",
         city="Chicago",
-        links="https://cdn.pixabay.com/photo/2020/06/30/15/03/table-5356682_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2020/06/30/15/03/table-5356682_1280.jpg",
+        lat=41.878113,
+        lng=-87.629799
     )
     venue5 = Venue(
 
@@ -147,17 +155,20 @@ def seed_users():
         name="Murphy's",
         twentyone_plus=True,
         kid_friendly=False,
-        street_address="1212",
-        state="Oklahoma",
-        city="Tulsa",
-        links="https://cdn.pixabay.com/photo/2013/11/12/01/29/bar-209148_1280.jpg"
+        street_address="60 East 65th Street",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2013/11/12/01/29/bar-209148_1280.jpg",
+        lat=40.766720,
+        lng=-73.967640
+
     )
     venue6 = Venue(
 
         type="Venue",
         room_type="Restaurant",
         total_occupancy=70,
-        summary="Chic Parisian cafe in the heart of Chicago",
+        summary="Chic Parisian cafe in the heart of NYC",
         has_bar=False,
         has_kitchen=True,
         has_rooftop=False,
@@ -172,10 +183,12 @@ def seed_users():
         name="Angelique's",
         twentyone_plus=False,
         kid_friendly=False,
-        street_address="1212",
-        state="Wisconsin",
-        city="Milwaukee",
-        links="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_1280.jpg"
+        street_address="28 Liberty Street",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_1280.jpg",
+        lat=40.708742,
+        lng=-74.011247
     )
     venue7 = Venue(
 
@@ -197,10 +210,12 @@ def seed_users():
         name="Bonfire",
         twentyone_plus=False,
         kid_friendly=False,
-        street_address="1212",
-        state="Texas",
-        city="Houston",
-        links="https://cdn.pixabay.com/photo/2015/04/20/13/43/illumination-731494_1280.jpg"
+        street_address="121 East 13th Street",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2015/04/20/13/43/illumination-731494_1280.jpg",
+        lat=40.727237,
+        lng=-73.975020
     )
     venue8 = Venue(
 
@@ -222,10 +237,12 @@ def seed_users():
         name="Mishiguene",
         twentyone_plus=False,
         kid_friendly=True,
-        street_address="1212",
-        state="Washington",
-        city="Seattle",
-        links="https://cdn.pixabay.com/photo/2016/11/21/16/02/bar-1846137_1280.jpg"
+        street_address="1212 9th Avenue",
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2016/11/21/16/02/bar-1846137_1280.jpg",
+        lat=40.761845,
+        lng=-73.990345
     )
     venue9 = Venue(
 
@@ -250,7 +267,9 @@ def seed_users():
         street_address="1212",
         state="Illinois",
         city="Springfield",
-        links="https://cdn.pixabay.com/photo/2016/11/18/22/21/architecture-1837150_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2016/11/18/22/21/architecture-1837150_1280.jpg",
+        lat=39.7817,
+        lng=89.6501
     )
     venue10 = Venue(
 
@@ -275,7 +294,9 @@ def seed_users():
         street_address="1212",
         state="Michigan",
         city="Detroit",
-        links="https://cdn.pixabay.com/photo/2015/09/02/12/35/bar-918541_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2015/09/02/12/35/bar-918541_1280.jpg",
+        lat=42.3314,
+        lng=83.0458
     )
     venue11 = Venue(
 
@@ -300,7 +321,9 @@ def seed_users():
         street_address="1212",
         state="Michigan",
         city="Grand Rapids",
-        links="https://cdn.pixabay.com/photo/2015/09/02/12/35/bar-918541_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2015/09/02/12/35/bar-918541_1280.jpg",
+        lat=42.9634,
+        lng=85.6681
     )
     venue12 = Venue(
 
@@ -325,7 +348,9 @@ def seed_users():
         street_address="1212",
         state="Michigan",
         city="Kalamazoo",
-        links="https://cdn.pixabay.com/photo/2015/07/02/10/27/bar-828768_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2015/07/02/10/27/bar-828768_1280.jpg",
+        lat=42.2917,
+        lng=85.5872
     )
     venue13 = Venue(
 
@@ -350,7 +375,9 @@ def seed_users():
         street_address="1212",
         state="Alabama",
         city="Montgomery",
-        links="https://cdn.pixabay.com/photo/2016/10/16/21/13/drinks-1746272_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2016/10/16/21/13/drinks-1746272_1280.jpg",
+        lat=32.3792,
+        lng=86.3077
     )
     venue14 = Venue(
 
@@ -373,9 +400,11 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Virginia",
-        city="Richmond",
-        links="https://cdn.pixabay.com/photo/2018/09/04/02/13/pool-bar-3652849_1280.jpg"
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2018/09/04/02/13/pool-bar-3652849_1280.jpg",
+        lat=40.779396,
+        lng=-73.978329
     )
     venue15 = Venue(
 
@@ -400,7 +429,9 @@ def seed_users():
         street_address="1212",
         state="Illinois",
         city="Chicago",
-        links="https://cdn.pixabay.com/photo/2015/03/26/09/42/breakfast-690128_1280.jpg"
+        links="https://cdn.pixabay.com/photo/2015/03/26/09/42/breakfast-690128_1280.jpg",
+        lat=41.8781,
+        lng=87.6298
     )
     venue16 = Venue(
 
@@ -423,9 +454,11 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="Florida",
-        city="Miami",
-        links="https://cdn.pixabay.com/photo/2017/08/17/00/26/breakfast-2649620_1280.jpg"
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2017/08/17/00/26/breakfast-2649620_1280.jpg",
+        lat=40.784985,
+        lng=-73.956528
     )
     venue17 = Venue(
 
@@ -448,9 +481,11 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="California",
-        city="Los Angeles",
-        links="https://cdn.pixabay.com/photo/2017/08/07/11/14/restaurant-2602736_1280.jpg"
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2017/08/07/11/14/restaurant-2602736_1280.jpg",
+        lat=40.745343,
+        lng=-73.986568
     )
     venue18 = Venue(
 
@@ -473,9 +508,11 @@ def seed_users():
         twentyone_plus=False,
         kid_friendly=False,
         street_address="1212",
-        state="California",
-        city="San Francisco",
-        links="https://cdn.pixabay.com/photo/2017/03/27/14/21/chairs-2179044_1280.jpg"
+        state="New York",
+        city="New York City",
+        links="https://cdn.pixabay.com/photo/2017/03/27/14/21/chairs-2179044_1280.jpg",
+        lat=40.747932,
+        lng=-73.986568
     )
 
     review1 = Review(

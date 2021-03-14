@@ -23,16 +23,7 @@ const NavBar = ({ setAuthenticated }) => {
       setSearchbar(false);
     }
   }
-  /*
-   * TODO: overlay aka put shadow over inactive
-   * TODO: change background color of search bar
-   * TODO: make searchbar fit in fucking container
-   * TODO: css for searchbar
-   * TODO: change logo
-   * TODO: change search button red
-   * TODO: figure out transition transform from navbar before to navbar after REaCT
-   * 
-   */
+
 
   return (
     <>
