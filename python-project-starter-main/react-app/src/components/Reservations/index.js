@@ -12,7 +12,7 @@ import ReactStars from "react-rating-stars-component";
 
 const Reservations = () => {
   const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [endDate, setEndDate] = useState("");
   const [price, setPrice] = useState("");
 
   const [guestCount, setGuestCount] = useState("");
