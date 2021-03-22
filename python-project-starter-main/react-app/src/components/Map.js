@@ -20,7 +20,7 @@ const Map = ({ lat, lng }) => {
 
   const mapContainerStyle = {
     width: "100%",
-    height: "200px",
+    height: "100%",
   }
 
 

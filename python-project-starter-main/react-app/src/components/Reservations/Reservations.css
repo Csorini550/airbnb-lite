@@ -29,7 +29,7 @@
     /* box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px; */
     border-radius: 7px;
     margin-bottom: 25px;
-    margin-left: 30px;
+    margin-left: 150px;
 }
 
 .info-form {
@@ -44,6 +44,7 @@
 .info {
     width: 50%;
     height: 400px;
+    margin-top: 60px;
 }
 
 .rating-form {
@@ -122,4 +123,5 @@ form label {
   border: 1px solid rgb(221, 221, 221);
   z-index: -1;
   border-radius: 7px;
+  margin-right: 50px;
 }
