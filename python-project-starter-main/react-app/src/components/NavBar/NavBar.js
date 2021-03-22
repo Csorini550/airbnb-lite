@@ -87,7 +87,9 @@ const NavBar = ({ setAuthenticated }) => {
               </NavLink>
             </div>
             <div className="navtext hover-shadow">
-              <div className="navtext">Become a host</div>
+              <NavLink className="navtext" to="/create-venue/" exact={true} activeClassName="active">
+                <div className="navtext">Become a host</div>
+              </NavLink>
             </div>
             <div className="user-dropdown">
               <button id="profile-button" onClick={() => setDropdown(!dropdown)}>

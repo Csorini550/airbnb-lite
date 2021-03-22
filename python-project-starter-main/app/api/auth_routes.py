@@ -69,10 +69,10 @@ def sign_up():
             password=form.data['password'],
             first_name=form.data['first_name'],
             last_name=form.data["last_name"],
-            phone_number=form.data["phone_number"],
-            description=form.data["description"],
-            profile_image=form.data["profile_image"],
-            buisness_owner=form.data["buisness_owner"]
+            # phone_number=form.data["phone_number"],
+            # description=form.data["description"],
+            # profile_image=form.data["profile_image"],
+            # buisness_owner=form.data["buisness_owner"]
         )
         db.session.add(user)
         db.session.commit()

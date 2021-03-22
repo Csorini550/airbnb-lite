@@ -22,17 +22,21 @@ const SplashNav = ({ setAuthenticated }) => {
             <img id="logo" src={logo}></img>
           </NavLink>
         </div>
-        <div className="navtext hover-shadow">
-          <div className="splash-navtext">Book a Venue</div>
-        </div>
-        <div className="navtext hover-shadow">
+        {/* <div className="navtext hover-shadow">
+          <NavLink className="navtext" to="/reservations/2">
+            <div className="splash-navtext">Venues to Book</div>
+          </NavLink>
+        </div> */}
+        {/* <div className="navtext hover-shadow">
           <NavLink className="navtext" to="/create-venue/" exact={true} activeClassName="active">
             <div className="splash-navtext">Online Experiences</div>
           </NavLink>
-        </div>
-        <div className="navtext hover-shadow">
-          <div className="splash-navtext">Become a host</div>
-        </div>
+        </div> */}
+        {/* <div className="navtext hover-shadow">
+          <NavLink className="navtext" to="/create-venue/" exact={true} activeClassName="active">
+            <div className="splash-navtext">Become a host</div>
+          </NavLink>
+        </div> */}
         <div className="user-dropdown">
           <button id="profile-button" onClick={() => setDropdown(!dropdown)}>
             <div id="profile-icon-container">
