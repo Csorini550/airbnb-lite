@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { getVenueReviews } from "../../store/VenueReviews";
 import ReactStars from "react-rating-stars-component";
-
+import "./VenueReview.css"
 const VenueReview = () => {
     let { venueId } = useParams();
     const dispatch = useDispatch();
@@ -20,8 +20,8 @@ const VenueReview = () => {
     }, [])
 
     return (
-        <>
-            <h1>Look at all these reviews</h1>
+        <div className="rev-cont">
+            <h1>Recent customer reviews</h1>
             <div>
                 {!reviews && <h4>Loading...</h4>}
                 {Object.values(reviews).map(review => {
@@ -45,7 +45,7 @@ const VenueReview = () => {
                 })}
 
             </div>
-        </>
+        </div>
     )
 
 

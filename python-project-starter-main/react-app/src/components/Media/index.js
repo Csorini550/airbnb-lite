@@ -6,6 +6,7 @@ import { useHistory, useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 import { getVenue, getAllVenues } from "../../store/venue"
 import { getMedia } from "../../store/media"
+import Footer from "../../components/Footer"
 import "./TEST.css"
 
 
@@ -89,6 +90,7 @@ const Media = () => {
                     <button type="submit">Upload Image</button>
                 </form>
             </div>
+            <Footer />
         </div>
     )
 

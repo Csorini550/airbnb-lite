@@ -114,23 +114,25 @@ const VenueInfo = ({ venue }) => {
             <div className="venInfCont">
 
                 <div>
-                    {!venue && <h4>Loading...</h4>}
-                    <h2>{venue.name} | {venue.type} | {venue.room_type} {kidOrTwenty()}</h2>
-                    {/* {venue.link} */}
-                    <div className="location">
-                        <div>
-                            <h3 className="locationh3">Address - {venue.street_address}, {venue.state}, {venue.city}</h3>
+                    <div className="inf-cont">
+                        {!venue && <h4>Loading...</h4>}
+                        <h2>{venue.name} | {venue.type} | {venue.room_type} {kidOrTwenty()}</h2>
+                        {/* {venue.link} */}
+                        <div className="location">
+                            <div>
+                                <h3 className="locationh3">Address - {venue.street_address}, {venue.state}, {venue.city}</h3>
+                            </div>
+                            <div>
+                                <h3> Max Occupancy: {venue.total_occupancy}</h3>
+                            </div>
                         </div>
-                        <div>
-                            <h3> Max Occupancy: {venue.total_occupancy}</h3>
+                        <div className="parent">
+                            <ul className="booleanInfoLi">
+                                {mapFunc()}
+                            </ul>
                         </div>
                     </div>
-                    <div className="parent">
-                        <ul className="booleanInfoLi">
-                            {mapFunc()}
-                        </ul>
-                    </div>
-                    <div>
+                    <div className="sum-contianer">
                         <div className="sun">
                             <h2 >Summary</h2>
                         </div>

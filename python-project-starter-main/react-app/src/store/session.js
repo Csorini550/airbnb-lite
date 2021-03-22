@@ -38,10 +38,10 @@ export const signup = (user) => async (dispatch) => {
             password,
             first_name,
             last_name,
-            phone_number,
-            description,
-            profile_image,
-            business_owner
+            // phone_number,
+            // description,
+            // profile_image,
+            // business_owner
         })
     });
 

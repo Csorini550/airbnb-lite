@@ -1,6 +1,10 @@
-.main-footer {
-    position: fixed;
-    bottom: 0;
+#main-footer {
+  /* margin-bottom: -50px; */
+  bottom: 0;
+  left: 0;
+  /* padding:100px; */
+    position:fixed;
+
     width: 100%;
     display: flex;
   flex-direction: row;
@@ -24,11 +28,11 @@
     border-radius: 37.5px;
     
 }
-.footer-container {
+#footer-container {
 margin-bottom: 20px;
 }
 
-.footer-container h1 {
+#footer-container h1 {
 margin-left: 30px;
 }
 
@@ -55,4 +59,12 @@ margin-left: 30px;
 .img-wrap:hover .img-description {
   visibility: visible;
   opacity: 1;
+}
+
+.fix {
+  margin-top: -15px;
+  
+}
+.fix h1 {
+  margin-left: 30px;
 }

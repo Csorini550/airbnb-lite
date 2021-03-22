@@ -39,7 +39,6 @@ function App() {
   return (
     <BrowserRouter>
       <SplashNav setAuthenticated={setAuthenticated} />
-      <Footer setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -71,8 +70,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/create-review/:venueId" exact={true} authenticated={authenticated}>
           <CreateReview />
-          // route should end in venueId so it passes to the right venue
-          // increase length of review title
         </ProtectedRoute>
         <ProtectedRoute path="/reviews/:venueId" exact={true} authenticated={authenticated}>
           <VenueReview />

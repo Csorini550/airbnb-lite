@@ -22,8 +22,38 @@ display: inline;
 #sum {
     margin-left: 30px;
 }
-.sum {
-    margin-left: 10px;
+.sun {
+    margin: 10px;
+    
+
+}
+
+.inf-cont {
+      background-color: white;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* margin: 0 100px; */
+  padding: 20px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  margin-bottom: 25px;
+}
+
+.sum-contianer {
+     background-color: white;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* margin: 0 100px; */
+  padding: 20px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  margin-bottom: 25px;
 }
 
 .parent {

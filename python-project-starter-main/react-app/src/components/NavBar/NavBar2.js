@@ -35,16 +35,20 @@ const NavBar2 = ({ setAuthenticated }) => {
           </NavLink>
         </div>
         <div className="navtext hover-shadow">
-          <div className="navtext">Venues to Book</div>
+          <Link className="navtext" to="/reservations/2">
+            <div className="navtext">Venues to Book</div>
+          </Link>
         </div>
 
         <div className="navtext hover-shadow">
-          <NavLink className="navtext" to="/create-venue/" exact={true} activeClassName="active">
+          <Link className="navtext" to="/create-venue/" exact={true} activeClassName="active">
             <div className="navtext">Online Experiences</div>
-          </NavLink>
+          </Link>
         </div>
         <div className="navtext hover-shadow">
-          <div className="navtext">Become a host</div>
+          <Link className="navtext" to="/create-venue/" exact={true} activeClassName="active">
+            <div className="navtext">Become a host</div>
+          </Link>
         </div>
         <div className="user-dropdown">
           <button id="profile-button" onClick={() => setDropdown(!dropdown)}>
